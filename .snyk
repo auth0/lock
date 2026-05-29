@@ -1,0 +1,51 @@
+# Snyk (https://snyk.io) policy file
+version: v1.25.0
+ignore:
+  SNYK-JS-DOMPURIFY-16131135:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-8722251:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-16078387:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-15810938:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-15874903:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-15874905:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-15371386:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-15371376:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
