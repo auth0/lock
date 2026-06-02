@@ -48,7 +48,8 @@ export default {
       'bad.phone_number': 'Diese Telefonnummer ist ungültig',
       'lock.fallback': 'Es tut uns leid, etwas ist schiefgelaufen.',
       invalid_captcha: 'Lösen Sie die Herausforderungsfrage, um sicherzustellen, dass Sie kein Roboter sind.',
-      invalid_recaptcha: 'Aktivieren Sie das Kontrollkästchen, um sicherzustellen, dass Sie kein Roboter sind.'
+      invalid_recaptcha: 'Aktivieren Sie das Kontrollkästchen, um sicherzustellen, dass Sie kein Roboter sind.',
+      too_many_attempts: 'Ihr Konto wurde nach mehreren aufeinander folgenden Anmeldeversuche gesperrt.'
     },
     signUp: {
       invalid_password: 'Passwort ist ungültig.',

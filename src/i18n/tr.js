@@ -44,7 +44,8 @@ export default {
       'bad.phone_number': 'Telefon numarası geçerli değil',
       'lock.fallback': 'Özür dileriz, bir hata oluştu',
       invalid_captcha: 'Robot olmadığınızı doğrulamak için meydan okuma sorusunu çözün.',
-      invalid_recaptcha: 'Robot olmadığınızı doğrulamak için onay kutusunu seçin.'
+      invalid_recaptcha: 'Robot olmadığınızı doğrulamak için onay kutusunu seçin.',
+      too_many_attempts: 'Çok fazla giriş denemesi sonucunda hesabınız bloke oldu.'
     },
     signUp: {
       invalid_password: 'Şifre geçersiz.',

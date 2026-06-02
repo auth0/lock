@@ -30,6 +30,7 @@ export default class EmailInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.inputRef = React.createRef();
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -59,7 +60,7 @@ export default class EmailInput extends React.Component {
       >
         <input
           id={`${lockId}-email`}
-          ref="input"
+          ref={this.inputRef}
           type="email"
           inputMode="email"
           name="email"

@@ -11,7 +11,7 @@ const Component = ({ i18n, model }) => {
 
   var headerText;
 
-  if (domain !== null) {
+  if (domain && domain.trim()) {
     headerText = i18n.str('enterpriseActiveLoginInstructions', domain);
   } else {
     headerText = i18n.str('enterpriseLoginIntructions');

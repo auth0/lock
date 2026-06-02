@@ -67,6 +67,7 @@ export default class Container extends React.Component {
   constructor(props) {
     super(props);
     this.state = { isOpen: false };
+    this.chromeRef = React.createRef();
   }
   checkConnectionResolver(done) {
     const { contentProps } = this.props;
@@ -113,7 +114,7 @@ export default class Container extends React.Component {
       if (submitHandler) {
         setTimeout(() => {
           if (!this.props.isSubmitting) {
-            this.refs.chrome.focusError();
+            this.chromeRef.current.focusError();
           }
         }, 17);
         submitHandler();
@@ -240,7 +241,7 @@ export default class Container extends React.Component {
                 logo={logo}
                 screenName={screenName}
                 primaryColor={primaryColor}
-                ref="chrome"
+                ref={this.chromeRef}
                 showSubmitButton={!!submitHandler}
                 submitButtonLabel={submitButtonLabel}
                 success={success}

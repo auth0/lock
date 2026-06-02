@@ -43,7 +43,8 @@ export default {
       'bad.phone_number': 'Vigane telefoninumber',
       'lock.fallback': 'Vabandame, midagi läks valesti.',
       invalid_captcha: 'Lahendage väljakutseküsimus ja veenduge, et te pole robot.',
-      invalid_recaptcha: 'Valige märkeruut, et kontrollida, kas te pole robot.'
+      invalid_recaptcha: 'Valige märkeruut, et kontrollida, kas te pole robot.',
+      too_many_attempts: 'Sinu konto blokeeriti peale mitut ebaõnnestunud sisselogimiskatset.'
     },
     signUp: {
       invalid_password: 'Parool on vigane.',

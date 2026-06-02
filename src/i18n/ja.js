@@ -44,7 +44,8 @@ export default {
       'bad.phone_number': '電話番号が不正です',
       'lock.fallback': '申し訳ございません。エラーが発生しました。',
       invalid_captcha: 'チャレンジ質問を解いて、ロボットではないことを確認してください。',
-      invalid_recaptcha: 'チェックボックスを選択して、ロボットでないことを確認します。'
+      invalid_recaptcha: 'チェックボックスを選択して、ロボットでないことを確認します。',
+      too_many_attempts: 'このアカウントは、短時間での複数回ログイン試行によりブロックされました。'
     },
     signUp: {
       invalid_password: 'パスワードが不正です。',

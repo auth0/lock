@@ -81,7 +81,6 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-react": "^7.32.2",
     "esm": "^3.2.25",
-    "events": "^3.3.0",
     "expect.js": "^0.3.1",
     "flat": "^5.0.2",
     "glob": "^7.1.7",
@@ -132,7 +131,7 @@
     "qs": "^6.10.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-transition-group": "^2.2.1",
+    "react-transition-group": "^4.4.5",
     "trim": "^1.0.1",
     "url-join": "^1.1.0",
     "validator": "^13.6.0"
