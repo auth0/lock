@@ -1,5 +1,11 @@
 # Change Log
 
+## [v14.3.1](https://github.com/auth0/lock/tree/v14.3.1) (2026-06-03)
+[Full Changelog](https://github.com/auth0/lock/compare/v14.3.0...v14.3.1)
+
+**Removed**
+- fix(deps): remove `trim` dependency [\#2783](https://github.com/auth0/lock/pull/2783) ([gameroman](https://github.com/gameroman))
+
 ## [v14.3.0](https://github.com/auth0/lock/tree/v14.3.0) (2026-04-06)
 [Full Changelog](https://github.com/auth0/lock/compare/v14.2.5...v14.3.0)
 
