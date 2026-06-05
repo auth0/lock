@@ -3,11 +3,34 @@
 ## [v15.0.0](https://github.com/auth0/lock/tree/v15.0.0) (2026-06-05)
 [Full Changelog](https://github.com/auth0/lock/compare/v14.3.0...v15.0.0)
 
-**⚠️ BREAKING CHANGES**
-- update: Upgrades auth0-js from ^9.29.0 to ^10.0.0 [\#2810](https://github.com/auth0/lock/pull/2810) ([cschetan77](https://github.com/cschetan77))
+### Highlights
+
+This release upgrades `auth0-js` to [v10.0.0](https://github.com/auth0/auth0.js/releases/tag/v10.0.0), which resolves [CVE-2026-42280](https://www.cve.org/CVERecord?id=CVE-2026-42280) — a security vulnerability in token validation for browser-based applications.
+
+**⚠️ Breaking Changes**
+
+  **HS256 token signing is no longer supported.**
+
+  auth0-js v10 enforces strict token validation for browser-based applications. If your Auth0 Application is configured to sign JWTs with **HS256**, `parseHash()` will now call the callback with an `invalid_token` error instead of silently succeeding:
+
+  ```
+  { error: 'invalid_token', description: 'Signature algorithm of "HS256" is not supported. Expected the ID token to be signed with "RS256".' }
+  ```
+
+  **Background:** HS256 is a symmetric algorithm — the same client secret is used to both sign and verify the token. Correctly verifying an HS256 token in the browser would require the client secret to be present in the JavaScript bundle, which is a security vulnerability as it is fully visible to anyone with browser DevTools. HS256 is not a safe choice for browser-based applications, and auth0-js v10 now explicitly enforces this.
+
+  **Who is affected:** Applications where the Auth0 tenant is configured with HS256 as the JWT Signature Algorithm. Applications already using RS256 are not affected and require no changes.
+
+  **Migration:** Before upgrading to Lock v15, switch your Auth0 Application to RS256:
+  > Auth0 Dashboard → Applications → [Your App] → Settings → Advanced Settings → OAuth → JsonWebToken Signature Algorithm → **RS256**
+
+  RS256 is the correct and secure algorithm for browser-based applications. Tokens are signed with Auth0's private key and verified using the public key fetched from Auth0's JWKS endpoint (`/.well-known/jwks.json`), so no secret is ever exposed in the browser.
 
 **Changed**
+
 - fix(deps): remove `trim` dependency [\#2783](https://github.com/auth0/lock/pull/2783) ([gameroman](https://github.com/gameroman))
+
+  The third-party `trim` package has been removed. All string trimming now uses the native `String.prototype.trim()` method, which has been available in all supported browsers and Node.js versions for many years. This removes one dependency from the shipped package with no change in behaviour.
 
 ## [v14.3.0](https://github.com/auth0/lock/tree/v14.3.0) (2026-04-06)
 [Full Changelog](https://github.com/auth0/lock/compare/v14.2.5...v14.3.0)
