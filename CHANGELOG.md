@@ -1,5 +1,14 @@
 # Change Log
 
+## [v15.0.0](https://github.com/auth0/lock/tree/v15.0.0) (2026-06-05)
+[Full Changelog](https://github.com/auth0/lock/compare/v14.3.0...v15.0.0)
+
+**⚠️ BREAKING CHANGES**
+- update: Upgrades auth0-js from ^9.29.0 to ^10.0.0 [\#2810](https://github.com/auth0/lock/pull/2810) ([cschetan77](https://github.com/cschetan77))
+
+**Changed**
+- fix(deps): remove `trim` dependency [\#2783](https://github.com/auth0/lock/pull/2783) ([gameroman](https://github.com/gameroman))
+
 ## [v14.3.0](https://github.com/auth0/lock/tree/v14.3.0) (2026-04-06)
 [Full Changelog](https://github.com/auth0/lock/compare/v14.2.5...v14.3.0)
 
