@@ -1,5 +1,27 @@
 # Change Log
 
+## [v15.0.0](https://github.com/auth0/lock/tree/v15.0.0) (2026-06-05)
+[Full Changelog](https://github.com/auth0/lock/compare/v14.3.0...v15.0.0)
+
+### Highlights
+
+This release upgrades `auth0-js` to [v10.0.0](https://github.com/auth0/auth0.js/releases/tag/v10.0.0), which resolves [CVE-2026-42280](https://www.cve.org/CVERecord?id=CVE-2026-42280) — a security vulnerability in token validation for browser-based applications.
+
+**⚠️ Breaking Changes**
+
+- feat!: upgrade auth0-js from v9 to v10 [\#2810](https://github.com/auth0/lock/pull/2810) ([cschetan77](https://github.com/cschetan77))
+
+  **HS256 is no longer supported.** Applications configured with HS256 as the JWT Signature Algorithm will see `parseHash()` return an `invalid_token` error. HS256 requires the client secret to be present in the browser to verify tokens, which is a security vulnerability. Applications using RS256 are not affected.
+
+  **Migration:** Switch to RS256 before upgrading:
+  > Auth0 Dashboard → Applications → [Your App] → Settings → Advanced Settings → OAuth → JsonWebToken Signature Algorithm → **RS256**
+
+**Changed**
+
+- fix(deps): remove `trim` dependency [\#2783](https://github.com/auth0/lock/pull/2783) ([gameroman](https://github.com/gameroman))
+
+  The third-party `trim` package has been removed. All string trimming now uses the native `String.prototype.trim()` method, which has been available in all supported browsers and Node.js versions for many years. This removes one dependency from the shipped package with no change in behaviour.
+
 ## [v14.3.0](https://github.com/auth0/lock/tree/v14.3.0) (2026-04-06)
 [Full Changelog](https://github.com/auth0/lock/compare/v14.2.5...v14.3.0)
 
