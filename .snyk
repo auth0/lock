@@ -7,7 +7,7 @@ ignore:
           auth0-js@9.29.0+ uses superagent@10.x which calls new Proxy() at
           runtime. IE11 does not support the Proxy global and it cannot be
           polyfilled. Lock v13 maintains IE11 compatibility and must stay on
-          auth0-js@9.28.x (the last version using superagent@7.x).
+          auth0-js@9.28.0 (the last version using superagent@7.x).
         expires: '2027-01-01T00:00:00.000Z'
   SNYK-JS-DOMPURIFY-16131135:
     - '*':
