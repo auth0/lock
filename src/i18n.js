@@ -1,7 +1,7 @@
 import React from 'react';
 import Immutable, { Map } from 'immutable';
 import format from './utils/format';
-import { sanitize } from 'dompurify';
+import DOMPurify from 'dompurify';
 import sync from './sync';
 import * as l from './core/index';
 import { dataFns } from './utils/data_utils';
@@ -18,7 +18,7 @@ export function html(m, keyPath, ...args) {
   // dangerouslySetInnerHTML input is sanitized using dompurify
   // eslint-disable-next-line react/no-danger
   return html
-    ? React.createElement('span', { dangerouslySetInnerHTML: { __html: sanitize(html) } })
+    ? React.createElement('span', { dangerouslySetInnerHTML: { __html: DOMPurify.sanitize(html) } })
     : null;
 }
 
