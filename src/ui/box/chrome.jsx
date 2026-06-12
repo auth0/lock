@@ -72,6 +72,11 @@ const SubmitTextSvg = () => (
 );
 
 class SubmitButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.buttonRef = React.createRef();
+  }
+
   handleSubmit() {
     const { label, screenName, contentProps } = this.props;
     const { model } = contentProps;
@@ -94,7 +99,9 @@ class SubmitButton extends React.Component {
   }
 
   focus() {
-    ReactDOM.findDOMNode(this).focus();
+    if (this.buttonRef.current) {
+      this.buttonRef.current.focus();
+    }
   }
 
   render() {
@@ -112,6 +119,7 @@ class SubmitButton extends React.Component {
 
     return (
       <button
+        ref={this.buttonRef}
         id={`${l.id(model)}-submit`}
         className="auth0-lock-submit"
         disabled={disabled}
@@ -147,6 +155,9 @@ export default class Chrome extends React.Component {
   constructor(props) {
     super(props);
     this.state = { moving: false, reverse: false, headerHeight: 0 };
+    this.screenRef = React.createRef();
+    this.globalMessageRef = React.createRef();
+    this.auxiliaryPaneRef = React.createRef();
   }
 
   // eslint-disable-next-line react/no-deprecated
@@ -175,7 +186,7 @@ export default class Chrome extends React.Component {
     if (!autofocus) return;
 
     if (auxiliaryPane && !prevProps.auxiliaryPane) {
-      const input = this.findAutofocusInput(this.refs.auxiliary);
+      const input = this.findAutofocusInput(this.auxiliaryPaneRef.current);
 
       if (input) {
         // TODO clear timeout
@@ -236,11 +247,12 @@ export default class Chrome extends React.Component {
   }
 
   findAutofocusInput(ref) {
-    return ReactDOM.findDOMNode(ref || this.refs.screen).querySelector('input');
+    const node = ref || this.screenRef.current;
+    return node.querySelector('input');
   }
 
   focusError() {
-    const node = ReactDOM.findDOMNode(this.refs.screen);
+    const node = this.screenRef.current;
     // TODO: make the error input selector configurable via props.
     const error = node.querySelector('.auth0-lock-error input');
 
@@ -350,15 +362,19 @@ export default class Chrome extends React.Component {
               style={{ marginTop: this.state.headerHeight }}
             >
               <TransitionGroup>
-                <CSSTransition classNames="global-message" timeout={MESSAGE_ANIMATION_DURATION}>
-                  <div>
+                <CSSTransition
+                  nodeRef={this.globalMessageRef}
+                  classNames="global-message"
+                  timeout={MESSAGE_ANIMATION_DURATION}
+                >
+                  <div ref={this.globalMessageRef}>
                     {globalSuccess}
                     {globalError}
                     {globalInfo}
                   </div>
                 </CSSTransition>
               </TransitionGroup>
-              <div style={{ position: 'relative' }} ref="screen">
+              <div style={{ position: 'relative' }} ref={this.screenRef}>
                 <MultisizeSlide
                   delay={550}
                   onDidAppear={::this.onDidAppear}
@@ -405,11 +421,11 @@ export default class Chrome extends React.Component {
           {auxiliaryPane && (
             <TransitionGroup>
               <CSSTransition
-                ref="auxiliary"
+                nodeRef={this.auxiliaryPaneRef}
                 classNames="slide"
                 timeout={AUXILIARY_ANIMATION_DURATION}
               >
-                {auxiliaryPane}
+                {React.cloneElement(auxiliaryPane, { ref: this.auxiliaryPaneRef })}
               </CSSTransition>
             </TransitionGroup>
           )}

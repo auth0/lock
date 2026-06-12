@@ -44,7 +44,8 @@ export default {
       'bad.phone_number': 'Telefon nömrəsi düzgün deyil',
       'lock.fallback': 'Üzr istəyirik, səhv oldu',
       invalid_captcha: 'Daxil etdiyiniz mətn səhv idi. <br /> Lütfən, yenidən cəhd edin.',
-      invalid_recaptcha: 'Robot olmadığınızı təsdiqləmək üçün onay qutusunu seçin.'
+      invalid_recaptcha: 'Robot olmadığınızı təsdiqləmək üçün onay qutusunu seçin.',
+      too_many_attempts: 'Çox sayda giriş cəhdi nəticəsində hesabınız bloklandı.'
     },
     signUp: {
       invalid_password: 'Şifrə yanlışdır.',

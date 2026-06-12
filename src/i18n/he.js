@@ -42,7 +42,8 @@ export default {
       'bad.phone_number': 'מספר הטלפון לא תקין',
       'lock.fallback': 'אנו מתנצלים, משהו השתבש',
       invalid_captcha: 'לפתור את שאלת האתגר כדי לוודא שאתה לא רובוט.',
-      invalid_recaptcha: 'בחר בתיבת הסימון כדי לוודא שאתה לא רובוט.'
+      invalid_recaptcha: 'בחר בתיבת הסימון כדי לוודא שאתה לא רובוט.',
+      too_many_attempts: 'חשבונך נחסם לאחר ניסיונות מרובים ורצופים לכניסה.'
     },
     signUp: {
       invalid_password: 'סיסמא לא תקינה.',

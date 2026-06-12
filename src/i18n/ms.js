@@ -45,7 +45,8 @@ export default {
       'bad.phone_number': 'Nombor telefon tidak sah',
       'lock.fallback': 'Harap maaf, sesuatu berlaku',
       invalid_captcha: 'Selesaikan soalan cabaran untuk mengesahkan bahawa anda bukan robot.',
-      invalid_recaptcha: 'Pilih kotak pilihan untuk mengesahkan bahawa anda bukan robot.'
+      invalid_recaptcha: 'Pilih kotak pilihan untuk mengesahkan bahawa anda bukan robot.',
+      too_many_attempts: 'Akaun anda telah disekat selepas berbilang percubaan log masuk yang berturut-turut.'
     },
     signUp: {
       invalid_password: 'Kata laluan tidak sah.',

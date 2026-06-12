@@ -45,7 +45,8 @@ export default {
       'bad.phone_number': 'Ugyldig telefonnummer',
       'lock.fallback': 'Beklager, men noe gikk galt',
       invalid_captcha: 'Løs utfordringsspørsmålet for å bekrefte at du ikke er en robot.',
-      invalid_recaptcha: 'Merk av i avmerkingsboksen for å bekrefte at du ikke er en robot.'
+      invalid_recaptcha: 'Merk av i avmerkingsboksen for å bekrefte at du ikke er en robot.',
+      too_many_attempts: 'Din brukerkonto har blitt blokkert etter gjentatte ugyldige innloggingsforsøk.'
     },
     signUp: {
       invalid_password: 'Ugyldig passord.',

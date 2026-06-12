@@ -46,7 +46,8 @@ export default {
       'bad.phone_number': 'O número de telefone é inválido',
       'lock.fallback': 'Lamentamos, correu um erro.',
       invalid_captcha: 'Resolva a questão do desafio para verificar se você não é um robô.',
-      invalid_recaptcha: 'Marque a caixa de seleção para verificar se você não é um robô.'
+      invalid_recaptcha: 'Marque a caixa de seleção para verificar se você não é um robô.',
+      too_many_attempts: 'A sua conta foi bloqueada após várias tentativas sucessivas de início de sessão.'
     },
     signUp: {
       invalid_password: 'Palavra-passe inválida.',

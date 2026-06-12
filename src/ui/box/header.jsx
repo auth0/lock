@@ -4,15 +4,20 @@ import ReactDOM from 'react-dom';
 import { BackButton } from './button';
 
 export default class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.headerRef = React.createRef();
+  }
+
   getDOMNode() {
-    return ReactDOM.findDOMNode(this);
+    return this.headerRef.current;
   }
 
   render() {
     const { backHandler, backgroundColor, backgroundUrl, logoUrl, name, title } = this.props;
 
     return (
-      <div className="auth0-lock-header">
+      <div ref={this.headerRef} className="auth0-lock-header">
         {backHandler && <BackButton onClick={backHandler} />}
         <Background imageUrl={backgroundUrl} backgroundColor={backgroundColor} grayScale={!!name} />
         <Welcome title={title} name={name} imageUrl={name ? undefined : logoUrl} />

@@ -44,7 +44,8 @@ export default {
       'bad.phone_number': 'Telefonní číslo je neplatné',
       'lock.fallback': 'Je nám líto, něco se pokazilo',
       invalid_captcha: 'Vyřešte úlohu, abychom ověřili, že nejste robot.',
-      invalid_recaptcha: 'Zaškrtněte políčko, abychom ověřili, že nejste robot.'
+      invalid_recaptcha: 'Zaškrtněte políčko, abychom ověřili, že nejste robot.',
+      too_many_attempts: 'Váš účet byl zablokován z důvodu velkého počtu pokusů o přihlášení.'
     },
     signUp: {
       invalid_password: 'Heslo je neplatné.',

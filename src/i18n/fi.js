@@ -46,7 +46,8 @@ export default {
       'bad.phone_number': 'Puhelinnumero ei kelpaa',
       'lock.fallback': 'Olemme pahoillamme, jotain meni vikaan',
       invalid_captcha: 'Ratkaise haastekysymys varmistaaksesi, että et ole robotti.',
-      invalid_recaptcha: 'Valitse valintaruutu varmistaaksesi, että et ole robotti.'
+      invalid_recaptcha: 'Valitse valintaruutu varmistaaksesi, että et ole robotti.',
+      too_many_attempts: 'Tunnuksesi on suljettu useiden peräkkäisten kirjautumisyritysten jälkeen.'
     },
     signUp: {
       invalid_password: 'Salasana ei kelpaa.',

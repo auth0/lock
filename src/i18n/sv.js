@@ -43,7 +43,8 @@ export default {
       'bad.phone_number': 'Ditt telefonnummer är ogiltigt.',
       'lock.fallback': 'Något gick fel.',
       invalid_captcha: 'Lös utmaningsfrågan för att verifiera att du inte är en robot.',
-      invalid_recaptcha: 'Markera kryssrutan för att verifiera att du inte är en robot.'
+      invalid_recaptcha: 'Markera kryssrutan för att verifiera att du inte är en robot.',
+      too_many_attempts: 'Ditt konto har blivit spärrat efter flera felaktiga inloggningsförsök.'
     },
     signUp: {
       invalid_password: 'Lösenordet är ogiltigt.',

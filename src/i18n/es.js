@@ -41,7 +41,8 @@ export default {
       'bad.phone_number': 'Teléfono inválido',
       'lock.fallback': 'Ocurrió un error durante el envío',
       invalid_captcha: 'El texto ingresado es incorrecto. <br /> Por favor, vuelva a intentarlo.',
-      invalid_recaptcha: 'Seleccione la casilla de verificación para verificar que no es un robot.'
+      invalid_recaptcha: 'Seleccione la casilla de verificación para verificar que no es un robot.',
+      too_many_attempts: 'Su cuenta ha sido bloqueada luego de múltiples intentos de inicio de sesión consecutivos.'
     },
     signUp: {
       invalid_password: 'La contraseña es inválida.',

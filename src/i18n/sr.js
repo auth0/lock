@@ -43,7 +43,8 @@ export default {
       'bad.phone_number': 'Broj telefona je nevažeći',
       'lock.fallback': 'Žao nam je, došlo je do greške',
       invalid_captcha: 'Решите изазовно питање да бисте потврдили да нисте робот.',
-      invalid_recaptcha: 'Потврдите избор у пољу за потврду да нисте робот.'
+      invalid_recaptcha: 'Потврдите избор у пољу за потврду да нисте робот.',
+      too_many_attempts: 'Vaš nalog je blokiran nakon više uzastopnih pokušaja prijavljivanja.'
     },
     signUp: {
       invalid_password: 'Lozinka je nevažeća.',
