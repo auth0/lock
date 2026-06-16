@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
 
@@ -58,8 +58,8 @@ describe('CustomInput', () => {
     it('calls `startOptionSelection` when clicked', () => {
       let CustomInput = getComponent();
 
-      const wrapper = mount(<CustomInput {...defaultProps} />);
-      const props = extractPropsFromWrapper(wrapper);
+      const { container } = render(<CustomInput {...defaultProps} />);
+      const props = extractPropsFromWrapper(container);
 
       props.onClick();
 
@@ -84,8 +84,8 @@ describe('CustomInput', () => {
     it('calls `changeField` when changed', () => {
       let CustomInput = getComponent();
 
-      const wrapper = mount(<CustomInput {...defaultProps} />);
-      const props = extractPropsFromWrapper(wrapper);
+      const { container } = render(<CustomInput {...defaultProps} />);
+      const props = extractPropsFromWrapper(container);
 
       props.onChange({ target: { value: 'newUser' } });
 

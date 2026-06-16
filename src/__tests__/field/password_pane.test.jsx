@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
 
@@ -86,8 +86,8 @@ describe('PasswordPane', () => {
   it('calls `swap` when password changes', () => {
     let PasswordPane = getComponent();
 
-    const wrapper = mount(<PasswordPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper, 1);
+    const { container } = render(<PasswordPane {...defaultProps} />);
+    const props = extractPropsFromWrapper(container, 1);
     props.onChange({ target: { value: 'newPassword' } });
 
     const { mock } = require('store/index').swap;
@@ -98,8 +98,10 @@ describe('PasswordPane', () => {
     require('core/index').ui.allowShowPassword = () => true;
     let PasswordPane = getComponent();
 
-    const wrapper = mount(<PasswordPane {...defaultProps} />);
-    const props = wrapper.find('div input').props();
+    const { container } = render(<PasswordPane {...defaultProps} />);
+    const inputEl = container.querySelector('div input');
+    const key = Object.keys(inputEl).find(k => k.startsWith('__reactProps'));
+    const props = inputEl[key];
     props.onChange({ target: { checked: true } });
 
     const { mock } = require('store/index').swap;

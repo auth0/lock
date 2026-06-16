@@ -1,5 +1,6 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
+import { act } from '@testing-library/react';
 
 import { expectComponent, mockComponent } from 'testUtils';
 
@@ -77,8 +78,10 @@ describe('LoginPane', () => {
   });
   it('clicking password forgot link calls showResetPasswordActivity() when forgotPasswordLink() is undefined', () => {
     databaseIndexMock.forgotPasswordLink.mockImplementation(() => undefined);
-    const wrapper = mount(<LoginPane {...defaultProps} />);
-    wrapper.find('a.auth0-lock-alternative-link').simulate('click');
+    const { container } = render(<LoginPane {...defaultProps} />);
+    act(() => {
+      container.querySelector('a.auth0-lock-alternative-link').click();
+    });
 
     const actions = require('connection/database/actions');
     const { calls } = actions.showResetPasswordActivity.mock;

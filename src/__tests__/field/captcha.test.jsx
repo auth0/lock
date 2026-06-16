@@ -1,10 +1,8 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import I from 'immutable';
 
 import CaptchaPane from '../../field/captcha/captcha_pane';
-import { ThirdPartyCaptcha } from '../../field/captcha/third_party_captcha';
-import CaptchaInput from '../../ui/input/captcha_input';
 
 const createLockMock = ({ provider = 'auth0', required = true, siteKey = '', clientSubdomain = '' } = {}) =>
   I.fromJS({
@@ -18,156 +16,76 @@ const createI18nMock = () => ({
   str: jest.fn().mockReturnValue('My i18N Compliant Language')
 });
 
+// We spy on ThirdPartyCaptcha and CaptchaInput via module mock to capture rendered props
+let lastThirdPartyCaptchaProps = null;
+let lastCaptchaInputProps = null;
+
+jest.mock('../../field/captcha/third_party_captcha', () => {
+  const actual = jest.requireActual('../../field/captcha/third_party_captcha');
+  return {
+    ...actual,
+    ThirdPartyCaptcha: (props) => {
+      lastThirdPartyCaptchaProps = props;
+      return <div data-testid="third-party-captcha" />;
+    }
+  };
+});
+
+jest.mock('../../ui/input/captcha_input', () => (props) => {
+  lastCaptchaInputProps = props;
+  return <input data-testid="captcha-input" />;
+});
+
 describe('CaptchaPane', () => {
+  beforeEach(() => {
+    lastThirdPartyCaptchaProps = null;
+    lastCaptchaInputProps = null;
+  });
+
   describe('CaptchaInput', () => {
-    let wrapper;
-    beforeAll(() => {
+    it('should render CaptchaInput if no provider is specified', () => {
       const lockMock = createLockMock();
       const i8nMock = createI18nMock();
       const onReloadMock = jest.fn();
 
-      wrapper = mount(<CaptchaPane lock={lockMock} onReload={onReloadMock} i18n={i8nMock} />);
-    });
-
-    it('should render CaptchaInput if no provider is specified', () => {
-      expect(wrapper.find(CaptchaInput)).toHaveLength(1);
+      const { getByTestId } = render(<CaptchaPane lock={lockMock} onReload={onReloadMock} i18n={i8nMock} />);
+      expect(getByTestId('captcha-input')).toBeTruthy();
     });
   });
 
-  describe('recaptchav2', () => {
-    let wrapper;
-    beforeAll(() => {
-      const lockMock = createLockMock({
-        provider: 'recaptcha_v2',
-        siteKey: 'mySiteKey'
+  const captchaProviderCases = [
+    ['recaptchav2', 'recaptcha_v2'],
+    ['friendly captcha', 'friendly_captcha'],
+    ['hcaptcha', 'hcaptcha'],
+    ['auth0_v2', 'auth0_v2'],
+    ['recaptcha enterprise', 'recaptcha_enterprise'],
+    ['Arkose', 'arkose'],
+  ];
+
+  captchaProviderCases.forEach(([label, provider]) => {
+    describe(label, () => {
+      beforeEach(() => {
+        lastThirdPartyCaptchaProps = null;
+        const lockMock = createLockMock({ provider, siteKey: 'mySiteKey', clientSubdomain: provider === 'arkose' ? 'client-api' : '' });
+        const i8nMock = createI18nMock();
+        const onReloadMock = jest.fn();
+
+        render(<CaptchaPane lock={lockMock} onReload={onReloadMock} i18n={i8nMock} />);
       });
-      const i8nMock = createI18nMock();
-      const onReloadMock = jest.fn();
 
-      wrapper = mount(<CaptchaPane lock={lockMock} onReload={onReloadMock} i18n={i8nMock} />);
-    });
-
-    it('should render ThirdPartyCaptcha if provider is recaptchav2', () => {
-      expect(wrapper.find(ThirdPartyCaptcha)).toHaveLength(1);
-    });
-
-    it('should pass the sitekey', () => {
-      expect(wrapper.find(ThirdPartyCaptcha).props().sitekey).toBe('mySiteKey');
-    });
-  });
-
-  describe('friendly captcha', () => {
-    let wrapper;
-    beforeAll(() => {
-      const lockMock = createLockMock({
-        provider: 'friendly_captcha',
-        siteKey: 'mySiteKey'
+      it(`should render ThirdPartyCaptcha if provider is ${label}`, () => {
+        expect(lastThirdPartyCaptchaProps).not.toBeNull();
       });
-      const i8nMock = createI18nMock();
-      const onReloadMock = jest.fn();
 
-      wrapper = mount(<CaptchaPane lock={lockMock} onReload={onReloadMock} i18n={i8nMock} />);
-    });
-
-    it('should render ThirdPartyCaptcha if provider is friendly captcha', () => {
-      expect(wrapper.find(ThirdPartyCaptcha)).toHaveLength(1);
-    });
-
-    it('should pass the sitekey', () => {
-      expect(wrapper.find(ThirdPartyCaptcha).props().sitekey).toBe('mySiteKey');
-    });
-  });
-
-  describe('hcaptcha', () => {
-    let wrapper;
-    beforeAll(() => {
-      const lockMock = createLockMock({
-        provider: 'hcaptcha',
-        siteKey: 'mySiteKey'
+      it('should pass the sitekey', () => {
+        expect(lastThirdPartyCaptchaProps.sitekey).toBe('mySiteKey');
       });
-      const i8nMock = createI18nMock();
-      const onReloadMock = jest.fn();
 
-      wrapper = mount(<CaptchaPane lock={lockMock} onReload={onReloadMock} i18n={i8nMock} />);
-    });
-
-    it('should render ThirdPartyCaptcha if provider is hCaptcha', () => {
-      expect(wrapper.find(ThirdPartyCaptcha)).toHaveLength(1);
-    });
-
-    it('should pass the sitekey', () => {
-      expect(wrapper.find(ThirdPartyCaptcha).props().sitekey).toBe('mySiteKey');
-    });
-  });
-
-  describe('auth0_v2', () => {
-    let wrapper;
-    beforeAll(() => {
-      const lockMock = createLockMock({
-        provider: 'auth0_v2',
-        siteKey: 'mySiteKey'
-      });
-      const i8nMock = createI18nMock();
-      const onReloadMock = jest.fn();
-
-      wrapper = mount(<CaptchaPane lock={lockMock} onReload={onReloadMock} i18n={i8nMock} />);
-    });
-
-    it('should render ThirdPartyCaptcha if provider is auth0_v2', () => {
-      expect(wrapper.find(ThirdPartyCaptcha)).toHaveLength(1);
-    });
-
-    it('should pass the sitekey', () => {
-      expect(wrapper.find(ThirdPartyCaptcha).props().sitekey).toBe('mySiteKey');
-    });
-  });
-
-  describe('recaptcha enterprise', () => {
-    let wrapper;
-    beforeAll(() => {
-      const lockMock = createLockMock({
-        provider: 'recaptcha_enterprise',
-        siteKey: 'mySiteKey'
-      });
-      const i8nMock = createI18nMock();
-      const onReloadMock = jest.fn();
-
-      wrapper = mount(<CaptchaPane lock={lockMock} onReload={onReloadMock} i18n={i8nMock} />);
-    });
-
-    it('should render ThirdPartyCaptcha if provider is recaptcha_enterprise', () => {
-      expect(wrapper.find(ThirdPartyCaptcha)).toHaveLength(1);
-    });
-
-    it('should pass the sitekey', () => {
-      expect(wrapper.find(ThirdPartyCaptcha).props().sitekey).toBe('mySiteKey');
-    });
-  });
-
-  describe('Arkose', () => {
-    let wrapper;
-    beforeAll(() => {
-      const lockMock = createLockMock({
-        provider: 'arkose',
-        siteKey: 'mySiteKey',
-        clientSubdomain:'client-api'
-      });
-      const i8nMock = createI18nMock();
-      const onReloadMock = jest.fn();
-
-      wrapper = mount(<CaptchaPane lock={lockMock} onReload={onReloadMock} i18n={i8nMock} />);
-    });
-
-    it('should render ThirdPartyCaptcha if provider is Arkose', () => {
-      expect(wrapper.find(ThirdPartyCaptcha)).toHaveLength(1);
-    });
-
-    it('should pass the sitekey', () => {
-      expect(wrapper.find(ThirdPartyCaptcha).props().sitekey).toBe('mySiteKey');
-    });
-
-    it('should pass the clientSubdomain', () => {
-      expect(wrapper.find(ThirdPartyCaptcha).props().clientSubdomain).toBe('client-api');
+      if (provider === 'arkose') {
+        it('should pass the clientSubdomain', () => {
+          expect(lastThirdPartyCaptchaProps.clientSubdomain).toBe('client-api');
+        });
+      }
     });
   });
 });

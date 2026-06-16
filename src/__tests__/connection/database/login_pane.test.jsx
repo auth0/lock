@@ -14,7 +14,7 @@ describe('LoginPane', () => {
   const defaultProps = {
     emailInputPlaceholder: '',
     forgotPasswordAction: '',
-    i18n: {},
+    i18n: { str: () => '', html: () => null },
     passwordInputPlaceholder: '',
     showForgotPasswordLink: true,
     showPassword: true,

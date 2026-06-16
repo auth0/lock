@@ -1,6 +1,6 @@
 import React from 'react';
 import Immutable from 'immutable';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
 
@@ -88,7 +88,7 @@ describe('EmailPane', () => {
     require('core/index').ui.avatar = () => true;
     let EmailPane = getComponent();
 
-    mount(<EmailPane {...defaultProps} />);
+    render(<EmailPane {...defaultProps} />);
 
     const { mock } = require('avatar').requestAvatar;
     expect(mock.calls.length).toBe(1);
@@ -97,8 +97,8 @@ describe('EmailPane', () => {
     require('core/index').ui.avatar = () => true;
     let EmailPane = getComponent();
 
-    const wrapper = mount(<EmailPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper);
+    const { container } = render(<EmailPane {...defaultProps} />);
+    const props = extractPropsFromWrapper(container);
     props.onChange({ target: { value: 'newUser@example.com' } });
 
     const { mock } = require('avatar').debouncedRequestAvatar;
@@ -107,8 +107,8 @@ describe('EmailPane', () => {
   it('calls `swap` onChange', () => {
     let EmailPane = getComponent();
 
-    const wrapper = mount(<EmailPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper);
+    const { container } = render(<EmailPane {...defaultProps} />);
+    const props = extractPropsFromWrapper(container);
     props.onChange({ target: { value: 'newUser@example.com' } });
 
     const { mock } = require('store/index').swap;

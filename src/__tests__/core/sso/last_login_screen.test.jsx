@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import Immutable from 'immutable';
 
 import { expectComponent, extractPropsFromWrapper, mockComponent, setURL } from 'testUtils';
@@ -121,8 +121,8 @@ describe('LastLoginScreen', () => {
   it('calls checkSession in the buttonClickHandler when outside of the universal login page', () => {
     setURL('https://other-url.auth0.com');
     const Component = getComponent();
-    const wrapper = mount(<Component {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper);
+    const { container } = render(<Component {...defaultProps} />);
+    const props = extractPropsFromWrapper(container);
     props.buttonClickHandler();
     const { mock } = require('quick-auth/actions').checkSession;
     expect(mock.calls.length).toBe(1);
@@ -133,8 +133,8 @@ describe('LastLoginScreen', () => {
   it('calls logIn in the buttonClickHandler when inside of the universal login page', () => {
     setURL('https://me.auth0.com');
     const Component = getComponent();
-    const wrapper = mount(<Component {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper);
+    const { container } = render(<Component {...defaultProps} />);
+    const props = extractPropsFromWrapper(container);
     props.buttonClickHandler();
     const { mock } = require('quick-auth/actions').logIn;
     expect(mock.calls.length).toBe(1);
@@ -144,8 +144,8 @@ describe('LastLoginScreen', () => {
   });
   it('calls skipQuickAuth in the alternativeClickHandler', () => {
     const Component = getComponent();
-    const wrapper = mount(<Component {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper);
+    const { container } = render(<Component {...defaultProps} />);
+    const props = extractPropsFromWrapper(container);
     props.alternativeClickHandler();
     const { mock } = require('quick-auth/actions').skipQuickAuth;
     expect(mock.calls.length).toBe(1);

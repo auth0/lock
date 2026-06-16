@@ -1,8 +1,8 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render } from '@testing-library/react';
+import { act } from '@testing-library/react';
 
-import { mockComponent } from 'testUtils';
-import { extractPropsFromWrapper } from '../../testUtils';
+import { mockComponent, extractPropsFromWrapper } from 'testUtils';
 import InputWrap from '../../../ui/input/input_wrap';
 
 jest.mock('ui/input/input_wrap', () => mockComponent('input_wrap'));
@@ -31,10 +31,14 @@ describe('PasswordInput', () => {
   };
   test('sends PasswordStrength as the `after` param', () => {
     const Input = getComponent();
-    const wrapper = mount(<Input {...defaultProps} />);
-    wrapper.find('input').simulate('focus');
-    wrapper.find('input').simulate('change', { target: { value: 'pass' } });
-    const props = extractPropsFromWrapper(wrapper);
+    const { container } = render(<Input {...defaultProps} />);
+    act(() => {
+      const inputEl = container.querySelector('input');
+      const fiberKey = Object.keys(inputEl).find(k => k.startsWith('__reactProps'));
+      inputEl[fiberKey].onFocus();
+      inputEl[fiberKey].onChange({ target: { value: 'pass' } });
+    });
+    const props = extractPropsFromWrapper(container);
     expect(props.after.props).toEqual({
       messages: { strengthMessages: 'strengthMessages' },
       password: 'value',
@@ -44,18 +48,31 @@ describe('PasswordInput', () => {
   test('`allowPasswordAutocomplete=true` sets `autoComplete` as on', () => {
     require('core/index').ui.allowPasswordAutocomplete = () => true;
     const Input = getComponent();
-    const wrapper = mount(<Input {...defaultProps} />);
-    expect(wrapper.find('input').props().autoComplete).toBe('on');
+    const { container } = render(<Input {...defaultProps} />);
+    expect(container.querySelector('input').getAttribute('autocomplete')).toBe('on');
   });
   test('`allowPasswordAutocomplete=false` sets `autoComplete` as off', () => {
     require('core/index').ui.allowPasswordAutocomplete = () => false;
     const Input = getComponent();
-    const wrapper = mount(<Input {...defaultProps} />);
-    expect(wrapper.find('input').props().autoComplete).toBe('off');
+    const { container } = render(<Input {...defaultProps} />);
+    expect(container.querySelector('input').getAttribute('autocomplete')).toBe('off');
   });
   test('shows invalid Hint', () => {
     const Input = getComponent();
-    const wrapper = mount(<Input {...defaultProps} />);
-    expect(wrapper.find(InputWrap).props().invalidHint).toBe('invalidHint');
+    const { container } = render(<Input {...defaultProps} />);
+    // InputWrap is mocked as mockComponent('input_wrap'), find it via fiber
+    const divs = container.querySelectorAll('div');
+    let invalidHint;
+    for (const div of divs) {
+      const fiberKey = Object.keys(div).find(k => k.startsWith('__reactProps'));
+      if (fiberKey) {
+        const props = div[fiberKey];
+        if (props['data-__type'] === 'input_wrap') {
+          invalidHint = props['data-invalidHint'];
+          break;
+        }
+      }
+    }
+    expect(invalidHint).toBe('invalidHint');
   });
 });

@@ -11,25 +11,27 @@ exports[`MFACodePane calls \`swap\` onChange 1`] = `
 `;
 
 exports[`MFACodePane renders correctly 1`] = `
-<div
-  data-__type="mfa_code_input"
-  data-invalidHint="mfaCodeErrorHint,6"
-  data-isValid={false}
-  data-lockId={1}
-  data-onChange={[Function]}
-  data-placeholder="placeholder"
-  data-value="mfa"
-/>
+<DocumentFragment>
+  <div
+    data-__type="mfa_code_input"
+    data-invalidhint="mfaCodeErrorHint,6"
+    data-isvalid="false"
+    data-lockid="1"
+    data-placeholder="placeholder"
+    data-value="mfa"
+  />
+</DocumentFragment>
 `;
 
 exports[`MFACodePane sets isValid as true when \`isFieldVisiblyInvalid\` is false 1`] = `
-<div
-  data-__type="mfa_code_input"
-  data-invalidHint="mfaCodeErrorHint,6"
-  data-isValid={true}
-  data-lockId={1}
-  data-onChange={[Function]}
-  data-placeholder="placeholder"
-  data-value="mfa"
-/>
+<DocumentFragment>
+  <div
+    data-__type="mfa_code_input"
+    data-invalidhint="mfaCodeErrorHint,6"
+    data-isvalid="true"
+    data-lockid="1"
+    data-placeholder="placeholder"
+    data-value="mfa"
+  />
+</DocumentFragment>
 `;

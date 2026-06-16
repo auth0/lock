@@ -1,7 +1,6 @@
 import React from 'react';
-import { mount } from 'enzyme';
 
-import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
+import { expectComponent, mockComponent } from 'testUtils';
 
 jest.mock('engine/classic/sign_up_pane', () => mockComponent('sign_up_pane'));
 jest.mock('core/pane_separator', () => mockComponent('pane_separator'));

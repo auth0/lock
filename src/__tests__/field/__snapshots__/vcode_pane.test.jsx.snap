@@ -17,136 +17,136 @@ exports[`VcodePane calls \`swap\` when VcodeInput changes 1`] = `
 `;
 
 exports[`VcodePane disable input when submitting 1`] = `
-<div>
-  <div
-    data-__type="vcode_input"
-    data-autoFocus={false}
-    data-disabled={true}
-    data-isValid={false}
-    data-lockId={1}
-    data-onChange={[Function]}
-    data-placeholder="placeholder"
-    data-value="vcode"
-  />
-  <p
-    className="auth0-lock-alternative"
-  >
-    <a
-      className="auth0-lock-alternative-link"
-      href="#"
-      onClick={[Function]}
+<DocumentFragment>
+  <div>
+    <div
+      data-__type="vcode_input"
+      data-autofocus="false"
+      data-disabled="true"
+      data-isvalid="false"
+      data-lockid="1"
+      data-placeholder="placeholder"
+      data-value="vcode"
+    />
+    <p
+      class="auth0-lock-alternative"
     >
-      resendLabel
-    </a>
-  </p>
-</div>
+      <a
+        class="auth0-lock-alternative-link"
+        href="#"
+      >
+        resendLabel
+      </a>
+    </p>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`VcodePane renders correctly 1`] = `
-<div>
-  <div
-    data-__type="vcode_input"
-    data-autoFocus={false}
-    data-disabled={false}
-    data-isValid={false}
-    data-lockId={1}
-    data-onChange={[Function]}
-    data-placeholder="placeholder"
-    data-value="vcode"
-  />
-  <p
-    className="auth0-lock-alternative"
-  >
-    <a
-      className="auth0-lock-alternative-link"
-      href="#"
-      onClick={[Function]}
+<DocumentFragment>
+  <div>
+    <div
+      data-__type="vcode_input"
+      data-autofocus="false"
+      data-disabled="false"
+      data-isvalid="false"
+      data-lockid="1"
+      data-placeholder="placeholder"
+      data-value="vcode"
+    />
+    <p
+      class="auth0-lock-alternative"
     >
-      resendLabel
-    </a>
-  </p>
-</div>
+      <a
+        class="auth0-lock-alternative-link"
+        href="#"
+      >
+        resendLabel
+      </a>
+    </p>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`VcodePane sets autoFocus as true when \`isSmallScreen\` is false 1`] = `
-<div>
-  <div
-    data-__type="vcode_input"
-    data-autoFocus={true}
-    data-disabled={false}
-    data-isValid={false}
-    data-lockId={1}
-    data-onChange={[Function]}
-    data-placeholder="placeholder"
-    data-value="vcode"
-  />
-  <p
-    className="auth0-lock-alternative"
-  >
-    <a
-      className="auth0-lock-alternative-link"
-      href="#"
-      onClick={[Function]}
+<DocumentFragment>
+  <div>
+    <div
+      data-__type="vcode_input"
+      data-autofocus="true"
+      data-disabled="false"
+      data-isvalid="false"
+      data-lockid="1"
+      data-placeholder="placeholder"
+      data-value="vcode"
+    />
+    <p
+      class="auth0-lock-alternative"
     >
-      resendLabel
-    </a>
-  </p>
-</div>
+      <a
+        class="auth0-lock-alternative-link"
+        href="#"
+      >
+        resendLabel
+      </a>
+    </p>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`VcodePane sets isValid as true when \`isFieldVisiblyInvalid\` is false and globalError() is false 1`] = `
-<div>
-  <div
-    data-__type="vcode_input"
-    data-autoFocus={false}
-    data-disabled={false}
-    data-isValid={true}
-    data-lockId={1}
-    data-onChange={[Function]}
-    data-placeholder="placeholder"
-    data-value="vcode"
-  />
-  <p
-    className="auth0-lock-alternative"
-  >
-    <a
-      className="auth0-lock-alternative-link"
-      href="#"
-      onClick={[Function]}
+<DocumentFragment>
+  <div>
+    <div
+      data-__type="vcode_input"
+      data-autofocus="false"
+      data-disabled="false"
+      data-isvalid="true"
+      data-lockid="1"
+      data-placeholder="placeholder"
+      data-value="vcode"
+    />
+    <p
+      class="auth0-lock-alternative"
     >
-      resendLabel
-    </a>
-  </p>
-</div>
+      <a
+        class="auth0-lock-alternative-link"
+        href="#"
+      >
+        resendLabel
+      </a>
+    </p>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`VcodePane shows header when instructions are available 1`] = `
-<div>
-  <p>
-    <span>
-      instructions
-    </span>
-  </p>
-  <div
-    data-__type="vcode_input"
-    data-autoFocus={false}
-    data-disabled={false}
-    data-isValid={false}
-    data-lockId={1}
-    data-onChange={[Function]}
-    data-placeholder="placeholder"
-    data-value="vcode"
-  />
-  <p
-    className="auth0-lock-alternative"
-  >
-    <a
-      className="auth0-lock-alternative-link"
-      href="#"
-      onClick={[Function]}
+<DocumentFragment>
+  <div>
+    <p>
+      <span>
+        instructions
+      </span>
+    </p>
+    <div
+      data-__type="vcode_input"
+      data-autofocus="false"
+      data-disabled="false"
+      data-isvalid="false"
+      data-lockid="1"
+      data-placeholder="placeholder"
+      data-value="vcode"
+    />
+    <p
+      class="auth0-lock-alternative"
     >
-      resendLabel
-    </a>
-  </p>
-</div>
+      <a
+        class="auth0-lock-alternative-link"
+        href="#"
+      >
+        resendLabel
+      </a>
+    </p>
+  </div>
+</DocumentFragment>
 `;

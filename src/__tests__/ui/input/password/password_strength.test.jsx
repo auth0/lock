@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import PasswordStrength from '../../../../ui/input/password/password_strength';
 
 describe('PasswordStrength', () => {
@@ -16,10 +16,10 @@ describe('PasswordStrength', () => {
         })
       };
       const messages = { foo: 'the-message' };
-      const wrapper = mount(
+      const { container } = render(
         <PasswordStrength policy={policy} password="the-password" messages={messages} />
       );
-      expect(wrapper.html()).toMatchSnapshot();
+      expect(container.innerHTML).toMatchSnapshot();
     });
   });
 });

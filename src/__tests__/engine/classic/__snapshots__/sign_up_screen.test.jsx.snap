@@ -1,106 +1,106 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SignUpScreen disables SocialButtonsPane when terms were not accepted 1`] = `
-<div>
+<DocumentFragment>
   <div>
-    <div
-      data-__type="social_buttons_pane"
-      data-instructions="socialSignUpInstructions"
-      data-labelFn={[Function]}
-      data-lock="model"
-      data-signUp={true}
-    />
+    <div>
+      <div
+        data-__type="social_buttons_pane"
+        data-instructions="socialSignUpInstructions"
+        data-lock="model"
+        data-signup="true"
+      />
+    </div>
   </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`SignUpScreen renders LoginSignUpTabs SSO is disabled and has screen login 1`] = `
-<div>
-  <div
-    data-__type="login_sign_up_tabs"
-    data-lock="model"
-    data-loginLabel="loginLabel"
-    data-signUpLabel="signUpLabel"
-  />
-  <div />
-</div>
+<DocumentFragment>
+  <div>
+    <div
+      data-__type="login_sign_up_tabs"
+      data-lock="model"
+      data-loginlabel="loginLabel"
+      data-signuplabel="signUpLabel"
+    />
+    <div />
+  </div>
+</DocumentFragment>
 `;
 
 exports[`SignUpScreen renders SignUpPane when has database connection 1`] = `
-<div>
+<DocumentFragment>
   <div>
-    <div
-      data-__type="sign_up_pane"
-      data-emailInputPlaceholder="emailInputPlaceholder"
-      data-i18n={
-        {
-          "group": [Function],
-          "html": [Function],
-          "str": [Function],
-        }
-      }
-      data-instructions="databaseSignUpInstructions"
-      data-model="model"
-      data-onlyEmail={false}
-      data-passwordInputPlaceholder="passwordInputPlaceholder"
-      data-passwordStrengthMessages="passwordStrength"
-      data-usernameInputPlaceholder="usernameInputPlaceholder"
-    />
+    <div>
+      <div
+        data-__type="sign_up_pane"
+        data-emailinputplaceholder="emailInputPlaceholder"
+        data-i18n="[object Object]"
+        data-instructions="databaseSignUpInstructions"
+        data-model="model"
+        data-onlyemail="false"
+        data-passwordinputplaceholder="passwordInputPlaceholder"
+        data-passwordstrengthmessages="passwordStrength"
+        data-usernameinputplaceholder="usernameInputPlaceholder"
+      />
+    </div>
   </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`SignUpScreen renders SignUpPane when has enterprise connection 1`] = `
-<div>
+<DocumentFragment>
   <div>
-    <div
-      data-__type="sign_up_pane"
-      data-emailInputPlaceholder="emailInputPlaceholder"
-      data-i18n={
-        {
-          "group": [Function],
-          "html": [Function],
-          "str": [Function],
-        }
-      }
-      data-instructions="databaseSignUpInstructions"
-      data-model="model"
-      data-onlyEmail={false}
-      data-passwordInputPlaceholder="passwordInputPlaceholder"
-      data-passwordStrengthMessages="passwordStrength"
-      data-usernameInputPlaceholder="usernameInputPlaceholder"
-    />
+    <div>
+      <div
+        data-__type="sign_up_pane"
+        data-emailinputplaceholder="emailInputPlaceholder"
+        data-i18n="[object Object]"
+        data-instructions="databaseSignUpInstructions"
+        data-model="model"
+        data-onlyemail="false"
+        data-passwordinputplaceholder="passwordInputPlaceholder"
+        data-passwordstrengthmessages="passwordStrength"
+        data-usernameinputplaceholder="usernameInputPlaceholder"
+      />
+    </div>
   </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`SignUpScreen renders SingleSignOnNotice when SSO is enabled and has screen login 1`] = `
-<div>
-  <div
-    data-__type="single_sign_on_notice"
-  >
-    ssoEnabled
+<DocumentFragment>
+  <div>
+    <div
+      data-__type="single_sign_on_notice"
+    >
+      ssoEnabled
+    </div>
+    <div />
   </div>
-  <div />
-</div>
+</DocumentFragment>
 `;
 
 exports[`SignUpScreen renders SocialButtonsPane when has social connections 1`] = `
-<div>
+<DocumentFragment>
   <div>
-    <div
-      data-__type="social_buttons_pane"
-      data-instructions="socialSignUpInstructions"
-      data-labelFn={[Function]}
-      data-lock="model"
-      data-signUp={true}
-    />
+    <div>
+      <div
+        data-__type="social_buttons_pane"
+        data-instructions="socialSignUpInstructions"
+        data-lock="model"
+        data-signup="true"
+      />
+    </div>
   </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`SignUpScreen renders empty div by default 1`] = `
-<div>
-  <div />
-</div>
+<DocumentFragment>
+  <div>
+    <div />
+  </div>
+</DocumentFragment>
 `;

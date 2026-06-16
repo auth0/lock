@@ -1,9 +1,7 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { expectComponent } from 'testUtils';
+import { render } from '@testing-library/react';
 
 import { mockComponent } from 'testUtils';
-import { extractPropsFromWrapper } from '../../testUtils';
 
 jest.mock('ui/input/input_wrap', () => mockComponent('input_wrap'));
 
@@ -21,8 +19,8 @@ describe('EmailInput', () => {
 
   test('renders without issue', () => {
     const Input = getComponent();
-    const component = mount(<Input {...defaultProps} />);
+    const { container } = render(<Input {...defaultProps} />);
 
-    expect(component.html()).toMatchSnapshot();
+    expect(container.innerHTML).toMatchSnapshot();
   });
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
 
@@ -94,7 +94,7 @@ describe('UsernamePane', () => {
     require('core/index').ui.avatar = () => true;
     let UsernamePane = getComponent();
 
-    mount(<UsernamePane {...defaultProps} />);
+    render(<UsernamePane {...defaultProps} />);
 
     const { mock } = require('avatar').requestAvatar;
     expect(mock.calls.length).toBe(1);
@@ -103,8 +103,8 @@ describe('UsernamePane', () => {
     require('core/index').ui.avatar = () => true;
     let UsernamePane = getComponent();
 
-    const wrapper = mount(<UsernamePane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper);
+    const { container } = render(<UsernamePane {...defaultProps} />);
+    const props = extractPropsFromWrapper(container);
     props.onChange({ target: { value: 'newUser' } });
 
     const { mock } = require('avatar').debouncedRequestAvatar;
@@ -113,8 +113,8 @@ describe('UsernamePane', () => {
   it('calls `swap` onChange', () => {
     let UsernamePane = getComponent();
 
-    const wrapper = mount(<UsernamePane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper);
+    const { container } = render(<UsernamePane {...defaultProps} />);
+    const props = extractPropsFromWrapper(container);
     props.onChange({ target: { value: 'newUser' } });
 
     const { mock } = require('store/index').swap;

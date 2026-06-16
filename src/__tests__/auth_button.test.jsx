@@ -1,5 +1,6 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { expectComponent } from 'testUtils';
 
@@ -24,9 +25,9 @@ describe('AuthButton', () => {
       />
     ).toMatchSnapshot();
   });
-  it('should trigger onClick when clicked', () => {
-    const wrapper = mount(<AuthButton {...defaultProps} />);
-    wrapper.find('a').simulate('click');
+  it('should trigger onClick when clicked', async () => {
+    const { container } = render(<AuthButton {...defaultProps} />);
+    await userEvent.click(container.querySelector('a'));
     expect(defaultProps.onClick.mock.calls.length).toBe(1);
   });
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
 
@@ -33,8 +33,8 @@ describe('OptionSelectionPane', () => {
   it('calls `selectOption` when selected', () => {
     let OptionSelectionPane = getComponent();
 
-    const wrapper = mount(<OptionSelectionPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper);
+    const { container } = render(<OptionSelectionPane {...defaultProps} />);
+    const props = extractPropsFromWrapper(container);
 
     props.onSelect('selected');
 
@@ -45,8 +45,8 @@ describe('OptionSelectionPane', () => {
   it('calls `cancelOptionSelection` when cancelled', () => {
     let OptionSelectionPane = getComponent();
 
-    const wrapper = mount(<OptionSelectionPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper);
+    const { container } = render(<OptionSelectionPane {...defaultProps} />);
+    const props = extractPropsFromWrapper(container);
 
     props.onCancel();
 

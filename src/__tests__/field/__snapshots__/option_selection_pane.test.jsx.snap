@@ -15,17 +15,13 @@ exports[`OptionSelectionPane calls \`selectOption\` when selected 1`] = `
 `;
 
 exports[`OptionSelectionPane renders correctly 1`] = `
-<div
-  data-__type="list"
-  data-icon="icon"
-  data-iconUrl="iconUrl"
-  data-items="items"
-  data-model={
-    {
-      "get": [Function],
-    }
-  }
-  data-onCancel={[Function]}
-  data-onSelect={[Function]}
-/>
+<DocumentFragment>
+  <div
+    data-__type="list"
+    data-icon="icon"
+    data-iconurl="iconUrl"
+    data-items="items"
+    data-model="[object Object]"
+  />
+</DocumentFragment>
 `;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
 
@@ -56,8 +56,8 @@ describe('MFACodePane', () => {
   it('calls `swap` onChange', () => {
     let MFACodePane = getComponent();
 
-    const wrapper = mount(<MFACodePane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper);
+    const { container } = render(<MFACodePane {...defaultProps} />);
+    const props = extractPropsFromWrapper(container);
     props.onChange({ target: { value: 'newUser' } });
 
     const { mock } = require('store/index').swap;

@@ -1,7 +1,6 @@
 import React from 'react';
-import { mount } from 'enzyme';
 
-import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
+import { expectComponent, mockComponent } from 'testUtils';
 
 jest.mock('connection/database/mfa_pane', () => mockComponent('mfa_pane'));
 
