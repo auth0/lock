@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
+import { extractPropsFromWrapper, getMockProps, mockComponent } from 'testUtils';
 
 jest.mock('ui/input/username_input', () => mockComponent('username_input'));
 
@@ -58,37 +58,45 @@ describe('UsernamePane', () => {
     }));
   });
 
-  it('renders correctly', () => {
+  it('renders correctly with isValid=false when `isFieldVisiblyInvalid` is true', () => {
     const UsernamePane = getComponent();
-    expectComponent(<UsernamePane {...defaultProps} />).toMatchSnapshot();
+    const { container } = render(<UsernamePane {...defaultProps} />);
+    const props = getMockProps(container.querySelector('[data-__type="username_input"]'));
+    expect(props.isValid).toBe(false);
+    expect(props.autoComplete).toBe(false);
   });
   it('sets `blankErrorHint` when username is empty', () => {
     const fieldIndexMock = require('field/index');
     fieldIndexMock.username = () => undefined;
     fieldIndexMock.getFieldValue = () => undefined;
     const UsernamePane = getComponent();
-
-    expectComponent(<UsernamePane {...defaultProps} />).toMatchSnapshot();
+    const { container } = render(<UsernamePane {...defaultProps} />);
+    const props = getMockProps(container.querySelector('[data-__type="username_input"]'));
+    expect(props.isValid).toBe(false);
+    expect(props.invalidHint).toContain('blankErrorHint');
   });
   it('sets `usernameFormatErrorHint` when usernameLooksLikeEmail() returns false and `validateFormat` is true', () => {
     const fieldUsernameMock = require('field/username');
     fieldUsernameMock.getUsernameValidation = () => ({ min: 'min', max: 'max' });
     fieldUsernameMock.usernameLooksLikeEmail = () => false;
     const UsernamePane = getComponent();
-
-    expectComponent(<UsernamePane {...defaultProps} validateFormat />).toMatchSnapshot();
+    const { container } = render(<UsernamePane {...defaultProps} validateFormat />);
+    const props = getMockProps(container.querySelector('[data-__type="username_input"]'));
+    expect(props.invalidHint).toContain('usernameFormatErrorHint');
   });
   it('sets isValid as true when `isFieldVisiblyInvalid` is false', () => {
     require('field/index').isFieldVisiblyInvalid = () => false;
     let UsernamePane = getComponent();
-
-    expectComponent(<UsernamePane {...defaultProps} />).toMatchSnapshot();
+    const { container } = render(<UsernamePane {...defaultProps} />);
+    const props = getMockProps(container.querySelector('[data-__type="username_input"]'));
+    expect(props.isValid).toBe(true);
   });
   it('sets autoComplete to true when `allowAutocomplete` is true', () => {
     require('core/index').ui.allowAutocomplete = () => true;
     let UsernamePane = getComponent();
-
-    expectComponent(<UsernamePane {...defaultProps} />).toMatchSnapshot();
+    const { container } = render(<UsernamePane {...defaultProps} />);
+    const props = getMockProps(container.querySelector('[data-__type="username_input"]'));
+    expect(props.autoComplete).toBe(true);
   });
   it('fetches the avatar on componentDidMount if ui.avatar is true and there is a username', () => {
     require('core/index').ui.avatar = () => true;
@@ -104,7 +112,7 @@ describe('UsernamePane', () => {
     let UsernamePane = getComponent();
 
     const { container } = render(<UsernamePane {...defaultProps} />);
-    const props = extractPropsFromWrapper(container);
+    const props = extractPropsFromWrapper(container, 'username_input');
     props.onChange({ target: { value: 'newUser' } });
 
     const { mock } = require('avatar').debouncedRequestAvatar;
@@ -114,7 +122,7 @@ describe('UsernamePane', () => {
     let UsernamePane = getComponent();
 
     const { container } = render(<UsernamePane {...defaultProps} />);
-    const props = extractPropsFromWrapper(container);
+    const props = extractPropsFromWrapper(container, 'username_input');
     props.onChange({ target: { value: 'newUser' } });
 
     const { mock } = require('store/index').swap;

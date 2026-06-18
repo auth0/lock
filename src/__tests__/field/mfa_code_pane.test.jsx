@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
+import { extractPropsFromWrapper, getMockProps, mockComponent } from 'testUtils';
 
 jest.mock('ui/input/mfa_code_input', () => mockComponent('mfa_code_input'));
 
@@ -43,21 +43,24 @@ describe('MFACodePane', () => {
     }));
   });
 
-  it('renders correctly', () => {
+  it('renders correctly with isValid=false when `isFieldVisiblyInvalid` is true', () => {
     const MFACodePane = getComponent();
-    expectComponent(<MFACodePane {...defaultProps} />).toMatchSnapshot();
+    const { container } = render(<MFACodePane {...defaultProps} />);
+    const props = getMockProps(container.querySelector('[data-__type="mfa_code_input"]'));
+    expect(props.isValid).toBe(false);
   });
   it('sets isValid as true when `isFieldVisiblyInvalid` is false', () => {
     require('field/index').isFieldVisiblyInvalid = () => false;
     let MFACodePane = getComponent();
-
-    expectComponent(<MFACodePane {...defaultProps} />).toMatchSnapshot();
+    const { container } = render(<MFACodePane {...defaultProps} />);
+    const props = getMockProps(container.querySelector('[data-__type="mfa_code_input"]'));
+    expect(props.isValid).toBe(true);
   });
   it('calls `swap` onChange', () => {
     let MFACodePane = getComponent();
 
     const { container } = render(<MFACodePane {...defaultProps} />);
-    const props = extractPropsFromWrapper(container);
+    const props = extractPropsFromWrapper(container, 'mfa_code_input');
     props.onChange({ target: { value: 'newUser' } });
 
     const { mock } = require('store/index').swap;

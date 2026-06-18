@@ -1,6 +1,6 @@
 import React from 'react';
 import I from 'immutable';
-import { expectShallowComponent } from 'testUtils';
+import { expectComponent } from 'testUtils';
 import LoginPane from '../../../connection/database/login_pane';
 
 const lock = I.fromJS({ id: '__lock-id__' });
@@ -27,7 +27,7 @@ describe('LoginPane', () => {
   });
 
   it('renders correctly', async () => {
-    expectShallowComponent(<LoginPane {...defaultProps} />).toMatchSnapshot();
+    expectComponent(<LoginPane {...defaultProps} />).toMatchSnapshot();
   });
 
   it('renders a captcha', () => {
@@ -37,7 +37,7 @@ describe('LoginPane', () => {
       }
     });
 
-    expectShallowComponent(<LoginPane {...defaultProps} />).toMatchSnapshot();
+    expectComponent(<LoginPane {...defaultProps} />).toMatchSnapshot();
   });
 
   it('hides the captcha for SSO connections', () => {
@@ -49,7 +49,7 @@ describe('LoginPane', () => {
 
     require('engine/classic').isSSOEnabled.mockReturnValue(true);
 
-    expectShallowComponent(<LoginPane {...defaultProps} />).toMatchSnapshot();
+    expectComponent(<LoginPane {...defaultProps} />).toMatchSnapshot();
   });
 
   it('shows the captcha for SSO (ADFS) connections', () => {
@@ -62,6 +62,6 @@ describe('LoginPane', () => {
     require('engine/classic').isSSOEnabled.mockReturnValue(true);
     require('connection/enterprise').isHRDDomain.mockReturnValue(true);
 
-    expectShallowComponent(<LoginPane {...defaultProps} />).toMatchSnapshot();
+    expectComponent(<LoginPane {...defaultProps} />).toMatchSnapshot();
   });
 });

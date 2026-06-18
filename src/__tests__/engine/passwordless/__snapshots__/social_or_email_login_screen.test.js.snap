@@ -5,9 +5,6 @@ exports[`email passwordless renders a captcha 1`] = `
   <div>
     <div
       data-__type="social_buttons_pane"
-      data-instructions="socialLoginInstructions"
-      data-lock="model"
-      data-signup="true"
     />
     <div
       data-__type="pane_separator"
@@ -17,16 +14,9 @@ exports[`email passwordless renders a captcha 1`] = `
     </p>
     <div
       data-__type="email_pane"
-      data-i18n="[object Object]"
-      data-lock="model"
-      data-placeholder="emailInputPlaceholder"
-      data-strictvalidation="false"
     />
     <div
       data-__type="captcha_pane"
-      data-flow="passwordless"
-      data-i18n="[object Object]"
-      data-lock="model"
     />
   </div>
 </DocumentFragment>
@@ -37,9 +27,6 @@ exports[`email passwordless renders correctly 1`] = `
   <div>
     <div
       data-__type="social_buttons_pane"
-      data-instructions="socialLoginInstructions"
-      data-lock="model"
-      data-signup="true"
     />
     <div
       data-__type="pane_separator"
@@ -49,10 +36,6 @@ exports[`email passwordless renders correctly 1`] = `
     </p>
     <div
       data-__type="email_pane"
-      data-i18n="[object Object]"
-      data-lock="model"
-      data-placeholder="emailInputPlaceholder"
-      data-strictvalidation="false"
     />
   </div>
 </DocumentFragment>

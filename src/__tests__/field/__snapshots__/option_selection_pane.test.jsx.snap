@@ -13,15 +13,3 @@ exports[`OptionSelectionPane calls \`selectOption\` when selected 1`] = `
   "selected",
 ]
 `;
-
-exports[`OptionSelectionPane renders correctly 1`] = `
-<DocumentFragment>
-  <div
-    data-__type="list"
-    data-icon="icon"
-    data-iconurl="iconUrl"
-    data-items="items"
-    data-model="[object Object]"
-  />
-</DocumentFragment>
-`;

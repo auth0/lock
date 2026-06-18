@@ -11,16 +11,6 @@ exports[`LoginScreen renders LoginPane when SSO is enabled 1`] = `
     <div>
       <div
         data-__type="login_pane"
-        data-emailinputplaceholder="emailInputPlaceholder"
-        data-forgotpasswordaction="forgotPasswordAction"
-        data-i18n="[object Object]"
-        data-instructions="databaseEnterpriseLoginInstructions"
-        data-lock="model"
-        data-passwordinputplaceholder="passwordInputPlaceholder"
-        data-showforgotpasswordlink="false"
-        data-showpassword="false"
-        data-usernameinputplaceholder="usernameInputPlaceholder"
-        data-usernamestyle="false"
       />
     </div>
   </div>
@@ -33,16 +23,6 @@ exports[`LoginScreen renders LoginPane when has database connection 1`] = `
     <div>
       <div
         data-__type="login_pane"
-        data-emailinputplaceholder="emailInputPlaceholder"
-        data-forgotpasswordaction="forgotPasswordAction"
-        data-i18n="[object Object]"
-        data-instructions="databaseEnterpriseLoginInstructions"
-        data-lock="model"
-        data-passwordinputplaceholder="passwordInputPlaceholder"
-        data-showforgotpasswordlink="true"
-        data-showpassword="true"
-        data-usernameinputplaceholder="usernameInputPlaceholder"
-        data-usernamestyle="false"
       />
     </div>
   </div>
@@ -55,16 +35,6 @@ exports[`LoginScreen renders LoginPane when has enterprise connection 1`] = `
     <div>
       <div
         data-__type="login_pane"
-        data-emailinputplaceholder="emailInputPlaceholder"
-        data-forgotpasswordaction="forgotPasswordAction"
-        data-i18n="[object Object]"
-        data-instructions="databaseEnterpriseLoginInstructions"
-        data-lock="model"
-        data-passwordinputplaceholder="passwordInputPlaceholder"
-        data-showforgotpasswordlink="false"
-        data-showpassword="false"
-        data-usernameinputplaceholder="usernameInputPlaceholder"
-        data-usernamestyle="false"
       />
     </div>
   </div>
@@ -76,24 +46,10 @@ exports[`LoginScreen renders LoginSignUpTabs when database connection is enabled
   <div>
     <div
       data-__type="login_sign_up_tabs"
-      data-lock="model"
-      data-loginlabel="loginLabel"
-      data-signuplabel="signUpLabel"
-      data-signuplink="false"
     />
     <div>
       <div
         data-__type="login_pane"
-        data-emailinputplaceholder="emailInputPlaceholder"
-        data-forgotpasswordaction="forgotPasswordAction"
-        data-i18n="[object Object]"
-        data-instructions="databaseEnterpriseLoginInstructions"
-        data-lock="model"
-        data-passwordinputplaceholder="passwordInputPlaceholder"
-        data-showforgotpasswordlink="true"
-        data-showpassword="true"
-        data-usernameinputplaceholder="usernameInputPlaceholder"
-        data-usernamestyle="false"
       />
     </div>
   </div>
@@ -106,16 +62,6 @@ exports[`LoginScreen renders LoginSignUpTabs when social connection is enabled a
     <div>
       <div
         data-__type="login_pane"
-        data-emailinputplaceholder="emailInputPlaceholder"
-        data-forgotpasswordaction="forgotPasswordAction"
-        data-i18n="[object Object]"
-        data-instructions="databaseEnterpriseLoginInstructions"
-        data-lock="model"
-        data-passwordinputplaceholder="passwordInputPlaceholder"
-        data-showforgotpasswordlink="true"
-        data-showpassword="true"
-        data-usernameinputplaceholder="usernameInputPlaceholder"
-        data-usernamestyle="false"
       />
     </div>
   </div>
@@ -133,16 +79,6 @@ exports[`LoginScreen renders SingleSignOnNotice when SSO is enabled 1`] = `
     <div>
       <div
         data-__type="login_pane"
-        data-emailinputplaceholder="emailInputPlaceholder"
-        data-forgotpasswordaction="forgotPasswordAction"
-        data-i18n="[object Object]"
-        data-instructions="databaseEnterpriseLoginInstructions"
-        data-lock="model"
-        data-passwordinputplaceholder="passwordInputPlaceholder"
-        data-showforgotpasswordlink="false"
-        data-showpassword="false"
-        data-usernameinputplaceholder="usernameInputPlaceholder"
-        data-usernamestyle="false"
       />
     </div>
   </div>
@@ -155,10 +91,6 @@ exports[`LoginScreen renders SocialButtonsPane when has social connections 1`] =
     <div>
       <div
         data-__type="social_buttons_pane"
-        data-instructions="socialLoginInstructions"
-        data-lock="model"
-        data-showloading="false"
-        data-signup="false"
       />
     </div>
   </div>

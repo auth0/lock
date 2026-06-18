@@ -87,7 +87,7 @@ describe('PasswordPane', () => {
     let PasswordPane = getComponent();
 
     const { container } = render(<PasswordPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(container, 1);
+    const props = extractPropsFromWrapper(container, 'password_input');
     props.onChange({ target: { value: 'newPassword' } });
 
     const { mock } = require('store/index').swap;

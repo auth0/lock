@@ -40,19 +40,9 @@ exports[`SocialButtonsPane renders correctly 1`] = `
     >
       <div
         data-__type="auth_button"
-        data-foregroundcolor="authButtonsTheme-foregroundColor"
-        data-icon="authButtonsTheme-icon"
-        data-label="loginWithLabel,authButtonsTheme-displayName"
-        data-primarycolor="authButtonsTheme-primaryColor"
-        data-strategy="socialConnections1-strategy"
       />
       <div
         data-__type="auth_button"
-        data-foregroundcolor="authButtonsTheme-foregroundColor"
-        data-icon="authButtonsTheme-icon"
-        data-label="loginWithLabel,authButtonsTheme-displayName"
-        data-primarycolor="authButtonsTheme-primaryColor"
-        data-strategy="socialConnections2-strategy"
       />
     </div>
   </div>
@@ -73,19 +63,9 @@ exports[`SocialButtonsPane shows header when instructions are available 1`] = `
     >
       <div
         data-__type="auth_button"
-        data-foregroundcolor="authButtonsTheme-foregroundColor"
-        data-icon="authButtonsTheme-icon"
-        data-label="loginWithLabel,authButtonsTheme-displayName"
-        data-primarycolor="authButtonsTheme-primaryColor"
-        data-strategy="socialConnections1-strategy"
       />
       <div
         data-__type="auth_button"
-        data-foregroundcolor="authButtonsTheme-foregroundColor"
-        data-icon="authButtonsTheme-icon"
-        data-label="loginWithLabel,authButtonsTheme-displayName"
-        data-primarycolor="authButtonsTheme-primaryColor"
-        data-strategy="socialConnections2-strategy"
       />
     </div>
   </div>
@@ -103,19 +83,9 @@ exports[`SocialButtonsPane shows loading when showLoading === true 1`] = `
     >
       <div
         data-__type="auth_button"
-        data-foregroundcolor="authButtonsTheme-foregroundColor"
-        data-icon="authButtonsTheme-icon"
-        data-label="loginWithLabel,authButtonsTheme-displayName"
-        data-primarycolor="authButtonsTheme-primaryColor"
-        data-strategy="socialConnections1-strategy"
       />
       <div
         data-__type="auth_button"
-        data-foregroundcolor="authButtonsTheme-foregroundColor"
-        data-icon="authButtonsTheme-icon"
-        data-label="loginWithLabel,authButtonsTheme-displayName"
-        data-primarycolor="authButtonsTheme-primaryColor"
-        data-strategy="socialConnections2-strategy"
       />
     </div>
     <div

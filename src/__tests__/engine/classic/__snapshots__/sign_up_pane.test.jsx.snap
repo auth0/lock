@@ -5,10 +5,6 @@ exports[`SignUpPane hides the Captcha pane for SSO connections 1`] = `
   <div>
     <div
       data-__type="email_pane"
-      data-i18n="[object Object]"
-      data-lock="Map { "id": "__lock-id__" }"
-      data-placeholder="emailInputPlaceholder"
-      data-strictvalidation="true"
     />
   </div>
 </DocumentFragment>
@@ -19,10 +15,6 @@ exports[`SignUpPane onlyEmail is false hide UsernamePane when databaseConnection
   <div>
     <div
       data-__type="email_pane"
-      data-i18n="[object Object]"
-      data-lock="Map { "id": "__lock-id__" }"
-      data-placeholder="emailInputPlaceholder"
-      data-strictvalidation="true"
     />
   </div>
 </DocumentFragment>
@@ -33,18 +25,9 @@ exports[`SignUpPane onlyEmail is false shows PasswordPane 1`] = `
   <div>
     <div
       data-__type="email_pane"
-      data-i18n="[object Object]"
-      data-lock="Map { "id": "__lock-id__" }"
-      data-placeholder="emailInputPlaceholder"
-      data-strictvalidation="true"
     />
     <div
       data-__type="password_pane"
-      data-i18n="[object Object]"
-      data-lock="Map { "id": "__lock-id__" }"
-      data-placeholder="passwordInputPlaceholder"
-      data-policy="passwordStrengthPolicy"
-      data-strengthmessages="passwordStrengthMessages"
     />
   </div>
 </DocumentFragment>
@@ -55,26 +38,12 @@ exports[`SignUpPane onlyEmail is false shows UsernamePane when databaseConnectio
   <div>
     <div
       data-__type="email_pane"
-      data-i18n="[object Object]"
-      data-lock="Map { "id": "__lock-id__" }"
-      data-placeholder="emailInputPlaceholder"
-      data-strictvalidation="true"
     />
     <div
       data-__type="username_pane"
-      data-i18n="[object Object]"
-      data-lock="Map { "id": "__lock-id__" }"
-      data-placeholder="usernameInputPlaceholder"
-      data-strictvalidation="true"
-      data-validateformat="true"
     />
     <div
       data-__type="password_pane"
-      data-i18n="[object Object]"
-      data-lock="Map { "id": "__lock-id__" }"
-      data-placeholder="passwordInputPlaceholder"
-      data-policy="passwordStrengthPolicy"
-      data-strengthmessages="passwordStrengthMessages"
     />
   </div>
 </DocumentFragment>
@@ -85,44 +54,15 @@ exports[`SignUpPane onlyEmail is false shows custom fields when additionalSignUp
   <div>
     <div
       data-__type="email_pane"
-      data-i18n="[object Object]"
-      data-lock="Map { "id": "__lock-id__" }"
-      data-placeholder="emailInputPlaceholder"
-      data-strictvalidation="true"
     />
     <div
       data-__type="password_pane"
-      data-i18n="[object Object]"
-      data-lock="Map { "id": "__lock-id__" }"
-      data-placeholder="passwordInputPlaceholder"
-      data-policy="passwordStrengthPolicy"
-      data-strengthmessages="passwordStrengthMessages"
     />
     <div
       data-__type="custom_input"
-      data-arialabel="ariaLabel1"
-      data-iconurl="icon1"
-      data-model="Map { "id": "__lock-id__" }"
-      data-name="name1"
-      data-options="options1"
-      data-placeholder="placeholder1"
-      data-placeholderhtml="placeholderHTML1"
-      data-type="type1"
-      data-validator="validator1"
-      data-value="value1"
     />
     <div
       data-__type="custom_input"
-      data-arialabel="ariaLabel2"
-      data-iconurl="icon2"
-      data-model="Map { "id": "__lock-id__" }"
-      data-name="name2"
-      data-options="options2"
-      data-placeholder="placeholder2"
-      data-placeholderhtml="placeholderHTML2"
-      data-type="type2"
-      data-validator="validator2"
-      data-value="value2"
     />
   </div>
 </DocumentFragment>
@@ -133,10 +73,6 @@ exports[`SignUpPane renders only email by default 1`] = `
   <div>
     <div
       data-__type="email_pane"
-      data-i18n="[object Object]"
-      data-lock="Map { "id": "__lock-id__" }"
-      data-placeholder="emailInputPlaceholder"
-      data-strictvalidation="true"
     />
   </div>
 </DocumentFragment>
@@ -150,10 +86,6 @@ exports[`SignUpPane shows header when instructions are available 1`] = `
     </p>
     <div
       data-__type="email_pane"
-      data-i18n="[object Object]"
-      data-lock="Map { "id": "__lock-id__" }"
-      data-placeholder="emailInputPlaceholder"
-      data-strictvalidation="true"
     />
   </div>
 </DocumentFragment>
@@ -164,10 +96,6 @@ exports[`SignUpPane shows the Captcha pane 1`] = `
   <div>
     <div
       data-__type="email_pane"
-      data-i18n="[object Object]"
-      data-lock="Map { "id": "__lock-id__" }"
-      data-placeholder="emailInputPlaceholder"
-      data-strictvalidation="true"
     />
     <div>
       <div
@@ -268,10 +196,6 @@ exports[`SignUpPane shows the Captcha pane for SSO (ADFS) connections 1`] = `
   <div>
     <div
       data-__type="email_pane"
-      data-i18n="[object Object]"
-      data-lock="Map { "id": "__lock-id__" }"
-      data-placeholder="emailInputPlaceholder"
-      data-strictvalidation="true"
     />
     <div>
       <div

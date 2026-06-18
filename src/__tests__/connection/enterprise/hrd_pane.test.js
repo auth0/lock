@@ -1,5 +1,5 @@
 import React from 'react';
-import { expectShallowComponent } from 'testUtils';
+import { expectComponent } from 'testUtils';
 import I from 'immutable';
 import HRDPane from '../../../connection/enterprise/hrd_pane';
 
@@ -21,7 +21,7 @@ describe('HRDPane', () => {
   });
 
   it('renders correctly', () => {
-    expectShallowComponent(<HRDPane {...defaultProps} />).toMatchSnapshot();
+    expectComponent(<HRDPane {...defaultProps} />).toMatchSnapshot();
   });
 
   it('renders the captcha if required', () => {
@@ -31,6 +31,6 @@ describe('HRDPane', () => {
       }
     });
 
-    expectShallowComponent(<HRDPane {...defaultProps} />).toMatchSnapshot();
+    expectComponent(<HRDPane {...defaultProps} />).toMatchSnapshot();
   });
 });

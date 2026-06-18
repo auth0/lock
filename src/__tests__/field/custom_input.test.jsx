@@ -59,7 +59,7 @@ describe('CustomInput', () => {
       let CustomInput = getComponent();
 
       const { container } = render(<CustomInput {...defaultProps} />);
-      const props = extractPropsFromWrapper(container);
+      const props = extractPropsFromWrapper(container, 'select_input');
 
       props.onClick();
 
@@ -85,7 +85,7 @@ describe('CustomInput', () => {
       let CustomInput = getComponent();
 
       const { container } = render(<CustomInput {...defaultProps} />);
-      const props = extractPropsFromWrapper(container);
+      const props = extractPropsFromWrapper(container, 'text_input');
 
       props.onChange({ target: { value: 'newUser' } });
 

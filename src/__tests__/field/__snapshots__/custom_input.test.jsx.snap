@@ -149,14 +149,6 @@ exports[`CustomInput when type == input renders correctly as a TextInput 1`] = `
 <DocumentFragment>
   <div
     data-__type="text_input"
-    data-arialabel="Custom Input"
-    data-iconurl="iconUrl"
-    data-invalidhint="invalid-hint-custom_input"
-    data-isvalid="false"
-    data-lockid="1"
-    data-name="custom_input"
-    data-placeholder="placeholder"
-    data-value="field-value-custom_input"
   />
 </DocumentFragment>
 `;
@@ -165,14 +157,6 @@ exports[`CustomInput when type == input sets isValid as true when \`isFieldVisib
 <DocumentFragment>
   <div
     data-__type="text_input"
-    data-arialabel="Custom Input"
-    data-iconurl="iconUrl"
-    data-invalidhint="invalid-hint-custom_input"
-    data-isvalid="true"
-    data-lockid="1"
-    data-name="custom_input"
-    data-placeholder="placeholder"
-    data-value="field-value-custom_input"
   />
 </DocumentFragment>
 `;
@@ -189,12 +173,6 @@ exports[`CustomInput when type === select renders correctly as a SelectInput 1`]
 <DocumentFragment>
   <div
     data-__type="select_input"
-    data-arialabel="Custom Input"
-    data-iconurl="iconUrl"
-    data-isvalid="false"
-    data-lockid="1"
-    data-name="custom_input"
-    data-placeholder="placeholder"
   />
 </DocumentFragment>
 `;
@@ -203,12 +181,6 @@ exports[`CustomInput when type === select sets isValid as true when \`isFieldVis
 <DocumentFragment>
   <div
     data-__type="select_input"
-    data-arialabel="Custom Input"
-    data-iconurl="iconUrl"
-    data-isvalid="true"
-    data-lockid="1"
-    data-name="custom_input"
-    data-placeholder="placeholder"
   />
 </DocumentFragment>
 `;

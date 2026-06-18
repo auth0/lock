@@ -5,25 +5,15 @@ exports[`sms passwordless renders a captcha 1`] = `
   <div>
     <div
       data-__type="social_buttons_pane"
-      data-instructions="socialLoginInstructions"
-      data-lock="model"
-      data-signup="true"
     />
     <div
       data-__type="pane_separator"
     />
     <div
       data-__type="phone_number_pane"
-      data-instructions="passwordlessSMSAlternativeInstructions"
-      data-invalidhint="phoneNumberInputInvalidHint"
-      data-lock="model"
-      data-placeholder="phoneNumberInputPlaceholder"
     />
     <div
       data-__type="captcha_pane"
-      data-flow="passwordless"
-      data-i18n="[object Object]"
-      data-lock="model"
     />
   </div>
 </DocumentFragment>
@@ -34,19 +24,12 @@ exports[`sms passwordless renders correctly 1`] = `
   <div>
     <div
       data-__type="social_buttons_pane"
-      data-instructions="socialLoginInstructions"
-      data-lock="model"
-      data-signup="true"
     />
     <div
       data-__type="pane_separator"
     />
     <div
       data-__type="phone_number_pane"
-      data-instructions="passwordlessSMSAlternativeInstructions"
-      data-invalidhint="phoneNumberInputInvalidHint"
-      data-lock="model"
-      data-placeholder="phoneNumberInputPlaceholder"
     />
   </div>
 </DocumentFragment>

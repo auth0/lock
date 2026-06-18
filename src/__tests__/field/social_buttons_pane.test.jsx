@@ -63,7 +63,7 @@ describe('SocialButtonsPane', () => {
     const SocialButtonsPane = getComponent();
 
     const { container } = render(<SocialButtonsPane {...defaultProps} signUp={true} />);
-    const props = extractPropsFromWrapper(container, 2);
+    const props = extractPropsFromWrapper(container, 'auth_button');
 
     props.onClick();
 
@@ -85,7 +85,7 @@ describe('SocialButtonsPane', () => {
     let SocialButtonsPane = getComponent();
 
     const { container } = render(<SocialButtonsPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(container, 2);
+    const props = extractPropsFromWrapper(container, 'auth_button');
 
     props.onClick();
 
@@ -97,7 +97,7 @@ describe('SocialButtonsPane', () => {
     let SocialButtonsPane = getComponent();
 
     const { container } = render(<SocialButtonsPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(container, 3);
+    const props = extractPropsFromWrapper(container, 'auth_button', 1);
 
     props.onClick();
 

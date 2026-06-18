@@ -6,9 +6,6 @@ exports[`SignUpScreen disables SocialButtonsPane when terms were not accepted 1`
     <div>
       <div
         data-__type="social_buttons_pane"
-        data-instructions="socialSignUpInstructions"
-        data-lock="model"
-        data-signup="true"
       />
     </div>
   </div>
@@ -20,9 +17,6 @@ exports[`SignUpScreen renders LoginSignUpTabs SSO is disabled and has screen log
   <div>
     <div
       data-__type="login_sign_up_tabs"
-      data-lock="model"
-      data-loginlabel="loginLabel"
-      data-signuplabel="signUpLabel"
     />
     <div />
   </div>
@@ -35,14 +29,6 @@ exports[`SignUpScreen renders SignUpPane when has database connection 1`] = `
     <div>
       <div
         data-__type="sign_up_pane"
-        data-emailinputplaceholder="emailInputPlaceholder"
-        data-i18n="[object Object]"
-        data-instructions="databaseSignUpInstructions"
-        data-model="model"
-        data-onlyemail="false"
-        data-passwordinputplaceholder="passwordInputPlaceholder"
-        data-passwordstrengthmessages="passwordStrength"
-        data-usernameinputplaceholder="usernameInputPlaceholder"
       />
     </div>
   </div>
@@ -55,14 +41,6 @@ exports[`SignUpScreen renders SignUpPane when has enterprise connection 1`] = `
     <div>
       <div
         data-__type="sign_up_pane"
-        data-emailinputplaceholder="emailInputPlaceholder"
-        data-i18n="[object Object]"
-        data-instructions="databaseSignUpInstructions"
-        data-model="model"
-        data-onlyemail="false"
-        data-passwordinputplaceholder="passwordInputPlaceholder"
-        data-passwordstrengthmessages="passwordStrength"
-        data-usernameinputplaceholder="usernameInputPlaceholder"
       />
     </div>
   </div>
@@ -88,9 +66,6 @@ exports[`SignUpScreen renders SocialButtonsPane when has social connections 1`] 
     <div>
       <div
         data-__type="social_buttons_pane"
-        data-instructions="socialSignUpInstructions"
-        data-lock="model"
-        data-signup="true"
       />
     </div>
   </div>

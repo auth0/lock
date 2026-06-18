@@ -60,18 +60,9 @@ exports[`PhoneNumberPane disables input when submitting 1`] = `
   <div>
     <div
       data-__type="select_input"
-      data-icon="[object Object]"
-      data-isvalid="false"
-      data-label="humanLocation"
-      data-name="location"
-      data-placeholder=""
     />
     <div
       data-__type="phone_number_input"
-      data-disabled="true"
-      data-isvalid="false"
-      data-placeholder="placeholder"
-      data-value="phoneNumber"
     />
   </div>
 </DocumentFragment>
@@ -82,18 +73,9 @@ exports[`PhoneNumberPane renders correctly 1`] = `
   <div>
     <div
       data-__type="select_input"
-      data-icon="[object Object]"
-      data-isvalid="false"
-      data-label="humanLocation"
-      data-name="location"
-      data-placeholder=""
     />
     <div
       data-__type="phone_number_input"
-      data-disabled="false"
-      data-isvalid="false"
-      data-placeholder="placeholder"
-      data-value="phoneNumber"
     />
   </div>
 </DocumentFragment>
@@ -104,18 +86,9 @@ exports[`PhoneNumberPane sets isValid as true when \`isFieldVisiblyInvalid\` is 
   <div>
     <div
       data-__type="select_input"
-      data-icon="[object Object]"
-      data-isvalid="true"
-      data-label="humanLocation"
-      data-name="location"
-      data-placeholder=""
     />
     <div
       data-__type="phone_number_input"
-      data-disabled="false"
-      data-isvalid="true"
-      data-placeholder="placeholder"
-      data-value="phoneNumber"
     />
   </div>
 </DocumentFragment>
@@ -131,18 +104,9 @@ exports[`PhoneNumberPane shows header when instructions are available 1`] = `
     </p>
     <div
       data-__type="select_input"
-      data-icon="[object Object]"
-      data-isvalid="false"
-      data-label="humanLocation"
-      data-name="location"
-      data-placeholder=""
     />
     <div
       data-__type="phone_number_input"
-      data-disabled="false"
-      data-isvalid="false"
-      data-placeholder="placeholder"
-      data-value="phoneNumber"
     />
   </div>
 </DocumentFragment>

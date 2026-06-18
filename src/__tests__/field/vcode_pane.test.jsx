@@ -90,7 +90,7 @@ describe('VcodePane', () => {
     let VcodePane = getComponent();
 
     const { container } = render(<VcodePane {...defaultProps} />);
-    const props = extractPropsFromWrapper(container, 1);
+    const props = extractPropsFromWrapper(container, 'vcode_input');
 
     props.onChange({ preventDefault: jest.fn(), target: { value: 'newCode' } });
 

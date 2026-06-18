@@ -67,7 +67,7 @@ describe('PhoneNumberPane', () => {
     let PhoneNumberPane = getComponent();
 
     const { container } = render(<PhoneNumberPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(container, 1);
+    const props = extractPropsFromWrapper(container, 'select_input');
 
     props.onClick();
 
@@ -79,7 +79,7 @@ describe('PhoneNumberPane', () => {
     let PhoneNumberPane = getComponent();
 
     const { container } = render(<PhoneNumberPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(container, 2);
+    const props = extractPropsFromWrapper(container, 'phone_number_input');
 
     props.onChange({ target: { value: 'newPhoneNumber' } });
 

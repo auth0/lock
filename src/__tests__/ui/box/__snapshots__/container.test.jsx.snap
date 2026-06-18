@@ -19,16 +19,6 @@ exports[`Container when suppressSubmitOverlay is true it does not display the ov
         >
           <div
             data-__type="chrome"
-            data-autofocus="false"
-            data-classnames=""
-            data-contentprops="[object Object]"
-            data-disablesubmitbutton="false"
-            data-issubmitting="true"
-            data-logo=""
-            data-primarycolor=""
-            data-screenname="Test"
-            data-scrollglobalmessagesintoview="true"
-            data-showsubmitbutton="false"
           />
         </div>
       </form>

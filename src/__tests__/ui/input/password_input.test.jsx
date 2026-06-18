@@ -1,9 +1,7 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import { act } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
-import { mockComponent, extractPropsFromWrapper } from 'testUtils';
-import InputWrap from '../../../ui/input/input_wrap';
+import { mockComponent, extractPropsFromWrapper, getMockProps } from 'testUtils';
 
 jest.mock('ui/input/input_wrap', () => mockComponent('input_wrap'));
 jest.mock('ui/input/password/password_strength', () => mockComponent('password_strength'));
@@ -32,14 +30,11 @@ describe('PasswordInput', () => {
   test('sends PasswordStrength as the `after` param', () => {
     const Input = getComponent();
     const { container } = render(<Input {...defaultProps} />);
-    act(() => {
-      const inputEl = container.querySelector('input');
-      const fiberKey = Object.keys(inputEl).find(k => k.startsWith('__reactProps'));
-      inputEl[fiberKey].onFocus();
-      inputEl[fiberKey].onChange({ target: { value: 'pass' } });
-    });
-    const props = extractPropsFromWrapper(container);
-    expect(props.after.props).toEqual({
+    const inputEl = container.querySelector('input');
+    fireEvent.focus(inputEl);
+    fireEvent.change(inputEl, { target: { value: 'pass' } });
+    const props = extractPropsFromWrapper(container, 'input_wrap');
+    expect(props.after && props.after.props).toEqual({
       messages: { strengthMessages: 'strengthMessages' },
       password: 'value',
       policy: 'policy'
@@ -60,19 +55,7 @@ describe('PasswordInput', () => {
   test('shows invalid Hint', () => {
     const Input = getComponent();
     const { container } = render(<Input {...defaultProps} />);
-    // InputWrap is mocked as mockComponent('input_wrap'), find it via fiber
-    const divs = container.querySelectorAll('div');
-    let invalidHint;
-    for (const div of divs) {
-      const fiberKey = Object.keys(div).find(k => k.startsWith('__reactProps'));
-      if (fiberKey) {
-        const props = div[fiberKey];
-        if (props['data-__type'] === 'input_wrap') {
-          invalidHint = props['data-invalidHint'];
-          break;
-        }
-      }
-    }
-    expect(invalidHint).toBe('invalidHint');
+    const inputWrap = container.querySelector('[data-__type="input_wrap"]');
+    expect(getMockProps(inputWrap).invalidHint).toBe('invalidHint');
   });
 });

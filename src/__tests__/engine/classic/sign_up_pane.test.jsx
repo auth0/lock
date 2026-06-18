@@ -1,7 +1,6 @@
 import React from 'react';
 import I from 'immutable';
 import { expectComponent, mockComponent } from 'testUtils';
-import { expectShallowComponent } from '../../testUtils';
 import { Flow } from '../../../connection/captcha';
 
 jest.mock('field/email/email_pane', () => mockComponent('email_pane'));
@@ -73,7 +72,7 @@ describe('SignUpPane', () => {
 
     const Component = getComponent();
 
-    expectShallowComponent(<Component {...defaultProps} />).toMatchSnapshot();
+    expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
   });
 
   it('hides the Captcha pane for SSO connections', () => {
@@ -87,7 +86,7 @@ describe('SignUpPane', () => {
 
     const Component = getComponent();
 
-    expectShallowComponent(<Component {...defaultProps} />).toMatchSnapshot();
+    expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
   });
 
   it('shows the Captcha pane for SSO (ADFS) connections', () => {
@@ -102,7 +101,7 @@ describe('SignUpPane', () => {
 
     const Component = getComponent();
 
-    expectShallowComponent(<Component {...defaultProps} />).toMatchSnapshot();
+    expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
   });
 
   describe('onlyEmail is false', () => {

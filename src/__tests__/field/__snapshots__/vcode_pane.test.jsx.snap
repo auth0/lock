@@ -21,12 +21,6 @@ exports[`VcodePane disable input when submitting 1`] = `
   <div>
     <div
       data-__type="vcode_input"
-      data-autofocus="false"
-      data-disabled="true"
-      data-isvalid="false"
-      data-lockid="1"
-      data-placeholder="placeholder"
-      data-value="vcode"
     />
     <p
       class="auth0-lock-alternative"
@@ -47,12 +41,6 @@ exports[`VcodePane renders correctly 1`] = `
   <div>
     <div
       data-__type="vcode_input"
-      data-autofocus="false"
-      data-disabled="false"
-      data-isvalid="false"
-      data-lockid="1"
-      data-placeholder="placeholder"
-      data-value="vcode"
     />
     <p
       class="auth0-lock-alternative"
@@ -73,12 +61,6 @@ exports[`VcodePane sets autoFocus as true when \`isSmallScreen\` is false 1`] = 
   <div>
     <div
       data-__type="vcode_input"
-      data-autofocus="true"
-      data-disabled="false"
-      data-isvalid="false"
-      data-lockid="1"
-      data-placeholder="placeholder"
-      data-value="vcode"
     />
     <p
       class="auth0-lock-alternative"
@@ -99,12 +81,6 @@ exports[`VcodePane sets isValid as true when \`isFieldVisiblyInvalid\` is false 
   <div>
     <div
       data-__type="vcode_input"
-      data-autofocus="false"
-      data-disabled="false"
-      data-isvalid="true"
-      data-lockid="1"
-      data-placeholder="placeholder"
-      data-value="vcode"
     />
     <p
       class="auth0-lock-alternative"
@@ -130,12 +106,6 @@ exports[`VcodePane shows header when instructions are available 1`] = `
     </p>
     <div
       data-__type="vcode_input"
-      data-autofocus="false"
-      data-disabled="false"
-      data-isvalid="false"
-      data-lockid="1"
-      data-placeholder="placeholder"
-      data-value="vcode"
     />
     <p
       class="auth0-lock-alternative"
