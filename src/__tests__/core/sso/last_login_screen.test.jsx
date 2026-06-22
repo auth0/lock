@@ -44,7 +44,8 @@ describe('LastLoginScreen', () => {
 
     jest.mock('connection/social/index', () => ({
       STRATEGIES: {
-        twitter: 'Twitter'
+        twitter: 'Twitter',
+        'this-strategy-exists': 'Test Strategy'
       },
       authButtonsTheme: () => ({
         get: () => undefined
@@ -61,25 +62,28 @@ describe('LastLoginScreen', () => {
   };
 
   describe('renders correct icon', () => {
-    const testStrategy = strategy => {
+    const testStrategyName = 'this-strategy-exists';
+
+    const EXPECTED_ICONS = {
+      [testStrategyName]: testStrategyName, // known social strategy → returns strategy itself
+      'google-apps': 'google-apps', // explicit passthrough
+      adfs: 'windows',
+      office365: 'windows',
+      waad: 'windows',
+      'some-other-strategy': 'auth0' // unknown → fallback
+    };
+
+    Object.entries(EXPECTED_ICONS).forEach(([strategy, expectedIcon]) => {
       it(`uses correct icon when strategy is ${strategy}`, () => {
-        require('core/sso/index').lastUsedConnection = () =>
-          Immutable.fromJS({ strategy });
+        require('core/sso/index').lastUsedConnection = () => Immutable.fromJS({ strategy });
         const Component = getComponent();
         const props = renderAndGetProps(Component, defaultProps);
-        expect(props.strategy).toBeDefined();
+        expect(props.strategy).toBe(expectedIcon);
       });
-    };
-    const testStrategyName = 'this-strategy-exists';
-    require('connection/social/index').STRATEGIES = {
-      [testStrategyName]: 'Test Strategy'
-    };
-    [testStrategyName, 'google-apps', 'adfs', 'office365', 'waad', 'some-other-strategy']
-      .forEach(testStrategy);
+    });
 
     it('maps adfs/office365/waad to "windows" icon', () => {
-      require('core/sso/index').lastUsedConnection = () =>
-        Immutable.fromJS({ strategy: 'adfs' });
+      require('core/sso/index').lastUsedConnection = () => Immutable.fromJS({ strategy: 'adfs' });
       const Component = getComponent();
       const props = renderAndGetProps(Component, defaultProps);
       expect(props.strategy).toBe('windows');
@@ -98,7 +102,7 @@ describe('LastLoginScreen', () => {
         Immutable.fromJS({ name: testStrategyName });
       const Component = getComponent();
       const props = renderAndGetProps(Component, defaultProps);
-      expect(props.strategy).toBeDefined();
+      expect(props.strategy).toBe(testStrategyName);
     });
   });
 

@@ -21,28 +21,32 @@ const createLockMock = ({
 // Renders the component and manually triggers the injectCaptchaScript callback,
 // mimicking the original Enzyme test pattern: spy replaces injectCaptchaScript
 // so the automatic componentDidMount call is captured, then the callback is invoked.
-const mountCaptcha = (props) => {
+const mountCaptcha = props => {
   let instance = null;
 
   // Intercept injectCaptchaScript on the prototype so the automatic
   // componentDidMount call (during RTL render) does NOT invoke the captcha library.
   const proto = ThirdPartyCaptcha.prototype;
   const original = proto.injectCaptchaScript;
-  proto.injectCaptchaScript = function(callback) {
+  proto.injectCaptchaScript = function (callback) {
     // no-op: prevents the library from being triggered by the automatic mount
   };
 
-  act(() => {
-    render(
-      <ThirdPartyCaptcha
-        {...props}
-        ref={r => { instance = r; }}
-      />
-    );
-  });
-
-  // Restore original and manually drive componentDidMount with a spy
-  proto.injectCaptchaScript = original;
+  try {
+    act(() => {
+      render(
+        <ThirdPartyCaptcha
+          {...props}
+          ref={r => {
+            instance = r;
+          }}
+        />
+      );
+    });
+  } finally {
+    // Restore original regardless of whether render throws
+    proto.injectCaptchaScript = original;
+  }
 
   act(() => {
     const spy = jest.spyOn(instance, 'injectCaptchaScript');
@@ -162,18 +166,19 @@ describe('ThirdPartyCaptcha', () => {
         'expired-callback': expect.any(Function),
         'error-callback': expect.any(Function)
       });
-      expect(renderCalls.length).toBeGreaterThanOrEqual(1);
+      // mountCaptcha triggers componentDidMount twice: once automatically by RTL render,
+      // once manually after the prototype is restored (to drive the spy). Two render calls expected.
+      expect(renderCalls.length).toEqual(2);
     });
 
-    it('should call render on update', () => {
+    it('should not call render again on update', () => {
       const countBefore = global.window.hcaptcha.render.mock.calls.length;
       act(() => {
         instance.setState({});
       });
       const countAfter = global.window.hcaptcha.render.mock.calls.length;
-      // componentDidUpdate triggers hcaptcha.render when h-captcha element exists
-      expect(countAfter).toBeGreaterThanOrEqual(countBefore);
-    })
+      expect(countAfter).toEqual(countBefore);
+    });
   });
 
   describe('auth0_v2', () => {
@@ -198,7 +203,7 @@ describe('ThirdPartyCaptcha', () => {
     };
 
     it('should call render with the correct renderParams', () => {
-      const instance = mountAuth0V2();
+      mountAuth0V2();
       const renderParams = global.window.turnstile.render.mock.calls[0][1];
       expect(renderParams).toEqual({
         sitekey: 'mySiteKey',
@@ -220,16 +225,22 @@ describe('ThirdPartyCaptcha', () => {
       // Call error-callback 3 times — each should increment retryCount and trigger reset (new render call)
       for (let i = 0; i < 3; i++) {
         const renderCallIndex = global.window.turnstile.render.mock.calls.length - 1;
-        const currentErrorCallback = global.window.turnstile.render.mock.calls[renderCallIndex][1]['error-callback'];
-        act(() => { currentErrorCallback(); });
+        const currentErrorCallback =
+          global.window.turnstile.render.mock.calls[renderCallIndex][1]['error-callback'];
+        act(() => {
+          currentErrorCallback();
+        });
         expect(instance.state.retryCount).toBe(i + 1);
         expect(instance.props.value).toBe(undefined);
       }
 
       // 4th call — past MAX_RETRY, should invoke onChange with BYPASS_CAPTCHA
       const lastRenderCallIndex = global.window.turnstile.render.mock.calls.length - 1;
-      const lastErrorCallback = global.window.turnstile.render.mock.calls[lastRenderCallIndex][1]['error-callback'];
-      act(() => { lastErrorCallback(); });
+      const lastErrorCallback =
+        global.window.turnstile.render.mock.calls[lastRenderCallIndex][1]['error-callback'];
+      act(() => {
+        lastErrorCallback();
+      });
 
       expect(onChange.mock.calls).toHaveLength(1);
       expect(onChange.mock.calls[0][0]).toBe('BYPASS_CAPTCHA');

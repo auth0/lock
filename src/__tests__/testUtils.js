@@ -1,7 +1,7 @@
 import React from 'react'; // eslint-disable-line
 import { render } from '@testing-library/react';
 
-export const expectComponent = (children) => {
+export const expectComponent = children => {
   const { asFragment } = render(children);
   return expect(asFragment());
 };
@@ -13,12 +13,6 @@ const _mockProps = new WeakMap();
 
 export const getMockProps = el => _mockProps.get(el) || {};
 
-const addDataToProps = props => {
-  const returnedProps = {};
-  Object.keys(props).forEach(k => (returnedProps[`data-${k}`] = props[k]));
-  return returnedProps;
-};
-
 export const mockComponent =
   (type, domElement = 'div') =>
   ({ children, ...props }) =>
@@ -26,21 +20,17 @@ export const mockComponent =
       domElement,
       {
         'data-__type': type,
-        ref: el => { if (el) _mockProps.set(el, props); }
+        ref: el => {
+          if (el) _mockProps.set(el, props);
+        }
       },
       children
     );
 
 // Lookup by mock component type name: extractPropsFromWrapper(container, 'input_wrap')
 // Lookup Nth of a type: extractPropsFromWrapper(container, 'auth_button', 1)
-// Legacy positional (fragile, avoid): extractPropsFromWrapper(container, 2)
-export const extractPropsFromWrapper = (container, typeOrIndex = 0, nth = 0) => {
-  let el;
-  if (typeof typeOrIndex === 'string') {
-    el = container.querySelectorAll(`[data-__type="${typeOrIndex}"]`)[nth];
-  } else {
-    el = container.querySelectorAll('div')[typeOrIndex];
-  }
+export const extractPropsFromWrapper = (container, type, nth = 0) => {
+  const el = container.querySelectorAll(`[data-__type="${type}"]`)[nth];
   if (!el) return {};
   return getMockProps(el);
 };
