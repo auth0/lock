@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
 
@@ -99,10 +99,8 @@ describe('PasswordPane', () => {
     let PasswordPane = getComponent();
 
     const { container } = render(<PasswordPane {...defaultProps} />);
-    const inputEl = container.querySelector('div input');
-    const key = Object.keys(inputEl).find(k => k.startsWith('__reactProps'));
-    const props = inputEl[key];
-    props.onChange({ target: { checked: true } });
+    const inputEl = container.querySelector('input[type="checkbox"]');
+    fireEvent.click(inputEl);
 
     const { mock } = require('store/index').swap;
     expect(mock.calls.length).toBe(1);
