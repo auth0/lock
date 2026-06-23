@@ -85,12 +85,11 @@ describe('ThirdPartyCaptcha', () => {
   });
 
   describe('recaptchav2', () => {
-    let instance;
     beforeAll(() => {
       global.window.grecaptcha.render.mockClear();
       const lockMock = createLockMock({ provider: 'recaptcha_v2', siteKey: 'mySiteKey' });
       const captcha = l.captcha(lockMock);
-      instance = mountCaptcha({
+      mountCaptcha({
         provider: captcha.get('provider'),
         sitekey: captcha.get('siteKey'),
         clientSubdomain: captcha.get('clientSubdomain'),
@@ -113,12 +112,11 @@ describe('ThirdPartyCaptcha', () => {
   });
 
   describe('friendly captcha', () => {
-    let instance;
     beforeAll(() => {
       global.window.friendlyChallenge.WidgetInstance.mockClear();
       const lockMock = createLockMock({ provider: 'friendly_captcha', siteKey: 'mySiteKey' });
       const captcha = l.captcha(lockMock);
-      instance = mountCaptcha({
+      mountCaptcha({
         provider: captcha.get('provider'),
         sitekey: captcha.get('siteKey'),
         clientSubdomain: captcha.get('clientSubdomain'),
@@ -249,12 +247,11 @@ describe('ThirdPartyCaptcha', () => {
   });
 
   describe('recaptcha enterprise', () => {
-    let instance;
     beforeAll(() => {
       global.window.grecaptcha.enterprise.render.mockClear();
       const lockMock = createLockMock({ provider: 'recaptcha_enterprise', siteKey: 'mySiteKey' });
       const captcha = l.captcha(lockMock);
-      instance = mountCaptcha({
+      mountCaptcha({
         provider: captcha.get('provider'),
         sitekey: captcha.get('siteKey'),
         clientSubdomain: captcha.get('clientSubdomain'),
