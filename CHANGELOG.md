@@ -4,7 +4,7 @@
 [Full Changelog](https://github.com/auth0/lock/compare/v15.0.0...v15.0.1)
 
 **Added**
-- fix: add react19 support, tests migrated to rtl [\#2818](https://github.com/auth0/lock/pull/2818) ([jd3vi1](https://github.com/jd3vi1))
+- fix: add react19 support [\#2818](https://github.com/auth0/lock/pull/2818) ([jd3vi1](https://github.com/jd3vi1))
 
 ## [v15.0.0](https://github.com/auth0/lock/tree/v15.0.0) (2026-06-05)
 [Full Changelog](https://github.com/auth0/lock/compare/v14.3.0...v15.0.0)
