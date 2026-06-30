@@ -1,36 +1,17 @@
 import React from 'react'; // eslint-disable-line
-import renderer from 'react-test-renderer';
-import ShallowRenderer from 'react-test-renderer/shallow';
-import { JavascriptModulesPlugin } from 'webpack';
+import { render } from '@testing-library/react';
 
-export const expectComponent = (children, opts) => {
-  const component = renderer.create(children, opts);
-  return expect(component);
+export const expectComponent = children => {
+  const { asFragment } = render(children);
+  return expect(asFragment());
 };
 
-export const expectShallowComponent = children => {
-  const component = renderShallowComponent(children);
-  return expect(component);
-};
+// WeakMap stores original props keyed by DOM element, populated by mockComponent via ref.
+// This replaces both the data-* attribute approach (which loses types in snapshots)
+// and the __reactProps$* fiber internals approach (which is an implementation detail).
+const _mockProps = new WeakMap();
 
-export const renderShallowComponent = children => {
-  const renderer = new ShallowRenderer();
-
-  renderer.render(children);
-  return renderer.getRenderOutput();
-};
-
-const addDataToProps = props => {
-  const returnedProps = {};
-  Object.keys(props).forEach(k => (returnedProps[`data-${k}`] = props[k]));
-  return returnedProps;
-};
-
-const removeDataFromProps = props => {
-  const returnedProps = {};
-  Object.keys(props).forEach(k => (returnedProps[k.replace('data-', '')] = props[k]));
-  return returnedProps;
-};
+export const getMockProps = el => _mockProps.get(el) || {};
 
 export const mockComponent =
   (type, domElement = 'div') =>
@@ -39,13 +20,20 @@ export const mockComponent =
       domElement,
       {
         'data-__type': type,
-        ...addDataToProps(props)
+        ref: el => {
+          if (el) _mockProps.set(el, props);
+        }
       },
       children
     );
 
-export const extractPropsFromWrapper = (wrapper, index = 0) =>
-  removeDataFromProps(wrapper.find('div').at(index).props());
+// Lookup by mock component type name: extractPropsFromWrapper(container, 'input_wrap')
+// Lookup Nth of a type: extractPropsFromWrapper(container, 'auth_button', 1)
+export const extractPropsFromWrapper = (container, type, nth = 0) => {
+  const el = container.querySelectorAll(`[data-__type="${type}"]`)[nth];
+  if (!el) return {};
+  return getMockProps(el);
+};
 
 // Newer (> Jest v22) versions don't allow modification of location.href
 // Try jsdom.reconfigure() first (via custom environment), then fall back to property mocking
@@ -71,7 +59,6 @@ export const setURL = url => {
       pathname: parsedUrl.pathname,
       search: parsedUrl.search,
       hash: parsedUrl.hash,
-      // Add toString for debugging
       toString: () => parsedUrl.href
     },
     writable: true,

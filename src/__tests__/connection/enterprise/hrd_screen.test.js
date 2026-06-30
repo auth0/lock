@@ -1,5 +1,6 @@
 import React from 'react';
-import { mockComponent, expectComponent } from 'testUtils';
+import { render } from '@testing-library/react';
+import { mockComponent, getMockProps } from 'testUtils';
 import I from 'immutable';
 import { dataFns } from '../../../utils/data_utils';
 import * as i18n from '../../../i18n';
@@ -16,6 +17,11 @@ const getComponent = () => {
   const HRDScreen = require('connection/enterprise/hrd_screen').default;
   const screen = new HRDScreen();
   return screen.render();
+};
+
+const renderAndGetProps = (Component, props) => {
+  const { container } = render(<Component {...props} />);
+  return getMockProps(container.querySelector('[data-__type="hrd_pane"]'));
 };
 
 describe('HRDScreen Component', () => {
@@ -39,51 +45,54 @@ describe('HRDScreen Component', () => {
     };
   });
 
-  it('renders correctly when there is an enterprise domain', () => {
+  it('passes domain-specific header when enterprise domain is present', () => {
     const Component = getComponent();
-    expectComponent(<Component model={lock} i18n={i18nProp} />).toMatchSnapshot();
+    const props = renderAndGetProps(Component, { model: lock, i18n: i18nProp });
+    expect(props.header).not.toBeNull();
+    expect(props.header.props.children).toContain('domain.com');
   });
 
-  it('renders correctly when there is no enterprise domain', () => {
+  it('passes fallback header when there is no enterprise domain', () => {
     require('connection/enterprise').enterpriseDomain.mockImplementation(() => null);
     const Component = getComponent();
-    expectComponent(<Component model={lock} i18n={i18nProp} />).toMatchSnapshot();
+    const props = renderAndGetProps(Component, { model: lock, i18n: i18nProp });
+    expect(props.header.props.children).toContain('Login with your corporate credentials.');
   });
 
-  it('renders correctly when enterprise domain is undefined', () => {
+  it('passes fallback header when enterprise domain is undefined', () => {
     require('connection/enterprise').enterpriseDomain.mockImplementation(() => undefined);
     const Component = getComponent();
-    expectComponent(<Component model={lock} i18n={i18nProp} />).toMatchSnapshot();
+    const props = renderAndGetProps(Component, { model: lock, i18n: i18nProp });
+    expect(props.header.props.children).toContain('Login with your corporate credentials.');
   });
 
   it('does not show "undefined" in message when enterprise domain is undefined', () => {
     require('connection/enterprise').enterpriseDomain.mockImplementation(() => undefined);
     const { str } = i18nProp;
-    
-    // Should use the fallback message without domain placeholder
     const expectedMessage = str('enterpriseLoginIntructions');
     expect(expectedMessage).toContain('Login with your corporate credentials.');
     expect(expectedMessage).not.toContain('undefined');
   });
 
   it('does not show "undefined" in message when enterprise domain is null', () => {
-    require('connection/enterprise').enterpriseDomain.mockImplementation(() => null);    
+    require('connection/enterprise').enterpriseDomain.mockImplementation(() => null);
     const { str } = i18nProp;
-    // Should use the fallback message without domain placeholder  
     const expectedMessage = str('enterpriseLoginIntructions');
     expect(expectedMessage).toContain('Login with your corporate credentials.');
     expect(expectedMessage).not.toContain('undefined');
   });
 
-  it('uses fallback message when enterprise domain is empty string', () => {
+  it('passes fallback header when enterprise domain is empty string', () => {
     require('connection/enterprise').enterpriseDomain.mockImplementation(() => '');
     const Component = getComponent();
-    expectComponent(<Component model={lock} i18n={i18nProp} />).toMatchSnapshot();
+    const props = renderAndGetProps(Component, { model: lock, i18n: i18nProp });
+    expect(props.header.props.children).toContain('Login with your corporate credentials.');
   });
 
-  it('uses fallback message when enterprise domain is whitespace only', () => {
+  it('passes fallback header when enterprise domain is whitespace only', () => {
     require('connection/enterprise').enterpriseDomain.mockImplementation(() => '   ');
     const Component = getComponent();
-    expectComponent(<Component model={lock} i18n={i18nProp} />).toMatchSnapshot();
+    const props = renderAndGetProps(Component, { model: lock, i18n: i18nProp });
+    expect(props.header.props.children).toContain('Login with your corporate credentials.');
   });
 });

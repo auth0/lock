@@ -1,40 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Container when suppressSubmitOverlay is true it does not display the overlay when submitting 1`] = `
-<div
-  className="auth0-lock auth0-lock-opened-in-frame auth0-lock-no-submit"
-  lang="en"
->
+<DocumentFragment>
   <div
-    className="auth0-lock-center"
+    class="auth0-lock auth0-lock-opened-in-frame auth0-lock-no-submit"
+    lang="en"
   >
-    <form
-      className="auth0-lock-widget"
-      method="post"
-      noValidate={true}
-      onSubmit={[Function]}
+    <div
+      class="auth0-lock-center"
     >
-      <div
-        className="auth0-lock-widget-container"
+      <form
+        class="auth0-lock-widget"
+        method="post"
+        novalidate=""
       >
         <div
-          data-__type="chrome"
-          data-autofocus={false}
-          data-classNames=""
-          data-contentComponent={null}
-          data-contentProps={{}}
-          data-disableSubmitButton={false}
-          data-isSubmitting={true}
-          data-logo=""
-          data-primaryColor=""
-          data-screenName="Test"
-          data-scrollGlobalMessagesIntoView={true}
-          data-showSubmitButton={false}
-        />
-      </div>
-    </form>
+          class="auth0-lock-widget-container"
+        >
+          <div
+            data-__type="chrome"
+          />
+        </div>
+      </form>
+    </div>
   </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`Container with a custom \`connectionResolver\` calls \`connectionResolver\` onSubmit 1`] = `

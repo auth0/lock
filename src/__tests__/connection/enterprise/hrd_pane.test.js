@@ -1,7 +1,6 @@
 import React from 'react';
-import { expectShallowComponent } from 'testUtils';
+import { expectComponent } from 'testUtils';
 import I from 'immutable';
-import * as i18n from '../../../i18n';
 import HRDPane from '../../../connection/enterprise/hrd_pane';
 
 const lock = I.fromJS({ id: '__lock-id__' });
@@ -12,7 +11,7 @@ describe('HRDPane', () => {
   const defaultProps = {
     model: lock,
     header: <header></header>,
-    i18n,
+    i18n: { str: (...keys) => keys.join(','), html: (...keys) => keys.join(',') },
     passwordInputPlaceholder: 'password',
     usernameInputPlaceholder: 'username'
   };
@@ -22,7 +21,7 @@ describe('HRDPane', () => {
   });
 
   it('renders correctly', () => {
-    expectShallowComponent(<HRDPane {...defaultProps} />).toMatchSnapshot();
+    expectComponent(<HRDPane {...defaultProps} />).toMatchSnapshot();
   });
 
   it('renders the captcha if required', () => {
@@ -32,6 +31,6 @@ describe('HRDPane', () => {
       }
     });
 
-    expectShallowComponent(<HRDPane {...defaultProps} />).toMatchSnapshot();
+    expectComponent(<HRDPane {...defaultProps} />).toMatchSnapshot();
   });
 });

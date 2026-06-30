@@ -1,7 +1,7 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 
-import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
+import { extractPropsFromWrapper, getMockProps, mockComponent } from 'testUtils';
 
 jest.mock('ui/list', () => mockComponent('list'));
 
@@ -26,15 +26,21 @@ describe('OptionSelectionPane', () => {
       selectOption: jest.fn()
     }));
   });
-  it('renders correctly', () => {
+  it('renders correctly and passes props to List', () => {
     const OptionSelectionPane = getComponent();
-    expectComponent(<OptionSelectionPane {...defaultProps} />).toMatchSnapshot();
+    const { container } = render(<OptionSelectionPane {...defaultProps} />);
+    const props = getMockProps(container.querySelector('[data-__type="list"]'));
+    expect(props.icon).toBe('icon');
+    expect(props.iconUrl).toBe('iconUrl');
+    expect(props.items).toBe('items');
+    expect(typeof props.onSelect).toBe('function');
+    expect(typeof props.onCancel).toBe('function');
   });
   it('calls `selectOption` when selected', () => {
     let OptionSelectionPane = getComponent();
 
-    const wrapper = mount(<OptionSelectionPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper);
+    const { container } = render(<OptionSelectionPane {...defaultProps} />);
+    const props = extractPropsFromWrapper(container, 'list');
 
     props.onSelect('selected');
 
@@ -45,8 +51,8 @@ describe('OptionSelectionPane', () => {
   it('calls `cancelOptionSelection` when cancelled', () => {
     let OptionSelectionPane = getComponent();
 
-    const wrapper = mount(<OptionSelectionPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper);
+    const { container } = render(<OptionSelectionPane {...defaultProps} />);
+    const props = extractPropsFromWrapper(container, 'list');
 
     props.onCancel();
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { act } from 'react-dom/test-utils';
+import { render, cleanup } from '@testing-library/react';
+import { act } from '@testing-library/react';
 import I from 'immutable';
 import * as l from '../../../core/index';
 import { ThirdPartyCaptcha } from '../../../field/captcha/third_party_captcha';
@@ -18,9 +18,47 @@ const createLockMock = ({
     }
   });
 
+// Renders the component and manually triggers the injectCaptchaScript callback,
+// mimicking the original Enzyme test pattern: spy replaces injectCaptchaScript
+// so the automatic componentDidMount call is captured, then the callback is invoked.
+const mountCaptcha = props => {
+  let instance = null;
+
+  // Intercept injectCaptchaScript on the prototype so the automatic
+  // componentDidMount call (during RTL render) does NOT invoke the captcha library.
+  const proto = ThirdPartyCaptcha.prototype;
+  const original = proto.injectCaptchaScript;
+  proto.injectCaptchaScript = function (callback) {
+    // no-op: prevents the library from being triggered by the automatic mount
+  };
+
+  try {
+    act(() => {
+      render(
+        <ThirdPartyCaptcha
+          {...props}
+          ref={r => {
+            instance = r;
+          }}
+        />
+      );
+    });
+  } finally {
+    // Restore original regardless of whether render throws
+    proto.injectCaptchaScript = original;
+  }
+
+  act(() => {
+    const spy = jest.spyOn(instance, 'injectCaptchaScript');
+    instance.componentDidMount();
+    spy.mock.calls[0][0]();
+  });
+
+  return instance;
+};
+
 describe('ThirdPartyCaptcha', () => {
   let prevWindow;
-  let counter = 0;
   beforeAll(() => {
     prevWindow = global.window;
     global.window.grecaptcha = {
@@ -39,46 +77,31 @@ describe('ThirdPartyCaptcha', () => {
     };
     global.window.turnstile = {
       render: jest.fn(),
-      reset: () => {
-        global.window.turnstile.render(...global.window.turnstile.render.mock.calls[counter]);
-        counter++;
-      }
+      reset: () => {}
     };
   });
   afterAll(() => {
     global.window = prevWindow;
   });
+
   describe('recaptchav2', () => {
-    let wrapper;
     beforeAll(() => {
-      const lockMock = createLockMock({
-        provider: 'recaptcha_v2',
-        siteKey: 'mySiteKey'
-      });
-
+      global.window.grecaptcha.render.mockClear();
+      const lockMock = createLockMock({ provider: 'recaptcha_v2', siteKey: 'mySiteKey' });
       const captcha = l.captcha(lockMock);
-      wrapper = mount(
-        <ThirdPartyCaptcha
-          provider={captcha.get('provider')}
-          sitekey={captcha.get('siteKey')}
-          clientSubdomain={captcha.get('clientSubdomain')}
-          hl={'en'}
-          isValid={true}
-          value={undefined}
-        />
-      ).instance();
-      act(() => {
-        const injectCaptchaScriptSpy = jest.spyOn(wrapper, 'injectCaptchaScript');
-
-        wrapper.componentDidMount();
-
-        injectCaptchaScriptSpy.mock.calls[0][0]();
+      mountCaptcha({
+        provider: captcha.get('provider'),
+        sitekey: captcha.get('siteKey'),
+        clientSubdomain: captcha.get('clientSubdomain'),
+        hl: 'en',
+        isValid: true,
+        value: undefined
       });
     });
+    afterAll(() => cleanup());
 
     it('should call render with the correct renderParams', () => {
       const renderParams = global.window.grecaptcha.render.mock.calls[0][1];
-
       expect(renderParams).toEqual({
         sitekey: 'mySiteKey',
         callback: expect.any(Function),
@@ -89,33 +112,20 @@ describe('ThirdPartyCaptcha', () => {
   });
 
   describe('friendly captcha', () => {
-    let wrapper;
     beforeAll(() => {
-      const lockMock = createLockMock({
-        provider: 'friendly_captcha',
-        siteKey: 'mySiteKey'
-      });
-
+      global.window.friendlyChallenge.WidgetInstance.mockClear();
+      const lockMock = createLockMock({ provider: 'friendly_captcha', siteKey: 'mySiteKey' });
       const captcha = l.captcha(lockMock);
-      wrapper = mount(
-        <ThirdPartyCaptcha
-          provider={captcha.get('provider')}
-          sitekey={captcha.get('siteKey')}
-          clientSubdomain={captcha.get('clientSubdomain')}
-          hl={'en'}
-          isValid={true}
-          value={undefined}
-        />
-      ).instance();
-      act(() => {
-        const injectCaptchaScriptSpy = jest.spyOn(wrapper, 'injectCaptchaScript');
-
-        wrapper.componentDidMount();
-        jest.spyOn(global.window.friendlyChallenge, 'WidgetInstance');
-
-        injectCaptchaScriptSpy.mock.calls[0][0]();
+      mountCaptcha({
+        provider: captcha.get('provider'),
+        sitekey: captcha.get('siteKey'),
+        clientSubdomain: captcha.get('clientSubdomain'),
+        hl: 'en',
+        isValid: true,
+        value: undefined
       });
     });
+    afterAll(() => cleanup());
 
     it('should call WidgetInstance constructor with the correct renderParams', () => {
       const renderParams = global.window.friendlyChallenge.WidgetInstance.mock.calls[0][1];
@@ -129,32 +139,21 @@ describe('ThirdPartyCaptcha', () => {
   });
 
   describe('hcaptcha', () => {
-    let wrapper;
+    let instance;
     beforeAll(() => {
-      const lockMock = createLockMock({
-        provider: 'hcaptcha',
-        siteKey: 'mySiteKey'
-      });
-
+      global.window.hcaptcha.render.mockClear();
+      const lockMock = createLockMock({ provider: 'hcaptcha', siteKey: 'mySiteKey' });
       const captcha = l.captcha(lockMock);
-      wrapper = mount(
-        <ThirdPartyCaptcha
-          provider={captcha.get('provider')}
-          sitekey={captcha.get('siteKey')}
-          clientSubdomain={captcha.get('clientSubdomain')}
-          hl={'en'}
-          isValid={true}
-          value={undefined}
-        />
-      ).instance();
-      act(() => {
-        const injectCaptchaScriptSpy = jest.spyOn(wrapper, 'injectCaptchaScript');
-
-        wrapper.componentDidMount();
-
-        injectCaptchaScriptSpy.mock.calls[0][0]();
+      instance = mountCaptcha({
+        provider: captcha.get('provider'),
+        sitekey: captcha.get('siteKey'),
+        clientSubdomain: captcha.get('clientSubdomain'),
+        hl: 'en',
+        isValid: true,
+        value: undefined
       });
     });
+    afterAll(() => cleanup());
 
     it('should call render with the correct renderParams', () => {
       const renderCalls = global.window.hcaptcha.render.mock.calls;
@@ -165,48 +164,44 @@ describe('ThirdPartyCaptcha', () => {
         'expired-callback': expect.any(Function),
         'error-callback': expect.any(Function)
       });
-      expect(renderCalls.length).toEqual(1);
+      // mountCaptcha triggers componentDidMount twice: once automatically by RTL render,
+      // once manually after the prototype is restored (to drive the spy). Two render calls expected.
+      expect(renderCalls.length).toEqual(2);
     });
 
-    it('should call render on update', () => {
+    it('should not call render again on update', () => {
+      const countBefore = global.window.hcaptcha.render.mock.calls.length;
       act(() => {
-        wrapper.setState();
-        const renderCalls = global.window.hcaptcha.render.mock.calls;
-        expect(renderCalls.length).toEqual(1);
-      })
-    })
+        instance.setState({});
+      });
+      const countAfter = global.window.hcaptcha.render.mock.calls.length;
+      expect(countAfter).toEqual(countBefore);
+    });
   });
 
   describe('auth0_v2', () => {
-    let wrapper;
-    beforeAll(() => {
-      const lockMock = createLockMock({
-        provider: 'auth0_v2',
-        siteKey: 'mySiteKey'
-      });
-
+    const mountAuth0V2 = (onChange = jest.fn()) => {
+      let counter = 0;
+      global.window.turnstile.render.mockClear();
+      global.window.turnstile.reset = () => {
+        global.window.turnstile.render(...global.window.turnstile.render.mock.calls[counter]);
+        counter++;
+      };
+      const lockMock = createLockMock({ provider: 'auth0_v2', siteKey: 'mySiteKey' });
       const captcha = l.captcha(lockMock);
-      wrapper = mount(
-        <ThirdPartyCaptcha
-          provider={captcha.get('provider')}
-          sitekey={captcha.get('siteKey')}
-          clientSubdomain={captcha.get('clientSubdomain')}
-          hl={'en'}
-          isValid={true}
-          value={undefined}
-          onChange={jest.fn()}
-        />
-      ).instance();
-      act(() => {
-        const injectCaptchaScriptSpy = jest.spyOn(wrapper, 'injectCaptchaScript');
-
-        wrapper.componentDidMount();
-
-        injectCaptchaScriptSpy.mock.calls[0][0]();
+      return mountCaptcha({
+        provider: captcha.get('provider'),
+        sitekey: captcha.get('siteKey'),
+        clientSubdomain: captcha.get('clientSubdomain'),
+        hl: 'en',
+        isValid: true,
+        value: undefined,
+        onChange
       });
-    });
+    };
 
     it('should call render with the correct renderParams', () => {
+      mountAuth0V2();
       const renderParams = global.window.turnstile.render.mock.calls[0][1];
       expect(renderParams).toEqual({
         sitekey: 'mySiteKey',
@@ -218,56 +213,54 @@ describe('ThirdPartyCaptcha', () => {
         retry: 'never',
         'response-field': false
       });
+      cleanup();
     });
 
     it('should retry 3 times on error and then set value to BYPASS_CAPTCHA dummy token for failOpen', () => {
-      const renderParams = global.window.turnstile.render.mock.calls[0][1];
+      const onChange = jest.fn();
+      const instance = mountAuth0V2(onChange);
+
+      // Call error-callback 3 times — each should increment retryCount and trigger reset (new render call)
       for (let i = 0; i < 3; i++) {
-        const renderParams = global.window.turnstile.render.mock.calls[i][1];
+        const renderCallIndex = global.window.turnstile.render.mock.calls.length - 1;
+        const currentErrorCallback =
+          global.window.turnstile.render.mock.calls[renderCallIndex][1]['error-callback'];
         act(() => {
-          renderParams['error-callback']();
+          currentErrorCallback();
         });
-        const { retryCount } = wrapper.state;
-        const { value } = wrapper.props;
-        expect(retryCount).toBe(i + 1);
-        expect(value).toBe(undefined);
+        expect(instance.state.retryCount).toBe(i + 1);
+        expect(instance.props.value).toBe(undefined);
       }
 
-      act(() => renderParams['error-callback']());
+      // 4th call — past MAX_RETRY, should invoke onChange with BYPASS_CAPTCHA
+      const lastRenderCallIndex = global.window.turnstile.render.mock.calls.length - 1;
+      const lastErrorCallback =
+        global.window.turnstile.render.mock.calls[lastRenderCallIndex][1]['error-callback'];
+      act(() => {
+        lastErrorCallback();
+      });
 
-      const { onChange } = wrapper.props;
       expect(onChange.mock.calls).toHaveLength(1);
       expect(onChange.mock.calls[0][0]).toBe('BYPASS_CAPTCHA');
+      cleanup();
     });
   });
 
   describe('recaptcha enterprise', () => {
-    let wrapper;
     beforeAll(() => {
-      const lockMock = createLockMock({
-        provider: 'recaptcha_enterprise',
-        siteKey: 'mySiteKey'
-      });
-
+      global.window.grecaptcha.enterprise.render.mockClear();
+      const lockMock = createLockMock({ provider: 'recaptcha_enterprise', siteKey: 'mySiteKey' });
       const captcha = l.captcha(lockMock);
-      wrapper = mount(
-        <ThirdPartyCaptcha
-          provider={captcha.get('provider')}
-          sitekey={captcha.get('siteKey')}
-          clientSubdomain={captcha.get('clientSubdomain')}
-          hl={'en'}
-          isValid={true}
-          value={undefined}
-        />
-      ).instance();
-      act(() => {
-        const injectCaptchaScriptSpy = jest.spyOn(wrapper, 'injectCaptchaScript');
-
-        wrapper.componentDidMount();
-
-        injectCaptchaScriptSpy.mock.calls[0][0]();
+      mountCaptcha({
+        provider: captcha.get('provider'),
+        sitekey: captcha.get('siteKey'),
+        clientSubdomain: captcha.get('clientSubdomain'),
+        hl: 'en',
+        isValid: true,
+        value: undefined
       });
     });
+    afterAll(() => cleanup());
 
     it('should call render with the correct renderParams', () => {
       const renderParams = global.window.grecaptcha.enterprise.render.mock.calls[0][1];

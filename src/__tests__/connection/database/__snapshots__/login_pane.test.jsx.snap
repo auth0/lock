@@ -1,129 +1,613 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LoginPane hides the captcha for SSO connections 1`] = `
-<div>
-  <UsernamePane
-    i18n={{}}
-    lock={
-      Immutable.Map {
-        "id": "__lock-id__",
-      }
-    }
-    placeholder=""
-    strictValidation={false}
-    usernameStyle="username"
-    validateFormat={false}
-  />
-  <PasswordPane
-    hidden={false}
-    i18n={{}}
-    lock={
-      Immutable.Map {
-        "id": "__lock-id__",
-      }
-    }
-    placeholder=""
-  />
-</div>
+<DocumentFragment>
+  <div>
+    <div
+      class="auth0-lock-input-block auth0-lock-input-username"
+    >
+      <div
+        class="auth0-lock-input-wrap auth0-lock-input-wrap-with-icon"
+      >
+        <svg
+          aria-hidden="true"
+          class="auth0-lock-icon auth0-lock-icon-box"
+          focusable="false"
+          height="14px"
+          version="1.1"
+          viewBox="0 0 15 16"
+          width="13px"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+          <g
+            fill="none"
+            fill-rule="evenodd"
+            stroke="none"
+            stroke-width="1"
+          >
+            <g
+              fill="#888888"
+              transform="translate(-11.000000, -1471.000000)"
+            >
+              <path
+                d="M25.552,1486.998 L11.449,1486.998 C10.667,1485.799 10.984,1483.399 11.766,1482.6 C12.139,1482.219 14.931,1481.5 16.267,1481.172 C14.856,1480.076 13.995,1478.042 13.995,1476.103 C13.995,1473.284 14.813,1470.999 18.498,1470.999 C22.182,1470.999 23,1473.284 23,1476.103 C23,1478.037 22.145,1480.065 20.74,1481.163 C22.046,1481.489 24.88,1482.228 25.241,1482.601 C26.019,1483.399 26.328,1485.799 25.552,1486.998 L25.552,1486.998 Z M24.6,1483.443 C24.087,1483.169 21.881,1482.548 20,1482.097 L20,1480.513 C21.254,1479.659 21.997,1477.806 21.997,1476.12 C21.997,1473.841 21.414,1471.993 18.499,1471.993 C15.583,1471.993 15,1473.841 15,1476.12 C15,1477.807 15.744,1479.662 17,1480.515 L17,1482.112 C15.109,1482.556 12.914,1483.166 12.409,1483.442 C12.082,1483.854 11.797,1485.173 12,1486 L25,1486 C25.201,1485.174 24.922,1483.858 24.6,1483.443 L24.6,1483.443 Z"
+              />
+            </g>
+          </g>
+        </svg>
+        <input
+          aria-invalid="false"
+          aria-label="User name"
+          autocapitalize="off"
+          autocomplete="off"
+          autocorrect="off"
+          class="auth0-lock-input"
+          name="username"
+          placeholder=""
+          spellcheck="false"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      class="auth0-lock-input-block auth0-lock-input-show-password"
+    >
+      <div
+        class="auth0-lock-input-block auth0-lock-input-password"
+      >
+        <div
+          class="auth0-lock-input-wrap auth0-lock-input-wrap-with-icon"
+        >
+          <svg
+            aria-hidden="true"
+            class="auth0-lock-icon auth0-lock-icon-box"
+            focusable="false"
+            height="14px"
+            version="1.1"
+            viewBox="0 0 13 16"
+            width="11px"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <g
+              fill="none"
+              fill-rule="evenodd"
+              stroke="none"
+              stroke-width="1"
+            >
+              <g
+                fill="#888888"
+                transform="translate(-288.000000, -1508.000000)"
+              >
+                <path
+                  d="M299,1523.998 L290,1523.998 C288.896,1523.998 288,1523.102 288,1521.999 L288,1515.999 C288,1514.895 288.896,1513.998 290,1513.998 L290,1513.998 L290,1512.499 C290,1510.015 292.015,1507.999 294.5,1507.999 C296.985,1507.999 299,1510.015 299,1512.499 L299,1513.999 C300.104,1513.999 301,1514.895 301,1515.999 L301,1521.999 C301,1523.103 300.104,1523.998 299,1523.998 L299,1523.998 Z M298,1512.499 C298,1510.566 296.433,1508.999 294.5,1508.999 C292.567,1508.999 291,1510.566 291,1512.499 L291,1513.998 L298,1513.998 L298,1512.499 L298,1512.499 Z M300,1515.999 C300,1515.446 299.552,1514.998 299,1514.998 L290,1514.998 C289.447,1514.998 289,1515.446 289,1515.999 L289,1521.999 C289,1522.551 289.447,1522.998 290,1522.998 L299,1522.998 C299.552,1522.998 300,1522.551 300,1521.999 L300,1515.999 L300,1515.999 Z M294.5,1520.998 C294.224,1520.998 294,1520.774 294,1520.498 L294,1517.498 C294,1517.223 294.224,1516.999 294.5,1516.999 C294.776,1516.999 295,1517.223 295,1517.498 L295,1520.498 C295,1520.774 294.776,1520.998 294.5,1520.998 L294.5,1520.998 Z"
+                />
+              </g>
+            </g>
+          </svg>
+          <input
+            aria-invalid="false"
+            aria-label="Password"
+            autocapitalize="off"
+            autocomplete="off"
+            autocorrect="off"
+            class="auth0-lock-input"
+            id="undefined-password"
+            name="password"
+            placeholder=""
+            spellcheck="false"
+            type="password"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`LoginPane renders a captcha 1`] = `
-<div>
-  <UsernamePane
-    i18n={{}}
-    lock={
-      Immutable.Map {
-        "id": "__lock-id__",
-      }
-    }
-    placeholder=""
-    strictValidation={false}
-    usernameStyle="username"
-    validateFormat={false}
-  />
-  <PasswordPane
-    hidden={false}
-    i18n={{}}
-    lock={
-      Immutable.Map {
-        "id": "__lock-id__",
-      }
-    }
-    placeholder=""
-  />
-  <CaptchaPane
-    error={false}
-    i18n={{}}
-    lock={
-      Immutable.Map {
-        "id": "__lock-id__",
-      }
-    }
-    onReload={[Function]}
-  />
-</div>
+<DocumentFragment>
+  <div>
+    <div
+      class="auth0-lock-input-block auth0-lock-input-username"
+    >
+      <div
+        class="auth0-lock-input-wrap auth0-lock-input-wrap-with-icon"
+      >
+        <svg
+          aria-hidden="true"
+          class="auth0-lock-icon auth0-lock-icon-box"
+          focusable="false"
+          height="14px"
+          version="1.1"
+          viewBox="0 0 15 16"
+          width="13px"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+          <g
+            fill="none"
+            fill-rule="evenodd"
+            stroke="none"
+            stroke-width="1"
+          >
+            <g
+              fill="#888888"
+              transform="translate(-11.000000, -1471.000000)"
+            >
+              <path
+                d="M25.552,1486.998 L11.449,1486.998 C10.667,1485.799 10.984,1483.399 11.766,1482.6 C12.139,1482.219 14.931,1481.5 16.267,1481.172 C14.856,1480.076 13.995,1478.042 13.995,1476.103 C13.995,1473.284 14.813,1470.999 18.498,1470.999 C22.182,1470.999 23,1473.284 23,1476.103 C23,1478.037 22.145,1480.065 20.74,1481.163 C22.046,1481.489 24.88,1482.228 25.241,1482.601 C26.019,1483.399 26.328,1485.799 25.552,1486.998 L25.552,1486.998 Z M24.6,1483.443 C24.087,1483.169 21.881,1482.548 20,1482.097 L20,1480.513 C21.254,1479.659 21.997,1477.806 21.997,1476.12 C21.997,1473.841 21.414,1471.993 18.499,1471.993 C15.583,1471.993 15,1473.841 15,1476.12 C15,1477.807 15.744,1479.662 17,1480.515 L17,1482.112 C15.109,1482.556 12.914,1483.166 12.409,1483.442 C12.082,1483.854 11.797,1485.173 12,1486 L25,1486 C25.201,1485.174 24.922,1483.858 24.6,1483.443 L24.6,1483.443 Z"
+              />
+            </g>
+          </g>
+        </svg>
+        <input
+          aria-invalid="false"
+          aria-label="User name"
+          autocapitalize="off"
+          autocomplete="off"
+          autocorrect="off"
+          class="auth0-lock-input"
+          name="username"
+          placeholder=""
+          spellcheck="false"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      class="auth0-lock-input-block auth0-lock-input-show-password"
+    >
+      <div
+        class="auth0-lock-input-block auth0-lock-input-password"
+      >
+        <div
+          class="auth0-lock-input-wrap auth0-lock-input-wrap-with-icon"
+        >
+          <svg
+            aria-hidden="true"
+            class="auth0-lock-icon auth0-lock-icon-box"
+            focusable="false"
+            height="14px"
+            version="1.1"
+            viewBox="0 0 13 16"
+            width="11px"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <g
+              fill="none"
+              fill-rule="evenodd"
+              stroke="none"
+              stroke-width="1"
+            >
+              <g
+                fill="#888888"
+                transform="translate(-288.000000, -1508.000000)"
+              >
+                <path
+                  d="M299,1523.998 L290,1523.998 C288.896,1523.998 288,1523.102 288,1521.999 L288,1515.999 C288,1514.895 288.896,1513.998 290,1513.998 L290,1513.998 L290,1512.499 C290,1510.015 292.015,1507.999 294.5,1507.999 C296.985,1507.999 299,1510.015 299,1512.499 L299,1513.999 C300.104,1513.999 301,1514.895 301,1515.999 L301,1521.999 C301,1523.103 300.104,1523.998 299,1523.998 L299,1523.998 Z M298,1512.499 C298,1510.566 296.433,1508.999 294.5,1508.999 C292.567,1508.999 291,1510.566 291,1512.499 L291,1513.998 L298,1513.998 L298,1512.499 L298,1512.499 Z M300,1515.999 C300,1515.446 299.552,1514.998 299,1514.998 L290,1514.998 C289.447,1514.998 289,1515.446 289,1515.999 L289,1521.999 C289,1522.551 289.447,1522.998 290,1522.998 L299,1522.998 C299.552,1522.998 300,1522.551 300,1521.999 L300,1515.999 L300,1515.999 Z M294.5,1520.998 C294.224,1520.998 294,1520.774 294,1520.498 L294,1517.498 C294,1517.223 294.224,1516.999 294.5,1516.999 C294.776,1516.999 295,1517.223 295,1517.498 L295,1520.498 C295,1520.774 294.776,1520.998 294.5,1520.998 L294.5,1520.998 Z"
+                />
+              </g>
+            </g>
+          </svg>
+          <input
+            aria-invalid="false"
+            aria-label="Password"
+            autocapitalize="off"
+            autocomplete="off"
+            autocorrect="off"
+            class="auth0-lock-input"
+            id="undefined-password"
+            name="password"
+            placeholder=""
+            spellcheck="false"
+            type="password"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class="auth0-lock-captcha"
+      >
+        <div
+          class="auth0-lock-captcha-image"
+          style="background-image: url("true");"
+        />
+        <button
+          class="auth0-lock-captcha-refresh"
+          type="button"
+        >
+          <svg
+            fill="none"
+            height="20"
+            viewBox="0 0 20 20"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M17.5496 8.77262C17.007 5.01122 13.8021 2.11002 9.88989 2.11002C6.79596 2.11002 4.14611 3.93257 2.896 6.55065H7.11154C7.41852 6.55065 7.66749 6.79935 7.66749 7.10579C7.66749 7.41251 7.41879 7.66205 7.11154 7.66205H2.47938H1.30282C1.30781 7.64318 1.3092 7.62291 1.3142 7.60404C1.23426 7.56296 1.16987 7.50217 1.11824 7.42889C1.10325 7.40918 1.09048 7.39086 1.07827 7.36977C1.04746 7.3112 1.02998 7.24791 1.02193 7.17935C1.01776 7.15326 1 7.133 1 7.10552C1 7.08997 1.00722 7.0772 1.00888 7.06166V1.5582C1.00888 1.25176 1.25757 1.0025 1.56427 1.0025C1.87125 1.0025 2.11994 1.25148 2.11994 1.5582V5.61994C3.6293 2.87224 6.53311 1 9.88989 1C14.4182 1 18.1481 4.39195 18.6951 8.77235H17.5496V8.77262ZM9.88989 17.655C12.9841 17.655 15.6337 15.833 16.8841 13.2152H12.6685C12.3615 13.2152 12.1128 12.967 12.1128 12.6595C12.1128 12.3525 12.3615 12.1043 12.6685 12.1043H17.3004C17.3004 12.1041 17.3007 12.1035 17.3007 12.1032H18.4775C18.4725 12.1221 18.4709 12.1424 18.4659 12.161C18.5461 12.2021 18.6105 12.2631 18.6621 12.3367C18.6774 12.3564 18.6893 12.3744 18.7018 12.3955C18.7326 12.4541 18.7504 12.5174 18.7584 12.5859C18.7626 12.612 18.7803 12.632 18.7803 12.6598C18.7803 12.675 18.7728 12.6881 18.7717 12.7031V18.2076C18.7717 18.5144 18.523 18.7628 18.2161 18.7628C17.9091 18.7628 17.6604 18.5144 17.6604 18.2076V14.1451C16.151 16.8928 13.2469 18.765 9.89017 18.765C5.36209 18.765 1.63255 15.3739 1.08493 10.9935H2.23041C2.77331 14.7549 5.97799 17.655 9.88989 17.655Z"
+              fill="black"
+              fill-rule="evenodd"
+            />
+            <mask
+              height="18"
+              id="mask0"
+              maskUnits="userSpaceOnUse"
+              width="18"
+              x="1"
+              y="1"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M17.5496 8.77262C17.007 5.01122 13.8021 2.11002 9.88989 2.11002C6.79596 2.11002 4.14611 3.93257 2.896 6.55065H7.11154C7.41852 6.55065 7.66749 6.79935 7.66749 7.10579C7.66749 7.41251 7.41879 7.66205 7.11154 7.66205H2.47938H1.30282C1.30781 7.64318 1.3092 7.62291 1.3142 7.60404C1.23426 7.56296 1.16987 7.50217 1.11824 7.42889C1.10325 7.40918 1.09048 7.39086 1.07827 7.36977C1.04746 7.3112 1.02998 7.24791 1.02193 7.17935C1.01776 7.15326 1 7.133 1 7.10552C1 7.08997 1.00722 7.0772 1.00888 7.06166V1.5582C1.00888 1.25176 1.25757 1.0025 1.56427 1.0025C1.87125 1.0025 2.11994 1.25148 2.11994 1.5582V5.61994C3.6293 2.87224 6.53311 1 9.88989 1C14.4182 1 18.1481 4.39195 18.6951 8.77235H17.5496V8.77262ZM9.88989 17.655C12.9841 17.655 15.6337 15.833 16.8841 13.2152H12.6685C12.3615 13.2152 12.1128 12.967 12.1128 12.6595C12.1128 12.3525 12.3615 12.1043 12.6685 12.1043H17.3004C17.3004 12.1041 17.3007 12.1035 17.3007 12.1032H18.4775C18.4725 12.1221 18.4709 12.1424 18.4659 12.161C18.5461 12.2021 18.6105 12.2631 18.6621 12.3367C18.6774 12.3564 18.6893 12.3744 18.7018 12.3955C18.7326 12.4541 18.7504 12.5174 18.7584 12.5859C18.7626 12.612 18.7803 12.632 18.7803 12.6598C18.7803 12.675 18.7728 12.6881 18.7717 12.7031V18.2076C18.7717 18.5144 18.523 18.7628 18.2161 18.7628C17.9091 18.7628 17.6604 18.5144 17.6604 18.2076V14.1451C16.151 16.8928 13.2469 18.765 9.89017 18.765C5.36209 18.765 1.63255 15.3739 1.08493 10.9935H2.23041C2.77331 14.7549 5.97799 17.655 9.88989 17.655Z"
+                fill="white"
+                fill-rule="evenodd"
+              />
+            </mask>
+            <g
+              mask="url(#mask0)"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        class="auth0-lock-input-block auth0-lock-input-captcha"
+      >
+        <div
+          class="auth0-lock-input-wrap auth0-lock-input-wrap-with-icon"
+        >
+          <svg
+            class="auth0-lock-icon auth0-lock-icon-box"
+            fill="none"
+            height="20"
+            viewBox="0 0 21 20"
+            width="21"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g
+              id="icon/key"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M16.3884 11.0145C14.4508 12.9522 11.3948 13.0447 9.32094 11.3401L7.20872 13.2642L9.60904 15.6697L8.83354 16.4466L6.39631 14.0048L4.88251 15.3832L7.39496 17.89L6.61586 18.6666L3.5 15.5587L3.53914 15.5198C3.47446 15.3363 3.51554 15.1287 3.67514 14.983L8.54211 10.5496C6.89425 8.47691 7.005 5.46384 8.92209 3.54636C10.9841 1.48455 14.3267 1.48455 16.3884 3.54636C18.4501 5.60846 18.4501 8.95239 16.3884 11.0145ZM15.6048 4.33856C13.98 2.71309 11.3454 2.71309 9.72062 4.33856C8.0958 5.9632 8.0958 8.59793 9.72062 10.2226C11.3454 11.8478 13.98 11.8478 15.6048 10.2226C17.2297 8.59793 17.2297 5.96292 15.6048 4.33856Z"
+                fill="#888888"
+                fill-rule="evenodd"
+                id="Shape"
+              />
+            </g>
+          </svg>
+          <input
+            aria-invalid="false"
+            aria-label="Email"
+            autocapitalize="off"
+            autocomplete="off"
+            autocorrect="off"
+            class="auth0-lock-input"
+            id="undefined-captcha"
+            inputmode="text"
+            name="captcha"
+            placeholder=""
+            spellcheck="false"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`LoginPane renders correctly 1`] = `
-<div>
-  <UsernamePane
-    i18n={{}}
-    lock={
-      Immutable.Map {
-        "id": "__lock-id__",
-      }
-    }
-    placeholder=""
-    strictValidation={false}
-    usernameStyle="username"
-    validateFormat={false}
-  />
-  <PasswordPane
-    hidden={false}
-    i18n={{}}
-    lock={
-      Immutable.Map {
-        "id": "__lock-id__",
-      }
-    }
-    placeholder=""
-  />
-</div>
+<DocumentFragment>
+  <div>
+    <div
+      class="auth0-lock-input-block auth0-lock-input-username"
+    >
+      <div
+        class="auth0-lock-input-wrap auth0-lock-input-wrap-with-icon"
+      >
+        <svg
+          aria-hidden="true"
+          class="auth0-lock-icon auth0-lock-icon-box"
+          focusable="false"
+          height="14px"
+          version="1.1"
+          viewBox="0 0 15 16"
+          width="13px"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+          <g
+            fill="none"
+            fill-rule="evenodd"
+            stroke="none"
+            stroke-width="1"
+          >
+            <g
+              fill="#888888"
+              transform="translate(-11.000000, -1471.000000)"
+            >
+              <path
+                d="M25.552,1486.998 L11.449,1486.998 C10.667,1485.799 10.984,1483.399 11.766,1482.6 C12.139,1482.219 14.931,1481.5 16.267,1481.172 C14.856,1480.076 13.995,1478.042 13.995,1476.103 C13.995,1473.284 14.813,1470.999 18.498,1470.999 C22.182,1470.999 23,1473.284 23,1476.103 C23,1478.037 22.145,1480.065 20.74,1481.163 C22.046,1481.489 24.88,1482.228 25.241,1482.601 C26.019,1483.399 26.328,1485.799 25.552,1486.998 L25.552,1486.998 Z M24.6,1483.443 C24.087,1483.169 21.881,1482.548 20,1482.097 L20,1480.513 C21.254,1479.659 21.997,1477.806 21.997,1476.12 C21.997,1473.841 21.414,1471.993 18.499,1471.993 C15.583,1471.993 15,1473.841 15,1476.12 C15,1477.807 15.744,1479.662 17,1480.515 L17,1482.112 C15.109,1482.556 12.914,1483.166 12.409,1483.442 C12.082,1483.854 11.797,1485.173 12,1486 L25,1486 C25.201,1485.174 24.922,1483.858 24.6,1483.443 L24.6,1483.443 Z"
+              />
+            </g>
+          </g>
+        </svg>
+        <input
+          aria-invalid="false"
+          aria-label="User name"
+          autocapitalize="off"
+          autocomplete="off"
+          autocorrect="off"
+          class="auth0-lock-input"
+          name="username"
+          placeholder=""
+          spellcheck="false"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      class="auth0-lock-input-block auth0-lock-input-show-password"
+    >
+      <div
+        class="auth0-lock-input-block auth0-lock-input-password"
+      >
+        <div
+          class="auth0-lock-input-wrap auth0-lock-input-wrap-with-icon"
+        >
+          <svg
+            aria-hidden="true"
+            class="auth0-lock-icon auth0-lock-icon-box"
+            focusable="false"
+            height="14px"
+            version="1.1"
+            viewBox="0 0 13 16"
+            width="11px"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <g
+              fill="none"
+              fill-rule="evenodd"
+              stroke="none"
+              stroke-width="1"
+            >
+              <g
+                fill="#888888"
+                transform="translate(-288.000000, -1508.000000)"
+              >
+                <path
+                  d="M299,1523.998 L290,1523.998 C288.896,1523.998 288,1523.102 288,1521.999 L288,1515.999 C288,1514.895 288.896,1513.998 290,1513.998 L290,1513.998 L290,1512.499 C290,1510.015 292.015,1507.999 294.5,1507.999 C296.985,1507.999 299,1510.015 299,1512.499 L299,1513.999 C300.104,1513.999 301,1514.895 301,1515.999 L301,1521.999 C301,1523.103 300.104,1523.998 299,1523.998 L299,1523.998 Z M298,1512.499 C298,1510.566 296.433,1508.999 294.5,1508.999 C292.567,1508.999 291,1510.566 291,1512.499 L291,1513.998 L298,1513.998 L298,1512.499 L298,1512.499 Z M300,1515.999 C300,1515.446 299.552,1514.998 299,1514.998 L290,1514.998 C289.447,1514.998 289,1515.446 289,1515.999 L289,1521.999 C289,1522.551 289.447,1522.998 290,1522.998 L299,1522.998 C299.552,1522.998 300,1522.551 300,1521.999 L300,1515.999 L300,1515.999 Z M294.5,1520.998 C294.224,1520.998 294,1520.774 294,1520.498 L294,1517.498 C294,1517.223 294.224,1516.999 294.5,1516.999 C294.776,1516.999 295,1517.223 295,1517.498 L295,1520.498 C295,1520.774 294.776,1520.998 294.5,1520.998 L294.5,1520.998 Z"
+                />
+              </g>
+            </g>
+          </svg>
+          <input
+            aria-invalid="false"
+            aria-label="Password"
+            autocapitalize="off"
+            autocomplete="off"
+            autocorrect="off"
+            class="auth0-lock-input"
+            id="undefined-password"
+            name="password"
+            placeholder=""
+            spellcheck="false"
+            type="password"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`LoginPane shows the captcha for SSO (ADFS) connections 1`] = `
-<div>
-  <UsernamePane
-    i18n={{}}
-    lock={
-      Immutable.Map {
-        "id": "__lock-id__",
-      }
-    }
-    placeholder=""
-    strictValidation={false}
-    usernameStyle="username"
-    validateFormat={false}
-  />
-  <PasswordPane
-    hidden={false}
-    i18n={{}}
-    lock={
-      Immutable.Map {
-        "id": "__lock-id__",
-      }
-    }
-    placeholder=""
-  />
-  <CaptchaPane
-    error={false}
-    i18n={{}}
-    lock={
-      Immutable.Map {
-        "id": "__lock-id__",
-      }
-    }
-    onReload={[Function]}
-  />
-</div>
+<DocumentFragment>
+  <div>
+    <div
+      class="auth0-lock-input-block auth0-lock-input-username"
+    >
+      <div
+        class="auth0-lock-input-wrap auth0-lock-input-wrap-with-icon"
+      >
+        <svg
+          aria-hidden="true"
+          class="auth0-lock-icon auth0-lock-icon-box"
+          focusable="false"
+          height="14px"
+          version="1.1"
+          viewBox="0 0 15 16"
+          width="13px"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+          <g
+            fill="none"
+            fill-rule="evenodd"
+            stroke="none"
+            stroke-width="1"
+          >
+            <g
+              fill="#888888"
+              transform="translate(-11.000000, -1471.000000)"
+            >
+              <path
+                d="M25.552,1486.998 L11.449,1486.998 C10.667,1485.799 10.984,1483.399 11.766,1482.6 C12.139,1482.219 14.931,1481.5 16.267,1481.172 C14.856,1480.076 13.995,1478.042 13.995,1476.103 C13.995,1473.284 14.813,1470.999 18.498,1470.999 C22.182,1470.999 23,1473.284 23,1476.103 C23,1478.037 22.145,1480.065 20.74,1481.163 C22.046,1481.489 24.88,1482.228 25.241,1482.601 C26.019,1483.399 26.328,1485.799 25.552,1486.998 L25.552,1486.998 Z M24.6,1483.443 C24.087,1483.169 21.881,1482.548 20,1482.097 L20,1480.513 C21.254,1479.659 21.997,1477.806 21.997,1476.12 C21.997,1473.841 21.414,1471.993 18.499,1471.993 C15.583,1471.993 15,1473.841 15,1476.12 C15,1477.807 15.744,1479.662 17,1480.515 L17,1482.112 C15.109,1482.556 12.914,1483.166 12.409,1483.442 C12.082,1483.854 11.797,1485.173 12,1486 L25,1486 C25.201,1485.174 24.922,1483.858 24.6,1483.443 L24.6,1483.443 Z"
+              />
+            </g>
+          </g>
+        </svg>
+        <input
+          aria-invalid="false"
+          aria-label="User name"
+          autocapitalize="off"
+          autocomplete="off"
+          autocorrect="off"
+          class="auth0-lock-input"
+          name="username"
+          placeholder=""
+          spellcheck="false"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      class="auth0-lock-input-block auth0-lock-input-show-password"
+    >
+      <div
+        class="auth0-lock-input-block auth0-lock-input-password"
+      >
+        <div
+          class="auth0-lock-input-wrap auth0-lock-input-wrap-with-icon"
+        >
+          <svg
+            aria-hidden="true"
+            class="auth0-lock-icon auth0-lock-icon-box"
+            focusable="false"
+            height="14px"
+            version="1.1"
+            viewBox="0 0 13 16"
+            width="11px"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <g
+              fill="none"
+              fill-rule="evenodd"
+              stroke="none"
+              stroke-width="1"
+            >
+              <g
+                fill="#888888"
+                transform="translate(-288.000000, -1508.000000)"
+              >
+                <path
+                  d="M299,1523.998 L290,1523.998 C288.896,1523.998 288,1523.102 288,1521.999 L288,1515.999 C288,1514.895 288.896,1513.998 290,1513.998 L290,1513.998 L290,1512.499 C290,1510.015 292.015,1507.999 294.5,1507.999 C296.985,1507.999 299,1510.015 299,1512.499 L299,1513.999 C300.104,1513.999 301,1514.895 301,1515.999 L301,1521.999 C301,1523.103 300.104,1523.998 299,1523.998 L299,1523.998 Z M298,1512.499 C298,1510.566 296.433,1508.999 294.5,1508.999 C292.567,1508.999 291,1510.566 291,1512.499 L291,1513.998 L298,1513.998 L298,1512.499 L298,1512.499 Z M300,1515.999 C300,1515.446 299.552,1514.998 299,1514.998 L290,1514.998 C289.447,1514.998 289,1515.446 289,1515.999 L289,1521.999 C289,1522.551 289.447,1522.998 290,1522.998 L299,1522.998 C299.552,1522.998 300,1522.551 300,1521.999 L300,1515.999 L300,1515.999 Z M294.5,1520.998 C294.224,1520.998 294,1520.774 294,1520.498 L294,1517.498 C294,1517.223 294.224,1516.999 294.5,1516.999 C294.776,1516.999 295,1517.223 295,1517.498 L295,1520.498 C295,1520.774 294.776,1520.998 294.5,1520.998 L294.5,1520.998 Z"
+                />
+              </g>
+            </g>
+          </svg>
+          <input
+            aria-invalid="false"
+            aria-label="Password"
+            autocapitalize="off"
+            autocomplete="off"
+            autocorrect="off"
+            class="auth0-lock-input"
+            id="undefined-password"
+            name="password"
+            placeholder=""
+            spellcheck="false"
+            type="password"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class="auth0-lock-captcha"
+      >
+        <div
+          class="auth0-lock-captcha-image"
+          style="background-image: url("true");"
+        />
+        <button
+          class="auth0-lock-captcha-refresh"
+          type="button"
+        >
+          <svg
+            fill="none"
+            height="20"
+            viewBox="0 0 20 20"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M17.5496 8.77262C17.007 5.01122 13.8021 2.11002 9.88989 2.11002C6.79596 2.11002 4.14611 3.93257 2.896 6.55065H7.11154C7.41852 6.55065 7.66749 6.79935 7.66749 7.10579C7.66749 7.41251 7.41879 7.66205 7.11154 7.66205H2.47938H1.30282C1.30781 7.64318 1.3092 7.62291 1.3142 7.60404C1.23426 7.56296 1.16987 7.50217 1.11824 7.42889C1.10325 7.40918 1.09048 7.39086 1.07827 7.36977C1.04746 7.3112 1.02998 7.24791 1.02193 7.17935C1.01776 7.15326 1 7.133 1 7.10552C1 7.08997 1.00722 7.0772 1.00888 7.06166V1.5582C1.00888 1.25176 1.25757 1.0025 1.56427 1.0025C1.87125 1.0025 2.11994 1.25148 2.11994 1.5582V5.61994C3.6293 2.87224 6.53311 1 9.88989 1C14.4182 1 18.1481 4.39195 18.6951 8.77235H17.5496V8.77262ZM9.88989 17.655C12.9841 17.655 15.6337 15.833 16.8841 13.2152H12.6685C12.3615 13.2152 12.1128 12.967 12.1128 12.6595C12.1128 12.3525 12.3615 12.1043 12.6685 12.1043H17.3004C17.3004 12.1041 17.3007 12.1035 17.3007 12.1032H18.4775C18.4725 12.1221 18.4709 12.1424 18.4659 12.161C18.5461 12.2021 18.6105 12.2631 18.6621 12.3367C18.6774 12.3564 18.6893 12.3744 18.7018 12.3955C18.7326 12.4541 18.7504 12.5174 18.7584 12.5859C18.7626 12.612 18.7803 12.632 18.7803 12.6598C18.7803 12.675 18.7728 12.6881 18.7717 12.7031V18.2076C18.7717 18.5144 18.523 18.7628 18.2161 18.7628C17.9091 18.7628 17.6604 18.5144 17.6604 18.2076V14.1451C16.151 16.8928 13.2469 18.765 9.89017 18.765C5.36209 18.765 1.63255 15.3739 1.08493 10.9935H2.23041C2.77331 14.7549 5.97799 17.655 9.88989 17.655Z"
+              fill="black"
+              fill-rule="evenodd"
+            />
+            <mask
+              height="18"
+              id="mask0"
+              maskUnits="userSpaceOnUse"
+              width="18"
+              x="1"
+              y="1"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M17.5496 8.77262C17.007 5.01122 13.8021 2.11002 9.88989 2.11002C6.79596 2.11002 4.14611 3.93257 2.896 6.55065H7.11154C7.41852 6.55065 7.66749 6.79935 7.66749 7.10579C7.66749 7.41251 7.41879 7.66205 7.11154 7.66205H2.47938H1.30282C1.30781 7.64318 1.3092 7.62291 1.3142 7.60404C1.23426 7.56296 1.16987 7.50217 1.11824 7.42889C1.10325 7.40918 1.09048 7.39086 1.07827 7.36977C1.04746 7.3112 1.02998 7.24791 1.02193 7.17935C1.01776 7.15326 1 7.133 1 7.10552C1 7.08997 1.00722 7.0772 1.00888 7.06166V1.5582C1.00888 1.25176 1.25757 1.0025 1.56427 1.0025C1.87125 1.0025 2.11994 1.25148 2.11994 1.5582V5.61994C3.6293 2.87224 6.53311 1 9.88989 1C14.4182 1 18.1481 4.39195 18.6951 8.77235H17.5496V8.77262ZM9.88989 17.655C12.9841 17.655 15.6337 15.833 16.8841 13.2152H12.6685C12.3615 13.2152 12.1128 12.967 12.1128 12.6595C12.1128 12.3525 12.3615 12.1043 12.6685 12.1043H17.3004C17.3004 12.1041 17.3007 12.1035 17.3007 12.1032H18.4775C18.4725 12.1221 18.4709 12.1424 18.4659 12.161C18.5461 12.2021 18.6105 12.2631 18.6621 12.3367C18.6774 12.3564 18.6893 12.3744 18.7018 12.3955C18.7326 12.4541 18.7504 12.5174 18.7584 12.5859C18.7626 12.612 18.7803 12.632 18.7803 12.6598C18.7803 12.675 18.7728 12.6881 18.7717 12.7031V18.2076C18.7717 18.5144 18.523 18.7628 18.2161 18.7628C17.9091 18.7628 17.6604 18.5144 17.6604 18.2076V14.1451C16.151 16.8928 13.2469 18.765 9.89017 18.765C5.36209 18.765 1.63255 15.3739 1.08493 10.9935H2.23041C2.77331 14.7549 5.97799 17.655 9.88989 17.655Z"
+                fill="white"
+                fill-rule="evenodd"
+              />
+            </mask>
+            <g
+              mask="url(#mask0)"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        class="auth0-lock-input-block auth0-lock-input-captcha"
+      >
+        <div
+          class="auth0-lock-input-wrap auth0-lock-input-wrap-with-icon"
+        >
+          <svg
+            class="auth0-lock-icon auth0-lock-icon-box"
+            fill="none"
+            height="20"
+            viewBox="0 0 21 20"
+            width="21"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g
+              id="icon/key"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M16.3884 11.0145C14.4508 12.9522 11.3948 13.0447 9.32094 11.3401L7.20872 13.2642L9.60904 15.6697L8.83354 16.4466L6.39631 14.0048L4.88251 15.3832L7.39496 17.89L6.61586 18.6666L3.5 15.5587L3.53914 15.5198C3.47446 15.3363 3.51554 15.1287 3.67514 14.983L8.54211 10.5496C6.89425 8.47691 7.005 5.46384 8.92209 3.54636C10.9841 1.48455 14.3267 1.48455 16.3884 3.54636C18.4501 5.60846 18.4501 8.95239 16.3884 11.0145ZM15.6048 4.33856C13.98 2.71309 11.3454 2.71309 9.72062 4.33856C8.0958 5.9632 8.0958 8.59793 9.72062 10.2226C11.3454 11.8478 13.98 11.8478 15.6048 10.2226C17.2297 8.59793 17.2297 5.96292 15.6048 4.33856Z"
+                fill="#888888"
+                fill-rule="evenodd"
+                id="Shape"
+              />
+            </g>
+          </svg>
+          <input
+            aria-invalid="false"
+            aria-label="Email"
+            autocapitalize="off"
+            autocomplete="off"
+            autocorrect="off"
+            class="auth0-lock-input"
+            id="undefined-captcha"
+            inputmode="text"
+            name="captcha"
+            placeholder=""
+            spellcheck="false"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
 `;

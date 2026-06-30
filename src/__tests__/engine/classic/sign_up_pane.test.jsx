@@ -1,6 +1,6 @@
 import React from 'react';
+import I from 'immutable';
 import { expectComponent, mockComponent } from 'testUtils';
-import { expectShallowComponent } from '../../testUtils';
 import { Flow } from '../../../connection/captcha';
 
 jest.mock('field/email/email_pane', () => mockComponent('email_pane'));
@@ -9,7 +9,9 @@ jest.mock('field/username/username_pane', () => mockComponent('username_pane'));
 jest.mock('field/custom_input', () => mockComponent('custom_input'));
 
 jest.mock('core/index', () => ({
-  signupCaptcha: jest.fn()
+  signupCaptcha: jest.fn(),
+  id: m => (m && m.get ? m.get('id') : '__lock-id__'),
+  ui: { language: () => 'en' }
 }));
 
 jest.mock('engine/classic', () => ({
@@ -40,7 +42,7 @@ describe('SignUpPane', () => {
       html: (...keys) => keys.join(',')
     },
     flow: Flow.SIGNUP,
-    model: 'model',
+    model: I.fromJS({ id: '__lock-id__' }),
     emailInputPlaceholder: 'emailInputPlaceholder',
     onlyEmail: true,
     passwordInputPlaceholder: 'passwordInputPlaceholder',
@@ -70,7 +72,7 @@ describe('SignUpPane', () => {
 
     const Component = getComponent();
 
-    expectShallowComponent(<Component {...defaultProps} />).toMatchSnapshot();
+    expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
   });
 
   it('hides the Captcha pane for SSO connections', () => {
@@ -84,7 +86,7 @@ describe('SignUpPane', () => {
 
     const Component = getComponent();
 
-    expectShallowComponent(<Component {...defaultProps} />).toMatchSnapshot();
+    expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
   });
 
   it('shows the Captcha pane for SSO (ADFS) connections', () => {
@@ -99,7 +101,7 @@ describe('SignUpPane', () => {
 
     const Component = getComponent();
 
-    expectShallowComponent(<Component {...defaultProps} />).toMatchSnapshot();
+    expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
   });
 
   describe('onlyEmail is false', () => {

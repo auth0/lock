@@ -1,5 +1,6 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
+import { act } from '@testing-library/react';
 
 import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
 
@@ -76,8 +77,10 @@ describe('VcodePane', () => {
   it('calls `onRestart` when alternative link is clicked', () => {
     let VcodePane = getComponent();
 
-    const wrapper = mount(<VcodePane {...defaultProps} />);
-    wrapper.find('.auth0-lock-alternative-link').simulate('click');
+    const { container } = render(<VcodePane {...defaultProps} />);
+    act(() => {
+      container.querySelector('.auth0-lock-alternative-link').click();
+    });
 
     const { mock } = defaultProps.onRestart;
     expect(mock.calls.length).toBe(1);
@@ -86,8 +89,8 @@ describe('VcodePane', () => {
   it('calls `swap` when VcodeInput changes', () => {
     let VcodePane = getComponent();
 
-    const wrapper = mount(<VcodePane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper, 1);
+    const { container } = render(<VcodePane {...defaultProps} />);
+    const props = extractPropsFromWrapper(container, 'vcode_input');
 
     props.onChange({ preventDefault: jest.fn(), target: { value: 'newCode' } });
 

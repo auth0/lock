@@ -1,55 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AuthButton renders correctly 1`] = `
-<a
-  className="auth0-lock-social-button auth0-lock-social-big-button"
-  data-provider="strategy"
-  onClick={[MockFunction]}
-  style={{}}
-  type="button"
->
-  <div
-    className="auth0-lock-social-button-icon"
-    style={{}}
-  />
-  <div
-    className="auth0-lock-social-button-text"
-    style={{}}
+<DocumentFragment>
+  <a
+    class="auth0-lock-social-button auth0-lock-social-big-button"
+    data-provider="strategy"
+    type="button"
   >
-    label
-  </div>
-</a>
+    <div
+      class="auth0-lock-social-button-icon"
+    />
+    <div
+      class="auth0-lock-social-button-text"
+    >
+      label
+    </div>
+  </a>
+</DocumentFragment>
 `;
 
 exports[`AuthButton renders with style customizations 1`] = `
-<a
-  className="auth0-lock-social-button auth0-lock-social-big-button"
-  data-provider="strategy"
-  onClick={[MockFunction]}
-  style={
-    {
-      "backgroundColor": "primaryColor",
-    }
-  }
-  type="button"
->
-  <div
-    className="auth0-lock-social-button-icon"
-    style={
-      {
-        "backgroundImage": "url('test')",
-      }
-    }
-  />
-  <div
-    className="auth0-lock-social-button-text"
-    style={
-      {
-        "color": "foregroundColor",
-      }
-    }
+<DocumentFragment>
+  <a
+    class="auth0-lock-social-button auth0-lock-social-big-button"
+    data-provider="strategy"
+    type="button"
   >
-    label
-  </div>
-</a>
+    <div
+      class="auth0-lock-social-button-icon"
+      style="background-image: url("test");"
+    />
+    <div
+      class="auth0-lock-social-button-text"
+    >
+      label
+    </div>
+  </a>
+</DocumentFragment>
 `;

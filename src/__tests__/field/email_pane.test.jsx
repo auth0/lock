@@ -1,8 +1,8 @@
 import React from 'react';
 import Immutable from 'immutable';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 
-import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
+import { extractPropsFromWrapper, getMockProps, mockComponent } from 'testUtils';
 
 jest.mock('ui/input/email_input', () => mockComponent('email_input'));
 
@@ -56,9 +56,12 @@ describe('EmailPane', () => {
     }));
   });
 
-  it('renders correctly', () => {
+  it('renders correctly with isValid=false when `isFieldVisiblyInvalid` is true', () => {
     const EmailPane = getComponent();
-    expectComponent(<EmailPane {...defaultProps} />).toMatchSnapshot();
+    const { container } = render(<EmailPane {...defaultProps} />);
+    const props = getMockProps(container.querySelector('[data-__type="email_input"]'));
+    expect(props.isValid).toBe(false);
+    expect(props.autoComplete).toBe(false);
   });
   it('sets `blankErrorHint` when username is empty', () => {
     const fieldIndexMock = require('field/index');
@@ -69,26 +72,30 @@ describe('EmailPane', () => {
         value: undefined
       });
     const EmailPane = getComponent();
-
-    expectComponent(<EmailPane {...defaultProps} />).toMatchSnapshot();
+    const { container } = render(<EmailPane {...defaultProps} />);
+    const props = getMockProps(container.querySelector('[data-__type="email_input"]'));
+    expect(props.isValid).toBe(false);
+    expect(props.invalidHint).toBe('blankErrorHint');
   });
   it('sets isValid as true when `isFieldVisiblyInvalid` is false', () => {
     require('field/index').isFieldVisiblyInvalid = () => false;
     let EmailPane = getComponent();
-
-    expectComponent(<EmailPane {...defaultProps} />).toMatchSnapshot();
+    const { container } = render(<EmailPane {...defaultProps} />);
+    const props = getMockProps(container.querySelector('[data-__type="email_input"]'));
+    expect(props.isValid).toBe(true);
   });
   it('sets autoComplete to true when `allowAutocomplete` is true', () => {
     require('core/index').ui.allowAutocomplete = () => true;
     let EmailPane = getComponent();
-
-    expectComponent(<EmailPane {...defaultProps} />).toMatchSnapshot();
+    const { container } = render(<EmailPane {...defaultProps} />);
+    const props = getMockProps(container.querySelector('[data-__type="email_input"]'));
+    expect(props.autoComplete).toBe(true);
   });
   it('fetches the avatar on componentDidMount if ui.avatar is true and there is a username', () => {
     require('core/index').ui.avatar = () => true;
     let EmailPane = getComponent();
 
-    mount(<EmailPane {...defaultProps} />);
+    render(<EmailPane {...defaultProps} />);
 
     const { mock } = require('avatar').requestAvatar;
     expect(mock.calls.length).toBe(1);
@@ -97,8 +104,8 @@ describe('EmailPane', () => {
     require('core/index').ui.avatar = () => true;
     let EmailPane = getComponent();
 
-    const wrapper = mount(<EmailPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper);
+    const { container } = render(<EmailPane {...defaultProps} />);
+    const props = extractPropsFromWrapper(container, 'email_input');
     props.onChange({ target: { value: 'newUser@example.com' } });
 
     const { mock } = require('avatar').debouncedRequestAvatar;
@@ -107,8 +114,8 @@ describe('EmailPane', () => {
   it('calls `swap` onChange', () => {
     let EmailPane = getComponent();
 
-    const wrapper = mount(<EmailPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper);
+    const { container } = render(<EmailPane {...defaultProps} />);
+    const props = extractPropsFromWrapper(container, 'email_input');
     props.onChange({ target: { value: 'newUser@example.com' } });
 
     const { mock } = require('store/index').swap;

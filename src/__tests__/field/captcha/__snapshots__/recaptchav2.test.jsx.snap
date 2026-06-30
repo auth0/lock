@@ -1,12 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Recaptcha v2 should match the snapshot 1`] = `
-<div
-  className="auth0-lock-recaptcha-block auth0-lock-recaptcha-block-error"
->
+<DocumentFragment>
   <div
-    className="auth0-lock-recaptchav2"
-    id=""
-  />
-</div>
+    class="auth0-lock-recaptcha-block auth0-lock-recaptcha-block-error"
+  >
+    <div
+      class="auth0-lock-recaptchav2"
+      id=""
+    />
+  </div>
+</DocumentFragment>
 `;

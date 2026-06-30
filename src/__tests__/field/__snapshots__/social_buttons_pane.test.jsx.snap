@@ -30,101 +30,71 @@ exports[`SocialButtonsPane calls signUpError when isSignUp===true and terms were
 `;
 
 exports[`SocialButtonsPane renders correctly 1`] = `
-<div
-  className="auth-lock-social-buttons-pane"
-  tabIndex={0}
->
+<DocumentFragment>
   <div
-    className="auth0-lock-social-buttons-container"
+    class="auth-lock-social-buttons-pane"
+    tabindex="0"
   >
     <div
-      data-__type="auth_button"
-      data-foregroundColor="authButtonsTheme-foregroundColor"
-      data-icon="authButtonsTheme-icon"
-      data-label="loginWithLabel,authButtonsTheme-displayName"
-      data-onClick={[Function]}
-      data-primaryColor="authButtonsTheme-primaryColor"
-      data-strategy="socialConnections1-strategy"
-    />
-    <div
-      data-__type="auth_button"
-      data-foregroundColor="authButtonsTheme-foregroundColor"
-      data-icon="authButtonsTheme-icon"
-      data-label="loginWithLabel,authButtonsTheme-displayName"
-      data-onClick={[Function]}
-      data-primaryColor="authButtonsTheme-primaryColor"
-      data-strategy="socialConnections2-strategy"
-    />
+      class="auth0-lock-social-buttons-container"
+    >
+      <div
+        data-__type="auth_button"
+      />
+      <div
+        data-__type="auth_button"
+      />
+    </div>
   </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`SocialButtonsPane shows header when instructions are available 1`] = `
-<div
-  className="auth-lock-social-buttons-pane"
-  tabIndex={0}
->
-  <p>
-    instructions
-  </p>
+<DocumentFragment>
   <div
-    className="auth0-lock-social-buttons-container"
+    class="auth-lock-social-buttons-pane"
+    tabindex="0"
   >
+    <p>
+      instructions
+    </p>
     <div
-      data-__type="auth_button"
-      data-foregroundColor="authButtonsTheme-foregroundColor"
-      data-icon="authButtonsTheme-icon"
-      data-label="loginWithLabel,authButtonsTheme-displayName"
-      data-onClick={[Function]}
-      data-primaryColor="authButtonsTheme-primaryColor"
-      data-strategy="socialConnections1-strategy"
-    />
-    <div
-      data-__type="auth_button"
-      data-foregroundColor="authButtonsTheme-foregroundColor"
-      data-icon="authButtonsTheme-icon"
-      data-label="loginWithLabel,authButtonsTheme-displayName"
-      data-onClick={[Function]}
-      data-primaryColor="authButtonsTheme-primaryColor"
-      data-strategy="socialConnections2-strategy"
-    />
+      class="auth0-lock-social-buttons-container"
+    >
+      <div
+        data-__type="auth_button"
+      />
+      <div
+        data-__type="auth_button"
+      />
+    </div>
   </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`SocialButtonsPane shows loading when showLoading === true 1`] = `
-<div
-  className="auth-lock-social-buttons-pane"
-  tabIndex={0}
->
+<DocumentFragment>
   <div
-    className="auth0-lock-social-buttons-container"
+    class="auth-lock-social-buttons-pane"
+    tabindex="0"
   >
     <div
-      data-__type="auth_button"
-      data-foregroundColor="authButtonsTheme-foregroundColor"
-      data-icon="authButtonsTheme-icon"
-      data-label="loginWithLabel,authButtonsTheme-displayName"
-      data-onClick={[Function]}
-      data-primaryColor="authButtonsTheme-primaryColor"
-      data-strategy="socialConnections1-strategy"
-    />
+      class="auth0-lock-social-buttons-container"
+    >
+      <div
+        data-__type="auth_button"
+      />
+      <div
+        data-__type="auth_button"
+      />
+    </div>
     <div
-      data-__type="auth_button"
-      data-foregroundColor="authButtonsTheme-foregroundColor"
-      data-icon="authButtonsTheme-icon"
-      data-label="loginWithLabel,authButtonsTheme-displayName"
-      data-onClick={[Function]}
-      data-primaryColor="authButtonsTheme-primaryColor"
-      data-strategy="socialConnections2-strategy"
-    />
+      class="auth0-loading-container"
+    >
+      <div
+        class="auth0-loading"
+      />
+    </div>
   </div>
-  <div
-    className="auth0-loading-container"
-  >
-    <div
-      className="auth0-loading"
-    />
-  </div>
-</div>
+</DocumentFragment>
 `;

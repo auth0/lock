@@ -1,9 +1,9 @@
 import React from 'react';
-import { mockComponent } from 'testUtils';
+import { render } from '@testing-library/react';
+import { mockComponent, getMockProps } from 'testUtils';
 import I from 'immutable';
 import { setField } from '../../../field';
 import * as i18n from '../../../i18n';
-import { expectComponent } from '../../testUtils';
 import { dataFns } from '../../../utils/data_utils';
 import { setPhoneNumber, initLocation } from '../../../field/phone_number';
 
@@ -24,6 +24,11 @@ const getComponent = () => {
   const VCodeScreen = require('connection/passwordless/ask_vcode').default;
   const screen = new VCodeScreen();
   return screen.render();
+};
+
+const renderAndGetProps = (Component, props) => {
+  const { container } = render(<Component {...props} />);
+  return getMockProps(container.querySelector('[data-__type="vcode_pane"]'));
 };
 
 describe('AskVCode', () => {
@@ -47,22 +52,21 @@ describe('AskVCode', () => {
     };
   });
 
-  it('renders correctly when logging in with email', () => {
+  it('passes email instructions when logging in with email', () => {
     require('connection/passwordless/index').isEmail.mockImplementation(() => true);
-
     const Component = getComponent();
     const l = setField(lock, 'email', 'test@user.com');
-
-    expectComponent(<Component model={l} i18n={i18nProp} />).toMatchSnapshot();
+    const props = renderAndGetProps(Component, { model: l, i18n: i18nProp });
+    expect(props.instructions).toContain('An email with the code has been sent to');
+    expect(props.instructions).toContain('test@user.com');
   });
 
-  it('renders correctly when logging in with a phone number', () => {
+  it('passes SMS instructions when logging in with a phone number', () => {
     require('connection/passwordless/index').isEmail.mockImplementation(() => false);
-
     const Component = getComponent();
     let l = setPhoneNumber(lock, '456 789');
     l = initLocation(l, 'UK');
-
-    expectComponent(<Component model={l} i18n={i18nProp} />).toMatchSnapshot();
+    const props = renderAndGetProps(Component, { model: l, i18n: i18nProp });
+    expect(props.instructions).toContain('An SMS with the code has been sent to');
   });
 });

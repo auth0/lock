@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
 
@@ -66,8 +66,8 @@ describe('PhoneNumberPane', () => {
   it('calls `startOptionSelection` when SelectInput is clicked', () => {
     let PhoneNumberPane = getComponent();
 
-    const wrapper = mount(<PhoneNumberPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper, 1);
+    const { container } = render(<PhoneNumberPane {...defaultProps} />);
+    const props = extractPropsFromWrapper(container, 'select_input');
 
     props.onClick();
 
@@ -78,8 +78,8 @@ describe('PhoneNumberPane', () => {
   it('calls `swap` when PhoneNumberInput changes', () => {
     let PhoneNumberPane = getComponent();
 
-    const wrapper = mount(<PhoneNumberPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper, 2);
+    const { container } = render(<PhoneNumberPane {...defaultProps} />);
+    const props = extractPropsFromWrapper(container, 'phone_number_input');
 
     props.onChange({ target: { value: 'newPhoneNumber' } });
 

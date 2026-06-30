@@ -1,5 +1,6 @@
 import React from 'react';
-import { expectComponent, mockComponent } from 'testUtils';
+import { render } from '@testing-library/react';
+import { mockComponent, getMockProps } from 'testUtils';
 import I from 'immutable';
 import { setField } from '../../../field';
 
@@ -87,10 +88,10 @@ describe('ResetPasswordScreen', () => {
       const store = require('store/index');
       const Component = getComponent();
 
-      // Set a field on Lock to set the username field, then check it was set as the email
       const l = setField(lock, 'username', 'test@test.com');
-
-      expectComponent(<Component i18n={i18n} model={l} />).toMatchSnapshot();
+      const { container } = render(<Component i18n={i18n} model={l} />);
+      const props = getMockProps(container.querySelector('[data-__type="reset_password_pane"]'));
+      expect(props.lock).toBe(l);
 
       expect(store.swap).toHaveBeenCalledWith(
         'updateEntity',
@@ -107,10 +108,10 @@ describe('ResetPasswordScreen', () => {
       const store = require('store/index');
       const Component = getComponent();
 
-      // Set a field on Lock to set the username field, then check it was set as the email
       const l = setField(lock, 'username', 'some-username');
-
-      expectComponent(<Component i18n={i18n} model={l} />).toMatchSnapshot();
+      const { container } = render(<Component i18n={i18n} model={l} />);
+      const props = getMockProps(container.querySelector('[data-__type="reset_password_pane"]'));
+      expect(props.lock).toBe(l);
 
       expect(store.swap).toHaveBeenCalledWith(
         'updateEntity',

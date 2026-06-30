@@ -1,9 +1,19 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import { expectComponent } from '../../testUtils';
 
 import GlobalMessage from 'ui/box/global_message';
+
+// Helper: render and get the instance via a callback ref (class component)
+const renderWithInstance = (element) => {
+  let instance = null;
+  const elementWithRef = React.cloneElement(element, {
+    ref: r => { instance = r; }
+  });
+  const result = render(elementWithRef);
+  return { ...result, instance };
+};
 
 describe('GlobalMessage', () => {
   it('renders correctly given a success type', () => {
@@ -18,49 +28,61 @@ describe('GlobalMessage', () => {
     ).toMatchSnapshot();
   });
   it('should call scrollIntoView if parameter is set and top < 0', () => {
-    const wrapper = mount(<GlobalMessage type="success" message="foo" scrollIntoView={true} />);
+    const { container, instance } = renderWithInstance(
+      <GlobalMessage type="success" message="foo" scrollIntoView={true} />
+    );
+    const el = container.firstChild;
     const getBoundingClientRectSpy = jest.fn().mockReturnValue({ top: -1 });
     const scrollIntoViewSpy = jest.fn();
-    wrapper.getDOMNode().getBoundingClientRect = getBoundingClientRectSpy;
-    wrapper.getDOMNode().scrollIntoView = scrollIntoViewSpy;
+    el.getBoundingClientRect = getBoundingClientRectSpy;
+    el.scrollIntoView = scrollIntoViewSpy;
 
-    wrapper.instance().componentDidMount();
+    instance.componentDidMount();
 
     expect(getBoundingClientRectSpy).toHaveBeenCalled();
     expect(scrollIntoViewSpy).toHaveBeenCalledWith(true);
   });
   it('should not call scrollIntoView if parameter is set and top >= 0', () => {
-    const wrapper = mount(<GlobalMessage type="success" message="foo" scrollIntoView={true} />);
+    const { container, instance } = renderWithInstance(
+      <GlobalMessage type="success" message="foo" scrollIntoView={true} />
+    );
+    const el = container.firstChild;
     const getBoundingClientRectSpy = jest.fn().mockReturnValue({ top: 0 });
     const scrollIntoViewSpy = jest.fn();
-    wrapper.getDOMNode().getBoundingClientRect = getBoundingClientRectSpy;
-    wrapper.getDOMNode().scrollIntoView = scrollIntoViewSpy;
+    el.getBoundingClientRect = getBoundingClientRectSpy;
+    el.scrollIntoView = scrollIntoViewSpy;
 
-    wrapper.instance().componentDidMount();
+    instance.componentDidMount();
 
     expect(getBoundingClientRectSpy).toHaveBeenCalled();
     expect(scrollIntoViewSpy).not.toHaveBeenCalled();
   });
   it('should call scrollIntoView if parameter is not set (default is true)', () => {
-    const wrapper = mount(<GlobalMessage type="success" message="foo" />);
+    const { container, instance } = renderWithInstance(
+      <GlobalMessage type="success" message="foo" />
+    );
+    const el = container.firstChild;
     const getBoundingClientRectSpy = jest.fn().mockReturnValue({ top: -1 });
     const scrollIntoViewSpy = jest.fn();
-    wrapper.getDOMNode().getBoundingClientRect = getBoundingClientRectSpy;
-    wrapper.getDOMNode().scrollIntoView = scrollIntoViewSpy;
+    el.getBoundingClientRect = getBoundingClientRectSpy;
+    el.scrollIntoView = scrollIntoViewSpy;
 
-    wrapper.instance().componentDidMount();
+    instance.componentDidMount();
 
     expect(getBoundingClientRectSpy).toHaveBeenCalled();
     expect(scrollIntoViewSpy).toHaveBeenCalledWith(true);
   });
   it('should not call scrollIntoView if parameter is set to false', () => {
-    const wrapper = mount(<GlobalMessage type="success" message="foo" scrollIntoView={false} />);
+    const { container, instance } = renderWithInstance(
+      <GlobalMessage type="success" message="foo" scrollIntoView={false} />
+    );
+    const el = container.firstChild;
     const getBoundingClientRectSpy = jest.fn().mockReturnValue({ top: -1 });
     const scrollIntoViewSpy = jest.fn();
-    wrapper.getDOMNode().getBoundingClientRect = getBoundingClientRectSpy;
-    wrapper.getDOMNode().scrollIntoView = scrollIntoViewSpy;
+    el.getBoundingClientRect = getBoundingClientRectSpy;
+    el.scrollIntoView = scrollIntoViewSpy;
 
-    wrapper.instance().componentDidMount();
+    instance.componentDidMount();
 
     expect(scrollIntoViewSpy).not.toHaveBeenCalled();
   });
@@ -68,16 +90,16 @@ describe('GlobalMessage', () => {
     const message = React.createElement('span', {
       dangerouslySetInnerHTML: { __html: '<b>Success!</b>' }
     });
-    const wrapper = mount(<GlobalMessage type="success" message={message} />);
-    expect(wrapper.html()).toBe(
+    const { container } = render(<GlobalMessage type="success" message={message} />);
+    expect(container.innerHTML).toBe(
       '<div class="auth0-global-message auth0-global-message-success"><span class="animated fadeInUp">' +
         '<span><b>Success!</b></span></span></div>'
     );
   });
   it('should strip out HTML tags if given a string', () => {
-    const wrapper = mount(<GlobalMessage type="success" message="<b>Success!</b>" />);
+    const { container } = render(<GlobalMessage type="success" message="<b>Success!</b>" />);
 
-    expect(wrapper.html()).toBe(
+    expect(container.innerHTML).toBe(
       '<div class="auth0-global-message auth0-global-message-success"><span class="animated fadeInUp">' +
         '&lt;b&gt;Success!&lt;/b&gt;</span></div>'
     );

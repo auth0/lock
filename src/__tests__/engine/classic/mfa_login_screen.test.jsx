@@ -1,7 +1,6 @@
 import React from 'react';
-import { mount } from 'enzyme';
-
-import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
+import { render } from '@testing-library/react';
+import { mockComponent, getMockProps } from 'testUtils';
 
 jest.mock('connection/database/mfa_pane', () => mockComponent('mfa_pane'));
 
@@ -37,9 +36,13 @@ describe('MFALoginScreen', () => {
     },
     model: 'model'
   };
-  it('renders correctly', () => {
+  it('passes i18n-derived props to MFAPane', () => {
     const Component = getComponent();
-
-    expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
+    const { container } = render(<Component {...defaultProps} />);
+    const props = getMockProps(container.querySelector('[data-__type="mfa_pane"]'));
+    expect(props.mfaInputPlaceholder).toBe('mfaInputPlaceholder');
+    expect(props.instructions).toBe('mfaLoginInstructions');
+    expect(props.title).toBe('mfaLoginTitle');
+    expect(props.lock).toBe('model');
   });
 });

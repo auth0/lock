@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
 
@@ -62,8 +62,8 @@ describe('SocialButtonsPane', () => {
   it('calls signUpError when isSignUp===true and terms were not accepted', () => {
     const SocialButtonsPane = getComponent();
 
-    const wrapper = mount(<SocialButtonsPane {...defaultProps} signUp={true} />);
-    const props = extractPropsFromWrapper(wrapper, 2);
+    const { container } = render(<SocialButtonsPane {...defaultProps} signUp={true} />);
+    const props = extractPropsFromWrapper(container, 'auth_button');
 
     props.onClick();
 
@@ -84,8 +84,8 @@ describe('SocialButtonsPane', () => {
   it('calls `logIn` with social connection 1 when first button is clicked', () => {
     let SocialButtonsPane = getComponent();
 
-    const wrapper = mount(<SocialButtonsPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper, 2);
+    const { container } = render(<SocialButtonsPane {...defaultProps} />);
+    const props = extractPropsFromWrapper(container, 'auth_button');
 
     props.onClick();
 
@@ -96,8 +96,8 @@ describe('SocialButtonsPane', () => {
   it('calls `logIn` with social connection 2 when second button is clicked', () => {
     let SocialButtonsPane = getComponent();
 
-    const wrapper = mount(<SocialButtonsPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper, 3);
+    const { container } = render(<SocialButtonsPane {...defaultProps} />);
+    const props = extractPropsFromWrapper(container, 'auth_button', 1);
 
     props.onClick();
 
