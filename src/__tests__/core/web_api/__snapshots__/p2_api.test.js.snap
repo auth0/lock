@@ -200,42 +200,6 @@ exports[`Auth0APIClient logIn with social/enterprise (without username and email
 }
 `;
 
-exports[`Auth0APIClient parseHash should pass __enableIdPInitiatedLogin when options._enableIdPInitiatedLogin===true 1`] = `
-[
-  {
-    "__enableIdPInitiatedLogin": true,
-    "hash": "hash",
-    "nonce": undefined,
-    "state": undefined,
-  },
-  "cb",
-]
-`;
-
-exports[`Auth0APIClient parseHash should pass __enableIdPInitiatedLogin when options._enableImpersonation===true 1`] = `
-[
-  {
-    "__enableIdPInitiatedLogin": true,
-    "hash": "hash",
-    "nonce": undefined,
-    "state": undefined,
-  },
-  "cb",
-]
-`;
-
-exports[`Auth0APIClient parseHash should pass __enableIdPInitiatedLogin:false when options._enableImpersonation and options._enableIdPInitiatedLogin are not present 1`] = `
-[
-  {
-    "__enableIdPInitiatedLogin": false,
-    "hash": "hash",
-    "nonce": undefined,
-    "state": undefined,
-  },
-  "cb",
-]
-`;
-
 exports[`Auth0APIClient passwordlessStart should call client.passwordlessStart 1`] = `
 [
   {
