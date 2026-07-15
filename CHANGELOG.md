@@ -1,5 +1,10 @@
 # Change Log
 
+## [v13.2.1](https://github.com/auth0/lock/tree/v13.2.1) (2026-07-15)
+
+**Fixes**
+- Remove deprecated Instagram social connection strategy [\#2837](https://github.com/auth0/lock/pull/2837) ([aparnaagarwal-okta](https://github.com/aparnaagarwal-okta))
+
 ## [v13.2.0](https://github.com/auth0/lock/tree/v13.1.0) (2025-08-07)
 
 **Fixes**
