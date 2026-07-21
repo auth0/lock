@@ -49,4 +49,16 @@ describe('HRDScreen Component', () => {
     const Component = getComponent();
     expectComponent(<Component model={lock} i18n={i18nProp} />).toMatchSnapshot();
   });
+
+  it('renders correctly when enterprise domain is an empty string', () => {
+    require('connection/enterprise').enterpriseDomain.mockImplementation(() => '');
+    const Component = getComponent();
+    expectComponent(<Component model={lock} i18n={i18nProp} />).toMatchSnapshot();
+  });
+
+  it('renders correctly when enterprise domain is a whitespace string', () => {
+    require('connection/enterprise').enterpriseDomain.mockImplementation(() => '   ');
+    const Component = getComponent();
+    expectComponent(<Component model={lock} i18n={i18nProp} />).toMatchSnapshot();
+  });
 });
