@@ -56,7 +56,7 @@ export default class SelectInput extends React.Component {
     if (!label) className += ' auth0-lock-input-with-placeholder';
 
     return (
-      <InputWrap focused={focused} isValid={isValid} name="location" icon={icon}>
+      <InputWrap focused={focused} isValid={isValid} name={name} icon={icon}>
         <input
           id={`${lockId}-${name}`}
           type="button"
