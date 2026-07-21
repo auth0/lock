@@ -1,5 +1,5 @@
 import React from 'react';
-import { mockComponent, expectComponent } from 'testUtils';
+import { mockComponent, expectComponent, renderShallowComponent } from 'testUtils';
 import I from 'immutable';
 import { dataFns } from '../../../utils/data_utils';
 import * as i18n from '../../../i18n';
@@ -60,5 +60,27 @@ describe('HRDScreen Component', () => {
     require('connection/enterprise').enterpriseDomain.mockImplementation(() => '   ');
     const Component = getComponent();
     expectComponent(<Component model={lock} i18n={i18nProp} />).toMatchSnapshot();
+  });
+
+  it('renders correctly when enterprise domain is undefined', () => {
+    require('connection/enterprise').enterpriseDomain.mockImplementation(() => undefined);
+    const Component = getComponent();
+    expectComponent(<Component model={lock} i18n={i18nProp} />).toMatchSnapshot();
+  });
+
+  it('does not show "undefined" in message when enterprise domain is undefined', () => {
+    require('connection/enterprise').enterpriseDomain.mockImplementation(() => undefined);
+    const Component = getComponent();
+    const rendered = renderShallowComponent(<Component model={lock} i18n={i18nProp} />);
+    const headerText = rendered.props.header && rendered.props.header.props.children;
+    expect(String(headerText)).not.toContain('undefined');
+  });
+
+  it('does not show "undefined" in message when enterprise domain is null', () => {
+    require('connection/enterprise').enterpriseDomain.mockImplementation(() => null);
+    const Component = getComponent();
+    const rendered = renderShallowComponent(<Component model={lock} i18n={i18nProp} />);
+    const headerText = rendered.props.header && rendered.props.header.props.children;
+    expect(String(headerText)).not.toContain('undefined');
   });
 });
