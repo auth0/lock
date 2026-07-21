@@ -39,7 +39,8 @@ export default {
       'bad.phone_number': 'Die telefoonnommer is ongeldig',
       'lock.fallback': 'Jammer, iets het verkeerd gegaan',
       invalid_captcha: "Los die uitdagingsvraag om te verifieer dat u nie 'n robot is nie.",
-      invalid_recaptcha: "Kies die merkblokkie om te verifieer dat u nie 'n robot is nie."
+      invalid_recaptcha: "Kies die merkblokkie om te verifieer dat u nie 'n robot is nie.",
+      too_many_attempts: 'Jou rekening is geblok nadat daar te veel keer probeer inteken is.'
     },
     signUp: {
       invalid_password: 'Wagwoord is ongeldig.',

@@ -45,7 +45,8 @@ export default {
       'bad.phone_number': 'Numărul de telefon este invalid',
       'lock.fallback': 'Ne pare rău, ceva nu a funcționat',
       invalid_captcha: 'Rezolvați întrebarea pentru a verifica dacă nu sunteți un robot.',
-      invalid_recaptcha: 'Selectați caseta pentru a verifica dacă nu sunteți un robot.'
+      invalid_recaptcha: 'Selectați caseta pentru a verifica dacă nu sunteți un robot.',
+      too_many_attempts: 'Contul tău a fost blocat după mai multe încercări nereușite de conectare.'
     },
     signUp: {
       invalid_password: 'Parolă invalidă.',

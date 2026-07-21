@@ -43,7 +43,8 @@ export default {
       'bad.phone_number': 'Số điện thoại không hợp lệ.',
       'lock.fallback': 'Đã có lỗi xãy ra, chúng tôi rất lấy làm tiếc.',
       invalid_captcha: 'Giải quyết câu hỏi thử thách để xác minh bạn không phải là robot.',
-      invalid_recaptcha: 'Chọn hộp kiểm để xác minh bạn không phải là robot.'
+      invalid_recaptcha: 'Chọn hộp kiểm để xác minh bạn không phải là robot.',
+      too_many_attempts: 'Tài khoản của bạn đã bị khóa do liên tục đăng nhập thất bại nhiều lần.'
     },
     signUp: {
       invalid_password: 'Mật khẩu không hợp lệ.',

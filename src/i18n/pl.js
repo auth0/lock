@@ -45,7 +45,8 @@ export default {
       'bad.phone_number': 'Numer telefonu nie jest poprawny',
       'lock.fallback': 'Przykro nam, coś poszło nie tak',
       invalid_captcha: 'Rozwiąż pytanie kontrolne, aby sprawdzić, czy nie jesteś robotem.',
-      invalid_recaptcha: 'Zaznacz pole wyboru, aby potwierdzić, że nie jesteś robotem.'
+      invalid_recaptcha: 'Zaznacz pole wyboru, aby potwierdzić, że nie jesteś robotem.',
+      too_many_attempts: 'Twoje konto zostało zablokowane po zbyt wielu nieudanych próbach logowania.'
     },
     signUp: {
       invalid_password: 'Hasło nie jest poprawne.',
