@@ -43,7 +43,8 @@ export default {
       'bad.phone_number': '전화번호가 유효하지 않습니다',
       'lock.fallback': '죄송합니다. 오류가 발생하였습니다',
       invalid_captcha: '로봇이 아닌 사람인지 확인하기 위해 챌린지 질문을 해결하십시오.',
-      invalid_recaptcha: '로봇이 아닌지 확인하려면 확인란을 선택하십시오.'
+      invalid_recaptcha: '로봇이 아닌지 확인하려면 확인란을 선택하십시오.',
+      too_many_attempts: '본 계정은 단시간에 복수의 로그인 시도가 감지되어 차단되었습니다.'
     },
     signUp: {
       invalid_password: '비밀번호가 유효하지 않습니다.',

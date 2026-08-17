@@ -46,7 +46,8 @@ export default {
       'bad.phone_number': 'Neispravan broj telefona',
       'lock.fallback': 'Ispričavamo se, ali nešto je pošlo po zlu.',
       invalid_captcha: 'Riješite izazovno pitanje kako biste provjerili da niste robot.',
-      invalid_recaptcha: 'Označite potvrdni okvir da biste potvrdili da niste robot.'
+      invalid_recaptcha: 'Označite potvrdni okvir da biste potvrdili da niste robot.',
+      too_many_attempts: 'Vaš je račun blokiran uslijed višestrukih uzastopnih pokušaja prijave.'
     },
     signUp: {
       invalid_password: 'Lozinka je neispravna.',
