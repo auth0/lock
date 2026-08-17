@@ -43,7 +43,8 @@ export default {
       'bad.phone_number': 'رقم الهاتف غير صالح.',
       'lock.fallback': 'المعذرة، حصل خطأ ما.',
       invalid_captcha: 'حل سؤال التحدي للتحقق من أنك لست روبوت.',
-      invalid_recaptcha: 'حدد مربع الاختيار للتحقق من أنك لست روبوتًا.'
+      invalid_recaptcha: 'حدد مربع الاختيار للتحقق من أنك لست روبوتًا.',
+      too_many_attempts: 'تم حظر حسابك بعد عدة محاولات متتالية للدخول.'
     },
     signUp: {
       invalid_password: 'كلمة المرور غير صالحة.',

@@ -48,7 +48,8 @@ export default {
       'bad.phone_number': 'Le numéro de téléphone n’est pas valide',
       'lock.fallback': 'Nous sommes désolés, un problème est survenu',
       invalid_captcha: "Résolvez la question du défi pour vérifier que vous n'êtes pas un robot.",
-      invalid_recaptcha: "Cochez la case pour vérifier que vous n'êtes pas un robot."
+      invalid_recaptcha: "Cochez la case pour vérifier que vous n'êtes pas un robot.",
+      too_many_attempts: 'Votre compte a été bloqué à la suite de trop nombreuses tentatives de connexion consécutives.'
     },
     signUp: {
       invalid_password: 'Le mot de passe n’est pas valide.',
