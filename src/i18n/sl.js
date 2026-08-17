@@ -43,7 +43,8 @@ export default {
       'bad.phone_number': 'Napačna telefonska številka',
       'lock.fallback': 'Žal je prišlo do napake',
       invalid_captcha: 'Rešite izzivno vprašanje in preverite, ali niste robot.',
-      invalid_recaptcha: 'Izberite potrditveno polje, da preverite, da niste robot.'
+      invalid_recaptcha: 'Izberite potrditveno polje, da preverite, da niste robot.',
+      too_many_attempts: 'Po več zaporednih poskusih napačne prijave je bil vaš račun blokiran.'
     },
     signUp: {
       invalid_password: 'Napačno geslo.',

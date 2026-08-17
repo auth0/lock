@@ -39,7 +39,8 @@ export default {
       'bad.phone_number': '手机号码格式不正确。',
       'lock.fallback': '对不起，出现错误。',
       invalid_captcha: '解决挑战问题以验证您不是机器人。',
-      invalid_recaptcha: '选中复选框以确认您不是机器人。'
+      invalid_recaptcha: '选中复选框以确认您不是机器人。',
+      too_many_attempts: '由于登录操作太频繁，您的帐号已被锁定。'
     },
     signUp: {
       invalid_password: '密码错误',
