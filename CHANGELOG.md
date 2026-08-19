@@ -1,5 +1,10 @@
 # Change Log
 
+## [v13.3.0](https://github.com/auth0/lock/tree/v13.1.0) (2026-08-10)
+
+**Fixes**
+- Update apple connection icon [\#2649](https://github.com/auth0/lock/pull/2851) ([jdaniel-okta](https://github.com/jdaniel-okta))
+
 ## [v13.2.0](https://github.com/auth0/lock/tree/v13.1.0) (2025-08-07)
 
 **Fixes**
