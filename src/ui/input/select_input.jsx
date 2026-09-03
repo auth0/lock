@@ -52,11 +52,11 @@ export default class SelectInput extends React.Component {
       icon = <img className="auth0-lock-custom-icon" alt={ariaLabel || name} src={iconUrl} />;
     }
 
-    let className = 'auth0-lock-input auth0-lock-input-location';
+    let className = `auth0-lock-input auth0-lock-input-${name}`;
     if (!label) className += ' auth0-lock-input-with-placeholder';
 
     return (
-      <InputWrap focused={focused} isValid={isValid} name="location" icon={icon}>
+      <InputWrap focused={focused} isValid={isValid} name={name} icon={icon}>
         <input
           id={`${lockId}-${name}`}
           type="button"
