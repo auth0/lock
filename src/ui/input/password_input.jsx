@@ -41,10 +41,11 @@ export default class PasswordInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.inputRef = React.createRef();
   }
 
   focus() {
-    this.refs.input && this.refs.input.focus();
+    this.inputRef.current && this.inputRef.current.focus();
   }
 
   hasFocus() {
@@ -84,7 +85,7 @@ export default class PasswordInput extends React.Component {
         icon={IconSvg}
       >
         <input
-          ref="input"
+          ref={this.inputRef}
           type={showPassword ? 'text' : 'password'}
           id={`${l.id(lock)}-password`}
           name="password"

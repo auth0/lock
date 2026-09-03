@@ -33,6 +33,7 @@ export default class VcodeInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.inputRef = React.createRef();
   }
 
   componentDidMount() {
@@ -40,7 +41,7 @@ export default class VcodeInput extends React.Component {
       // TODO: We can't set the focus immediately because we have to wait for
       // the input to be visible. Use a more robust solution (Placeholder should
       // notify it children when they are being shown).
-      setTimeout(() => this.refs.input && this.refs.input.focus(), 1200);
+      setTimeout(() => this.inputRef.current && this.inputRef.current.focus(), 1200);
     }
   }
 
@@ -52,7 +53,7 @@ export default class VcodeInput extends React.Component {
       <InputWrap focused={focused} isValid={isValid} name="vcode" icon={IconSvg}>
         <input
           id={`${lockId}-vcode`}
-          ref="input"
+          ref={this.inputRef}
           type="tel"
           name="vcode"
           className="auth0-lock-input auth0-lock-input-code"

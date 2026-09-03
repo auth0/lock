@@ -25,6 +25,7 @@ export default class UsernameInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.inputRef = React.createRef();
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -53,7 +54,7 @@ export default class UsernameInput extends React.Component {
         icon={IconSvg}
       >
         <input
-          ref="input"
+          ref={this.inputRef}
           type="text"
           name="username"
           className="auth0-lock-input"

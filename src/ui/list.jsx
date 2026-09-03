@@ -93,17 +93,23 @@ export default class FiltrableList extends React.Component {
 }
 
 class List extends React.Component {
+  constructor(props) {
+    super(props);
+    this.highlightedRef = React.createRef();
+    this.listRef = React.createRef();
+  }
+
   componentDidUpdate() {
     // Ensure that highlighted item is entirely visible
 
     // NOTE: I've spent very little time on this. It works, but it
     // surely can be more clearly.
 
-    const { highlighted } = this.refs;
+    const highlighted = this.highlightedRef.current;
 
     if (highlighted) {
-      const scrollableNode = ReactDOM.findDOMNode(this);
-      const highlightedNode = ReactDOM.findDOMNode(highlighted);
+      const scrollableNode = this.listRef.current;
+      const highlightedNode = highlighted;
       const relativeOffsetTop = highlightedNode.offsetTop - scrollableNode.scrollTop;
       let scrollTopDelta = 0;
       if (relativeOffsetTop + highlightedNode.offsetHeight > scrollableNode.clientHeight) {
@@ -144,13 +150,13 @@ class List extends React.Component {
         onMouseMove: () => this.mouseMoveHandler(x)
       };
 
-      if (highlighted) props.ref = 'highlighted';
+      if (highlighted) props.ref = this.highlightedRef;
 
       return <Item key={x.get('label')} {...props} />;
     });
 
     return (
-      <div className="auth0-lock-list-code" onMouseLeave={::this.mouseLeaveHandler}>
+      <div ref={this.listRef} className="auth0-lock-list-code" onMouseLeave={::this.mouseLeaveHandler}>
         <ul>{items}</ul>
       </div>
     );
