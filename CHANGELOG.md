@@ -1,6 +1,10 @@
 # Change Log
 
-## [v13.2.0](https://github.com/auth0/lock/tree/v13.1.0) (2025-08-07)
+## [v13.3.0](https://github.com/auth0/lock/tree/v13.3.0) (2026-03-23)
+
+
+
+## [v13.2.0](https://github.com/auth0/lock/tree/v13.2.0) (2025-08-07)
 
 **Fixes**
 - Update old Twitter icon and name to "X" [\#2649](https://github.com/auth0/lock/pull/2649) ([
