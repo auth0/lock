@@ -20,7 +20,6 @@ export const STRATEGIES = {
   github: 'GitHub',
   'google-openid': 'Google OpenId',
   'google-oauth2': 'Google',
-  instagram: 'Instagram',
   linkedin: 'LinkedIn',
   paypal: 'PayPal',
   'paypal-sandbox': 'PayPal Sandbox',
