@@ -1,5 +1,10 @@
 # Change Log
 
+## [v15.0.2](https://github.com/auth0/lock/tree/v15.0.2) (2026-07-15)
+
+**Fixes**
+- Remove deprecated Instagram social connection strategy [\#2836](https://github.com/auth0/lock/pull/2836) ([aparnaagarwal-okta](https://github.com/aparnaagarwal-okta))
+
 ## [v15.0.1](https://github.com/auth0/lock/tree/v15.0.1) (2026-06-30)
 [Full Changelog](https://github.com/auth0/lock/compare/v15.0.0...v15.0.1)
 
