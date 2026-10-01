@@ -160,14 +160,18 @@ const allOptions: Auth0LockConstructorOptions = {
     theme: { primaryColor: "#ea5323" },
     useCustomPasswordlessConnection: false,
     usernameStyle: "username",
-    _enableImpersonation: false,
-    _enableIdPInitiatedLogin: false,
     _sendTelemetry: true,
     _telemetryInfo: { name: "my-sdk", version: "1.0.0", env: { "auth0.js": "9.0.0" } },
     __useTenantInfo: false,
 };
 
 new Auth0Lock(CLIENT_ID, DOMAIN, allOptions);
+
+// Private state-validation bypass options must not be public constructor options.
+// @ts-expect-error
+new Auth0Lock(CLIENT_ID, DOMAIN, { _enableImpersonation: true });
+// @ts-expect-error
+new Auth0Lock(CLIENT_ID, DOMAIN, { _enableIdPInitiatedLogin: true });
 
 // Passwordless
 new Auth0LockPasswordless(CLIENT_ID, DOMAIN);

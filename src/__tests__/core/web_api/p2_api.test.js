@@ -25,6 +25,7 @@ const getClient = (options = {}) => {
 };
 
 const getAuth0ClientMock = () => require('auth0-js');
+const getParseHashMock = () => getAuth0ClientMock().WebAuth.mock.instances[0].parseHash.mock;
 const assertCallWithCallback = (mock, callbackFunction) => {
   expect(mock.calls.length).toBe(1);
   expect(mock.calls[0][0]).toMatchSnapshot();
@@ -570,33 +571,172 @@ describe('Auth0APIClient', () => {
     expect(mock.calls[0]).toMatchSnapshot();
   });
   describe('parseHash', () => {
-    it('should pass __enableIdPInitiatedLogin:false when options._enableImpersonation and options._enableIdPInitiatedLogin are not present', () => {
+    const assertParseHashOptions = (
+      options,
+      { hash = 'hash', nonce = undefined, state = undefined } = {}
+    ) => {
+      expect(options).toEqual({
+        hash,
+        nonce,
+        state
+      });
+      expect(options).not.toHaveProperty('__enableIdPInitiatedLogin');
+    };
+
+    const getOnlyParseHashCall = () => {
+      const parseHashMock = getParseHashMock();
+      expect(parseHashMock.calls.length).toBe(1);
+      return parseHashMock.calls[0];
+    };
+
+    it('should omit __enableIdPInitiatedLogin when private options are not present', () => {
       const client = getClient({});
       client.parseHash('hash', 'cb');
-      const mock = getAuth0ClientMock();
-      const parseHashMock = mock.WebAuth.mock.instances[0].parseHash.mock;
-      expect(parseHashMock.calls.length).toBe(1);
-      expect(parseHashMock.calls[0]).toMatchSnapshot();
+      const [parseOptions, cb] = getOnlyParseHashCall();
+      assertParseHashOptions(parseOptions);
+      expect(cb).toBe('cb');
     });
-    it('should pass __enableIdPInitiatedLogin when options._enableImpersonation===true', () => {
+    it('should omit __enableIdPInitiatedLogin when options._enableImpersonation===true', () => {
       const client = getClient({
         _enableImpersonation: true
       });
       client.parseHash('hash', 'cb');
-      const mock = getAuth0ClientMock();
-      const parseHashMock = mock.WebAuth.mock.instances[0].parseHash.mock;
-      expect(parseHashMock.calls.length).toBe(1);
-      expect(parseHashMock.calls[0]).toMatchSnapshot();
+      const [parseOptions, cb] = getOnlyParseHashCall();
+      assertParseHashOptions(parseOptions);
+      expect(cb).toBe('cb');
     });
-    it('should pass __enableIdPInitiatedLogin when options._enableIdPInitiatedLogin===true', () => {
+    it('should omit __enableIdPInitiatedLogin when options._enableIdPInitiatedLogin===true', () => {
       const client = getClient({
         _enableIdPInitiatedLogin: true
       });
       client.parseHash('hash', 'cb');
-      const mock = getAuth0ClientMock();
-      const parseHashMock = mock.WebAuth.mock.instances[0].parseHash.mock;
-      expect(parseHashMock.calls.length).toBe(1);
-      expect(parseHashMock.calls[0]).toMatchSnapshot();
+      const [parseOptions, cb] = getOnlyParseHashCall();
+      assertParseHashOptions(parseOptions);
+      expect(cb).toBe('cb');
+    });
+    it('should omit __enableIdPInitiatedLogin when both private options are true', () => {
+      const client = getClient({
+        _enableImpersonation: true,
+        _enableIdPInitiatedLogin: true
+      });
+      client.parseHash('hash', 'cb');
+      const [parseOptions, cb] = getOnlyParseHashCall();
+      assertParseHashOptions(parseOptions);
+      expect(cb).toBe('cb');
+    });
+    it('should omit __enableIdPInitiatedLogin when private options are truthy non-booleans', () => {
+      const client = getClient({
+        _enableImpersonation: 'true',
+        _enableIdPInitiatedLogin: 1
+      });
+      client.parseHash('hash', 'cb');
+      const [parseOptions, cb] = getOnlyParseHashCall();
+      assertParseHashOptions(parseOptions);
+      expect(cb).toBe('cb');
+    });
+    it('should not forward a root __enableIdPInitiatedLogin constructor option', () => {
+      const client = getClient({
+        __enableIdPInitiatedLogin: true
+      });
+      client.parseHash('hash', 'cb');
+      const [parseOptions, cb] = getOnlyParseHashCall();
+      assertParseHashOptions(parseOptions);
+      expect(cb).toBe('cb');
+    });
+    it('should not forward a params.__enableIdPInitiatedLogin constructor option', () => {
+      const client = getClient({
+        params: {
+          __enableIdPInitiatedLogin: true
+        }
+      });
+      client.parseHash('hash', 'cb');
+      const [parseOptions, cb] = getOnlyParseHashCall();
+      assertParseHashOptions(parseOptions);
+      expect(cb).toBe('cb');
+    });
+    it('should pass an empty string hash when parseHash is called without a hash', () => {
+      const client = getClient({});
+      client.parseHash(undefined, 'cb');
+      const [parseOptions, cb] = getOnlyParseHashCall();
+      assertParseHashOptions(parseOptions, { hash: '' });
+      expect(cb).toBe('cb');
+    });
+    it('should pass unsolicited token hashes without the IdP initiated bypass flag', () => {
+      const hash =
+        '#id_token=ATTACKER_ID_TOKEN&access_token=ATTACKER_ACCESS_TOKEN&token_type=Bearer';
+      const client = getClient({
+        _enableImpersonation: true,
+        _enableIdPInitiatedLogin: true
+      });
+      client.parseHash(hash, 'cb');
+      const [parseOptions, cb] = getOnlyParseHashCall();
+      assertParseHashOptions(parseOptions, { hash });
+      expect(cb).toBe('cb');
+    });
+    it('should pass OAuth error hashes without the IdP initiated bypass flag', () => {
+      const hash = '#error=access_denied&error_description=Unauthorized';
+      const client = getClient({
+        _enableIdPInitiatedLogin: true
+      });
+      client.parseHash(hash, 'cb');
+      const [parseOptions, cb] = getOnlyParseHashCall();
+      assertParseHashOptions(parseOptions, { hash });
+      expect(cb).toBe('cb');
+    });
+    it('should pass hashes with no auth result without the IdP initiated bypass flag', () => {
+      const hash = '#foo=bar';
+      const client = getClient({
+        _enableImpersonation: true
+      });
+      client.parseHash(hash, 'cb');
+      const [parseOptions, cb] = getOnlyParseHashCall();
+      assertParseHashOptions(parseOptions, { hash });
+      expect(cb).toBe('cb');
+    });
+    it('should pass configured nonce and state', () => {
+      const client = getClient({
+        nonce: 'nonce',
+        state: 'state'
+      });
+      client.parseHash('hash', 'cb');
+      const [parseOptions, cb] = getOnlyParseHashCall();
+      assertParseHashOptions(parseOptions, {
+        nonce: 'nonce',
+        state: 'state'
+      });
+      expect(cb).toBe('cb');
+    });
+    it('should pass configured params.nonce and params.state', () => {
+      const client = getClient({
+        params: {
+          nonce: 'params-nonce',
+          state: 'params-state'
+        }
+      });
+      client.parseHash('hash', 'cb');
+      const [parseOptions, cb] = getOnlyParseHashCall();
+      assertParseHashOptions(parseOptions, {
+        nonce: 'params-nonce',
+        state: 'params-state'
+      });
+      expect(cb).toBe('cb');
+    });
+    it('should prefer params.nonce and params.state over root nonce and state', () => {
+      const client = getClient({
+        nonce: 'root-nonce',
+        state: 'root-state',
+        params: {
+          nonce: 'params-nonce',
+          state: 'params-state'
+        }
+      });
+      client.parseHash('hash', 'cb');
+      const [parseOptions, cb] = getOnlyParseHashCall();
+      assertParseHashOptions(parseOptions, {
+        nonce: 'params-nonce',
+        state: 'params-state'
+      });
+      expect(cb).toBe('cb');
     });
   });
 });
