@@ -126,7 +126,7 @@ class Auth0APIClient {
       loginOptions.login_hint = options.login_hint;
     }
 
-    if (!options.username && !options.email) {
+    if (options.username == null && options.email == null) {
       if (this.authOpt.popup) {
         this.client.popup.authorize(
           {
