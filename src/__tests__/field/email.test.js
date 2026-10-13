@@ -1,4 +1,4 @@
-import { isEmail, emailDomain } from '../../field/email';
+import { isEmail, emailDomain, emailLocalPart } from '../../field/email';
 
 describe('field/email', () => {
   describe('isEmail', () => {
@@ -27,6 +27,23 @@ describe('field/email', () => {
       expect(emailDomain(1)).toBe('');
       expect(emailDomain('test@testcom')).toBe('');
       expect(emailDomain('test.test.com')).toBe('');
+    });
+  });
+  describe('emailLocalPart', () => {
+    it('returns the local part for a normal email', () => {
+      expect(emailLocalPart('alice@corp.com')).toBe('alice');
+      expect(emailLocalPart('alice@sub.corp.com')).toBe('alice');
+    });
+    it('returns "" for addresses with no local part', () => {
+      expect(emailLocalPart('@corp.com')).toBe('');
+      expect(emailLocalPart('@a.b')).toBe('');
+      expect(emailLocalPart('@CORP.COM')).toBe('');
+      expect(emailLocalPart('@sub.corp.com')).toBe('');
+    });
+    it('is unicode-safe when the domain contains characters that expand on toLowerCase', () => {
+      // İ (U+0130) lowercases to i + combining dot above (2 code units).
+      // The old domain.length-based slice produced "alic" instead of "alice".
+      expect(emailLocalPart('alice@İ.com')).toBe('alice');
     });
   });
 });
