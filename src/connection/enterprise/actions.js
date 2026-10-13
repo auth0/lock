@@ -73,8 +73,6 @@ function logInActiveFlow(id, params) {
     ? emailLocalPart(originalUsername)
     : originalUsername;
 
-  if (!username) return;
-
   coreLogIn(
     id,
     ['password', usernameField],
