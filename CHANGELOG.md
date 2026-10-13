@@ -1,5 +1,14 @@
 # Change Log
 
+## [v15.0.2](https://github.com/auth0/lock/tree/v15.0.2) (2026-10-13)
+[Full Changelog](https://github.com/auth0/lock/compare/v15.0.1...v15.0.2)
+
+**Security**
+- fix(security): prevent AD password exposure via /authorize query string (CWE-598, [GHSA-mp8m-wcxp-w648](https://github.com/auth0/lock/security/advisories/GHSA-mp8m-wcxp-w648)) [\#2884](https://github.com/auth0/lock/pull/2884) ([cschetan77](https://github.com/cschetan77))
+
+**Changed**
+- chore(deps): Bump auth0-js from 10.2.0 to 10.2.1 [\#2865](https://github.com/auth0/lock/pull/2865) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v15.0.1](https://github.com/auth0/lock/tree/v15.0.1) (2026-06-30)
 [Full Changelog](https://github.com/auth0/lock/compare/v15.0.0...v15.0.1)
 
