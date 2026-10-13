@@ -126,7 +126,11 @@ class Auth0APIClient {
       loginOptions.login_hint = options.login_hint;
     }
 
+    // null/undefined means social or SSO — no credentials were provided.
     if (options.username == null && options.email == null) {
+      // Defense-in-depth: strip password before the authorize redirect so it can
+      // never appear in the URL, browser history, or server access logs (CWE-598).
+      delete loginOptions.password;
       if (this.authOpt.popup) {
         this.client.popup.authorize(
           {

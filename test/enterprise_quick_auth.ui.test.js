@@ -37,8 +37,8 @@ describe('enterprise quick auth', function () {
         });
       });
 
-      it('does not attempt a login', function () {
-        expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
+      it('attempts a login via POST with the untransformed username', function () {
+        expect(h.wasLoginAttemptedWith({ username: '', connection: 'ad.com' })).to.be.ok();
       });
     });
 
