@@ -335,6 +335,62 @@ describe('Auth0APIClient', () => {
         assertCallWithCallback(loginWithCredentialsMock, callback);
       });
     });
+    describe('password-based flows never reach authorize', () => {
+      // Every string value for username/email — including the empty string produced by
+      // emailLocalPart("@corp.com") — must route to client.login (POST), never authorize (GET).
+      const credentialCases = [
+        // post-transform empty string: the CWE-598 vector
+        ['username ""', { username: '' }],
+        ['email ""', { email: '' }],
+        // leading-space input: emailLocalPart(" @corp.com") → " " (truthy, still a credential)
+        ['username " "', { username: ' ' }],
+        ['username "@corp.com"', { username: '@corp.com' }]
+      ];
+
+      test.each(credentialCases)(
+        '%s routes to client.login in redirect mode',
+        (_, options) => {
+          const client = getClient({ redirect: true });
+          client.logIn({ ...options, password: 'secret' }, {}, jest.fn());
+          const mock = getAuth0ClientMock();
+          expect(mock.WebAuth.mock.instances[0].login.mock.calls.length).toBe(1);
+          expect(mock.WebAuth.mock.instances[0].authorize.mock.calls.length).toBe(0);
+        }
+      );
+
+      test.each(credentialCases)(
+        '%s routes to popup.loginWithCredentials in popup mode',
+        (_, options) => {
+          const client = getClient({ redirect: false });
+          client.logIn({ ...options, password: 'secret' }, {}, jest.fn());
+          const mock = getAuth0ClientMock();
+          expect(mock.WebAuth.mock.instances[0].popup.loginWithCredentials.mock.calls.length).toBe(1);
+          expect(mock.WebAuth.mock.instances[0].popup.authorize.mock.calls.length).toBe(0);
+        }
+      );
+
+      it('should still call authorize when username is null (social/SSO)', () => {
+        const client = getClient({ redirect: true });
+        client.logIn({ username: null }, {}, jest.fn());
+        const mock = getAuth0ClientMock();
+        expect(mock.WebAuth.mock.instances[0].authorize.mock.calls.length).toBe(1);
+        expect(mock.WebAuth.mock.instances[0].login.mock.calls.length).toBe(0);
+      });
+      it('should still call authorize when username and email are absent (social/SSO)', () => {
+        const client = getClient({ redirect: true });
+        client.logIn({}, {}, jest.fn());
+        const mock = getAuth0ClientMock();
+        expect(mock.WebAuth.mock.instances[0].authorize.mock.calls.length).toBe(1);
+        expect(mock.WebAuth.mock.instances[0].login.mock.calls.length).toBe(0);
+      });
+      it('should not pass password to authorize in social/SSO flows', () => {
+        const client = getClient({ redirect: true });
+        client.logIn({ password: 'secret' }, {}, jest.fn());
+        const mock = getAuth0ClientMock();
+        const authorizeArgs = mock.WebAuth.mock.instances[0].authorize.mock.calls[0][0];
+        expect(authorizeArgs.password).toBeUndefined();
+      });
+    });
     describe('should trim spaces in', () => {
       let client;
       let callback;

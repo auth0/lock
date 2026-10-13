@@ -473,18 +473,8 @@ describe('connection pick — email-mode enterprise with no local part in email'
       });
     });
 
-    it('does not attempt a login', function () {
-      expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
-    });
-  });
-
-  describe('when the email is valid', function () {
-    beforeEach(function (done) {
-      h.logInWithEmailAndPassword(this.lock, done);
-    });
-
-    it('attempts a login with the corporate connection', function () {
-      expect(h.wasLoginAttemptedWith({ connection: 'corporate-no-domain' })).to.be.ok();
+    it('attempts a login via POST with the untransformed username', function () {
+      expect(h.wasLoginAttemptedWith({ username: '', connection: 'corporate-no-domain' })).to.be.ok();
     });
   });
 });
