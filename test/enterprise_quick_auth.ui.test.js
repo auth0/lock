@@ -26,6 +26,36 @@ describe('enterprise quick auth', function () {
         done();
       });
     });
+
+    describe('when the username has no local part', function () {
+      beforeEach(function (done) {
+        h.waitForUsernameAndPasswordInput(this.lock, () => {
+          h.fillUsernameInput(this.lock, '@corp.com');
+          h.fillPasswordInput(this.lock, 'mypass');
+          h.submit(this.lock);
+          done();
+        });
+      });
+
+      it('attempts a login via POST with the untransformed username', function () {
+        expect(h.wasLoginAttemptedWith({ username: '', connection: 'ad.com' })).to.be.ok();
+      });
+    });
+
+    describe('when the username is a valid email-style input', function () {
+      beforeEach(function (done) {
+        h.waitForUsernameAndPasswordInput(this.lock, () => {
+          h.fillUsernameInput(this.lock, 'alice@ad.com');
+          h.fillPasswordInput(this.lock, 'mypass');
+          h.submit(this.lock);
+          done();
+        });
+      });
+
+      it('strips the domain and attempts a login with the local part', function () {
+        expect(h.wasLoginAttemptedWith({ username: 'alice', connection: 'ad.com' })).to.be.ok();
+      });
+    });
   });
 
   describe("when there's only an adfs connection", function () {

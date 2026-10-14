@@ -39,5 +39,5 @@ export function emailDomain(str) {
 
 export function emailLocalPart(str) {
   const domain = emailDomain(str);
-  return domain ? str.slice(0, -1 - domain.length) : str;
+  return domain ? str.slice(0, str.lastIndexOf('@')) : str;
 }

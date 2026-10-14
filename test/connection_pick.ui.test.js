@@ -445,3 +445,36 @@ describe('connection pick', function () {
     });
   });
 });
+
+describe('connection pick — email-mode enterprise with no local part in email', function () {
+  before(h.stubWebApis);
+  after(h.restoreWebApis);
+
+  beforeEach(function (done) {
+    const opts = {
+      allowedConnections: ['corporate-no-domain', 'db'],
+      defaultEnterpriseConnection: 'corporate-no-domain',
+      rememberLastLogin: false
+    };
+    this.lock = h.displayLock('', opts, done);
+  });
+
+  afterEach(function () {
+    this.lock.hide();
+  });
+
+  describe('when the email has no local part', function () {
+    beforeEach(function (done) {
+      h.waitForEmailAndPasswordInput(this.lock, () => {
+        h.fillEmailInput(this.lock, '@corp.com');
+        h.fillPasswordInput(this.lock, 'mypass');
+        h.submit(this.lock);
+        done();
+      });
+    });
+
+    it('attempts a login via POST with the untransformed username', function () {
+      expect(h.wasLoginAttemptedWith({ username: '', connection: 'corporate-no-domain' })).to.be.ok();
+    });
+  });
+});
