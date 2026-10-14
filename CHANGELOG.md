@@ -1,5 +1,20 @@
 # Change Log
 
+## [v13.2.1](https://github.com/auth0/lock/tree/v13.2.1) (2026-10-14)
+[Full Changelog](https://github.com/auth0/lock/compare/v13.2.0...v13.2.1)
+
+**Security**
+- fix(security): prevent AD password exposure via /authorize query string (CWE-598, [GHSA-mp8m-wcxp-w648](https://github.com/auth0/lock/security/advisories/GHSA-mp8m-wcxp-w648)) [\#2886](https://github.com/auth0/lock/pull/2886) ([cschetan77](https://github.com/cschetan77))
+- fix(security): backport security dependency fixes to v13 [\#2787](https://github.com/auth0/lock/pull/2787) ([ankita10119](https://github.com/ankita10119))
+
+**Fixed**
+- fix: emit authorization_error for too_many_attempts, guard Cordova plugin instantiation, fix SelectInput name prop [\#2842](https://github.com/auth0/lock/pull/2842) ([ankita10119](https://github.com/ankita10119))
+- fix(enterprise): guard against null domains and trim whitespace in HRD screen [\#2841](https://github.com/auth0/lock/pull/2841) ([ankita10119](https://github.com/ankita10119))
+
+**Changed**
+- refactor: upgrade react-transition-group v2 to v4 and migrate string refs to createRef [\#2840](https://github.com/auth0/lock/pull/2840) ([ankita10119](https://github.com/ankita10119))
+- i18n: add too_many_attempts key to passwordless error section across all locales [\#2839](https://github.com/auth0/lock/pull/2839) ([ankita10119](https://github.com/ankita10119))
+
 ## [v13.2.0](https://github.com/auth0/lock/tree/v13.1.0) (2025-08-07)
 
 **Fixes**
