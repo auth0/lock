@@ -47,7 +47,7 @@ runs:
         elif [[ "${VERSION}" == *"alpha"* ]]; then
           TAG="alpha"
         else
-          TAG="latest"
+          TAG="v13"
         fi
         npm publish --provenance --tag $TAG
       env:
