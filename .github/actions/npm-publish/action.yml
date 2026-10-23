@@ -21,6 +21,7 @@ runs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ inputs.node-version }}
+        check-latest: true
         cache: 'npm'
         registry-url: 'https://registry.npmjs.org'
 
