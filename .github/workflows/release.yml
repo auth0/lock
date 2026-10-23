@@ -18,10 +18,7 @@ jobs:
   release:
     uses: ./.github/workflows/npm-release.yml
     with:
-      # Pinned to 22.22.1 — 22.22.2 has a regression (nodejs/node#62425) where
-      # the bundled npm is missing promise-retry, breaking npm install -g npm@11.
-      # Revert to node-version: 22 once the upstream fix is released.
-      node-version: 22.22.1
+      node-version: 22
       require-build: true
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
