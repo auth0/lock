@@ -19,7 +19,7 @@ install:
 	XDG_CACHE_HOME=$(XDG_CACHE_HOME) \
 	PUPPETEER_CACHE_DIR=$(PUPPETEER_CACHE_DIR) \
 	PUPPETEER_SKIP_DOWNLOAD=true \
-	npm install
+	npm ci
 
 test:
 	@echo "Running test..."
