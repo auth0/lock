@@ -21,10 +21,6 @@ run-name: rl-scan
 #   PRODSEC_PYTHON_TOOLS_REPO   — ProdSec Python tools repo URL
 
 on:
-  # TEMPORARY: lets the scan run on the PR that changes this file, for testing. Remove before merging.
-  pull_request:
-    paths:
-      - .github/workflows/rl.yml
   workflow_call:
     inputs:
       node-version:
@@ -63,7 +59,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
-          node-version: ${{ inputs.node-version || '22' }} # '22' fallback only applies to the temporary pull_request trigger
+          node-version: ${{ inputs.node-version }}
           check-latest: true
           cache: npm
 
