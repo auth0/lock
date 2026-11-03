@@ -63,9 +63,10 @@ jobs:
           check-latest: true
           cache: npm
 
-      # Same sequence as the npm-publish action: npm ci also runs `prepublish`, which builds lib/
+      # Dependency install scripts are skipped so third-party code doesn't run alongside the scan credentials;
+      # the output is identical (lib/ is built by the `prebuild` hook of `npm run build`)
       - name: Install dependencies
-        run: npm ci --include=dev
+        run: npm ci --include=dev --ignore-scripts
 
       - name: Build package
         run: npm run build
