@@ -79,7 +79,8 @@ jobs:
         run: |
           VERSION=$(node -p "require('./package.json').version")
           mkdir -p "$RUNNER_TEMP/rl-artifacts"
-          NPM_TARBALL=$(npm pack --pack-destination "$RUNNER_TEMP/rl-artifacts" --json | node -p "JSON.parse(require('fs').readFileSync(0, 'utf8'))[0].filename")
+          # --ignore-scripts: `prepare` (husky install) prints to stdout and would corrupt the --json output; lib/ is already built by npm ci
+          NPM_TARBALL=$(npm pack --ignore-scripts --pack-destination "$RUNNER_TEMP/rl-artifacts" --json | node -p "JSON.parse(require('fs').readFileSync(0, 'utf8'))[0].filename")
           CDN_BUNDLE="auth0-lock-cdn-bundle-${VERSION}.tgz"
           tar -czf "$RUNNER_TEMP/rl-artifacts/${CDN_BUNDLE}" -C build .
           {
