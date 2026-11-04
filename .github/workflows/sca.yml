@@ -1,0 +1,21 @@
+name: SCA Scan
+
+# Required org secrets (configured at org level in auth0/):
+#   SNYK_TOKEN            — Snyk organisation token
+#   SIGNAL_HANDLER_TOKEN  — scan-service telemetry auth
+#   SIGNAL_HANDLER_DOMAIN — scan-service endpoint domain
+
+on:
+  push:
+    branches: ['master']
+  schedule:
+    - cron: '30 2 * * 6'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sca:
+    uses: auth0/devsecops-tooling/.github/workflows/sca-scan.yml@e29f26478db18ff0bcbe4bc447a8fbd54fbeec9e
+    secrets: inherit
