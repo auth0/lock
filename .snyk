@@ -57,3 +57,107 @@ ignore:
           DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
           maintains IE11 compatibility and cannot upgrade to v3.
         expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-17342528:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-17344504:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-17344516:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-17344526:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-17344538:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-17344552:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-17375136:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-18170233:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-18307175:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-18307177:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-18593782:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-20536984:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-21460655:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-21460657:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-21755401:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-DOMPURIFY-21755403:
+    - '*':
+        reason: >-
+          DOMPurify v3 (which fixes this) dropped IE11 support. Lock v13
+          maintains IE11 compatibility and cannot upgrade to v3.
+        expires: '2027-01-01T00:00:00.000Z'
+  SNYK-JS-AUTH0JS-20936882:
+    - '*':
+        reason: >-
+          Fixed only in auth0-js@10.x, which uses superagent@10.x and calls
+          new Proxy() at runtime. IE11 does not support the Proxy global and it
+          cannot be polyfilled. Lock v13 maintains IE11 compatibility and must
+          stay on auth0-js@9.28.0.
+        expires: '2027-01-01T00:00:00.000Z'
