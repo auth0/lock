@@ -446,7 +446,7 @@ export function shouldAutoLogin(m) {
 }
 
 export function passwordStrengthPolicy(m) {
-  return (databaseConnection(m) || Map()).get('passwordPolicy', 'none');
+  return (databaseConnection(m) || Map()).get('passwordPolicy');
 }
 
 export function additionalSignUpFields(m) {
